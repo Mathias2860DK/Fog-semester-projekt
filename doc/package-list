@@ -1,7 +1,0 @@
-business.entities
-business.exceptions
-business.persistence
-business.services
-web
-web.commands
-web.filters
