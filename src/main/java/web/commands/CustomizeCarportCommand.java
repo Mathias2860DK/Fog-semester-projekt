@@ -40,13 +40,15 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
 
 
         //toolroom parameters:
-        carport = new Carport(carportWidthInt,carportLengthInt,roof,roofPitchInt);
+
 
         if(submitRequest != null){
             if (carportWidthInt == 0 || carportLengthInt == 0 || roof == null || roofPitchInt == 0){//skal addes flere parametre.
 request.setAttribute("error","Du mangler at udfylde et eller flere felter");
                 return pageToShow;
             }
+            carport = new Carport(carportWidthInt,carportLengthInt,roof,roofPitchInt);
+            request.setAttribute("carport",carport);
             return "deliveryinfomation";
         }
 

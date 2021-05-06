@@ -14,7 +14,9 @@
 
     <jsp:body>
 
+
         </div>
+        <form action="${pageContext.request.contextPath}/fc/requestbill" method="post" class="ng-pristine ng-valid">
         <div class="form-group">
             <div class="col-md-12 col-xs-12">
 
@@ -83,6 +85,8 @@
         </div>
         <div class="form-group">
         <div class="col-md-6 col-xs-12">
+            <input type="submit" name="submit_request" title="Send request" value="Send forespørgsel" class="">
+
 
 
 
@@ -97,8 +101,9 @@
                     are logged in as a customer</p>
                 <p><a href="fc/customerpage">Customer Page</a>
             </c:if>
-
+        </form>
         </div>
+
 
     </jsp:body>
 </t:genericpage>

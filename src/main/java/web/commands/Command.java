@@ -31,6 +31,7 @@ public abstract class Command
         //commands.put("showsvgdrawing",new ShowSvgCommand(""))
         commands.put("designcarport", new DesignCarportCommand("designcarport"));
         commands.put("customizecarport", new CustomizeCarportCommand("designcarport"));
+        commands.put("requestbill", new GenerateRequestBillCommand("requestbill"));
     }
 
     public static Command fromPath(
