@@ -13,7 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
-       <p>HELLO </p>
+       <p>${requestScope.name} </p>
 
     </jsp:body>
 </t:genericpage>
