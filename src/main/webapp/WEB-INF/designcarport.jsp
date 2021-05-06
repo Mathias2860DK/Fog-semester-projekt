@@ -215,6 +215,9 @@
                                 </div>
 
                                     <div class="col-md-6 col-xs-12">
+                                        <c:if test="${requestScope.error != null}">
+                                            <p style="color: red">${requestScope.error}</p>
+                                        </c:if>
                                         <input type="submit" name="submit_request" title="Send request" value="Send forespørgsel" class="">
                                         <input type="submit" name="show_drawing" title="show drawing" value="Vis tegning" class="">
                                     </div>
