@@ -28,6 +28,7 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         int carportWidthInt = Integer.parseInt(carportWidth);
         int carportLengthInt = Integer.parseInt(carportLength);
         int roofPitchInt = Integer.parseInt(roofPitch);
+        //test skal slettes
 
         //toolroom parameters:
         carport = new Carport(carportWidthInt,carportLengthInt,roof,roofPitchInt);
