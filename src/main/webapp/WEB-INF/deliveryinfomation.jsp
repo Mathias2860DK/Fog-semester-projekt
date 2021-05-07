@@ -42,10 +42,10 @@
         <div class="form-group">
             <div class="col-md-12 col-xs-12">
 
-                <label title="Zip code and city" for="zip_code_and_city">
+                <label title="Zip code and city" for="zip_code_city">
                     Postnummer og by
                 </label>
-                <input class="form-control" id="zip_code_and_city" name="zip_code_and_city" size="20" type="text" value="">
+                <input class="form-control" id="zip_code_city" name="zip_code_city" size="20" type="text" value="">
 
 
             </div>
@@ -53,10 +53,10 @@
         <div class="form-group">
             <div class="col-md-12 col-xs-12">
 
-                <label title="Mobile" for="mobile">
+                <label title="Mobile" for="phone">
                     Telefon
                 </label>
-                <input class="form-control" id="mobile" name="mobile" size="20" type="text" value="">
+                <input class="form-control" id="phone" name="phone" size="20" type="text" value="">
 
 
             </div>
@@ -64,10 +64,10 @@
         <div class="form-group">
             <div class="col-md-12 col-xs-12">
 
-                <label title="E-mail adresse" for="email_adress">
+                <label title="E-mail adresse" for="email">
                     E-mail adresse
                 </label>
-                <input class="form-control" id="email_adress" name="email" size="20" type="text" value="">
+                <input class="form-control" id="email" name="email" size="20" type="text" value="">
 
 
             </div>

@@ -13,7 +13,19 @@
     </jsp:attribute>
 
     <jsp:body>
-       <p>${requestScope.name} </p>
+        <h3>Du har givet os følgende leverings oplsyninger</h3>
+
+       <p>Navn: ${requestScope.name} </p>
+       <p>Email: ${requestScope.email} </p>
+       <p>Adresse: ${requestScope.adress} </p>
+       <p>Phone: ${requestScope.phone} </p>
+       <p>Postnummer og by: ${requestScope.zip_code_city} </p>
+       <p>Bemærkninger: ${requestScope.remarks} </p>
+
+        <h3>Her er dine ønskede carportmål og materialer:</h3>
+
+<p> height${sessionScope.carport.carportHeight}</p>
+<p>width ${sessionScope.carport.carportWidth}</p>
 
     </jsp:body>
 </t:genericpage>

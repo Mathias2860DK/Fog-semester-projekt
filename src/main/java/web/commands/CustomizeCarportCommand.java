@@ -48,7 +48,7 @@ request.setAttribute("error","Du mangler at udfylde et eller flere felter");
                 return pageToShow;
             }
             carport = new Carport(carportWidthInt,carportLengthInt,roof,roofPitchInt);
-            request.setAttribute("carport",carport);
+            session.setAttribute("carport",carport);
             return "deliveryinfomation";
         }
 
