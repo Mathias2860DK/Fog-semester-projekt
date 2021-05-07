@@ -17,7 +17,7 @@ public class OrderMapper {
 
         try (Connection connection = database.connect()) {
 
-            String sql = "INSERT INTO `orders`" +
+            String sql = "INSERT INTO `order`" +
                     " (`delivery_info_id`," +
                     " `cp_width`, " +
                     " `cp_length`, " +

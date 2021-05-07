@@ -12,14 +12,15 @@ public class DeliveryInfoMapper {
     public DeliveryInfoMapper(Database database) {
         this.database = database;
     }
+
     public int insertDeliveryInfo(DeliveryInfo deliveryInfo) throws UserException {
 
         try (Connection connection = database.connect()) {
 
-            String sql = "INSERT INTO `orders`" +
+            String sql = "INSERT INTO `delivery_info`" +
                     " (`user_id`," +
                     " `name`, " +
-                    " `address`, " +
+                    " `adress`, " +
                     " `zipcode_city`, " +
                     " `phone`, " +
                     " `email`, " +
@@ -40,6 +41,7 @@ public class DeliveryInfoMapper {
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
                 int deliveryInfoId = ids.getInt(1);
+                //ps.setInt("delivery_info_id",deliveryInfoId);
 
 
                 return deliveryInfoId;
