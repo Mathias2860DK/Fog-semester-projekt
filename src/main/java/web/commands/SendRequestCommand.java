@@ -1,20 +1,41 @@
 package web.commands;
 
+import business.entities.Carport;
 import business.entities.DeliveryInfo;
+import business.entities.Order;
 import business.exceptions.UserException;
+import business.persistence.Database;
+import business.services.DeliveryInfoFacade;
+import business.services.OrderFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
+import java.sql.Timestamp;
 
-public class SendRequestCommand extends CommandUnprotectedPage{ //TODO: EVT burde man lave det til en Protected da det er kundens oplysninger man håndterer
+public class SendRequestCommand extends CommandUnprotectedPage { //TODO: EVT burde man lave det til en Protected da det er kundens // oplysninger man håndterer
+    private DeliveryInfoFacade deliveryInfoFacade;
+    private OrderFacade orderFacade;
+
     public SendRequestCommand(String pageToShow) {
         super(pageToShow);
+        orderFacade = new OrderFacade(database);
+        deliveryInfoFacade = new DeliveryInfoFacade(database);
+
     }
 
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
-        session.getAttribute("deliveryInfo");
+        // Her indsætter vi deliveryinfo til database og får attribut på sessionscope
+        DeliveryInfo deliveryInfo = (DeliveryInfo) session.getAttribute("deliveryInfo");
+        Carport carport = (Carport) session.getAttribute("carport");
+        int deliveryInfoId = deliveryInfoFacade.insertDeliveryInfo(deliveryInfo); // Her får vi carport fra sessionscop = get.
+        //Her sætter ordre med oplysninger fra nedestående
+        Order order = new Order(deliveryInfoId, carport, new Timestamp(System.currentTimeMillis()), "request", 0);
+        session.setAttribute("order",order); //her sætter vi ordre, så vi kan vise den på jsp siden med en get.
+        orderFacade.insertOrder(carport, order, deliveryInfoId); //indsætter ordre til DB
+
         return pageToShow;
     }
 }

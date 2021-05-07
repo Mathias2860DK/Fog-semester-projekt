@@ -1,5 +1,7 @@
 package business.persistence;
 
+import business.entities.Carport;
+import business.entities.Order;
 import business.exceptions.UserException;
 
 import java.sql.*;
@@ -11,7 +13,7 @@ public class OrderMapper {
         this.database = database;
     }
 
-    public int insertOrder(int deliveryInfoId, int carportWidth, int carportLength, String roof, int shedWidth, int shedLength, Timestamp date, String status, double totalPrice, int roofPitch) throws UserException {
+    public int insertOrder(Carport carport, Order order, int deliveryInfoId) throws UserException {
 
         try (Connection connection = database.connect()) {
 
@@ -30,15 +32,15 @@ public class OrderMapper {
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, deliveryInfoId);
-                ps.setInt(2, carportWidth);
-                ps.setInt(3, carportLength);
-                ps.setString(4, roof);
-                ps.setInt(5, shedWidth);
-                ps.setInt(6, shedLength);
-                ps.setTimestamp(7,date);
-                ps.setString(8,status);
-                ps.setDouble(9, totalPrice);
-                ps.setInt(10, roofPitch);
+                ps.setInt(2, carport.getCarportWidth());
+                ps.setInt(3,  carport.getCarportLength());
+                ps.setString(4, carport.getRoof());
+                ps.setInt(5, 0);//carport.getShedWidth());
+                ps.setInt(6, 0);//getShedLength);
+                ps.setTimestamp(7,order.getDate());
+                ps.setString(8,order.getStatus());
+                ps.setDouble(9, order.getTotalprice());
+                ps.setInt(10, carport.getRoofPitch());
 
 
                 ps.executeUpdate();

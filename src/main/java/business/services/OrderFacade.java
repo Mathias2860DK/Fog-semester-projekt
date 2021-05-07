@@ -1,5 +1,7 @@
 package business.services;
 
+import business.entities.Carport;
+import business.entities.Order;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.OrderMapper;
@@ -12,7 +14,8 @@ public class OrderFacade {
     public OrderFacade(Database database) {
         orderMapper = new OrderMapper(database);
     }
-    public int insertOrder(int deliveryInfoId, int carportWidth, int carportLength, String roof, int shedWidth, int shedLength, Timestamp date, String status, double totalPrice, int roofPitch) throws UserException {
-return orderMapper.insertOrder( deliveryInfoId,carportWidth, carportLength, roof, shedWidth, shedLength, date, status, totalPrice, roofPitch);
+
+    public int insertOrder(Carport carport, Order order, int deliveryInfoId) throws UserException {
+        return orderMapper.insertOrder(carport, order, deliveryInfoId);
     }
-    }
+}

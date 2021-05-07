@@ -18,6 +18,7 @@ public class GenerateRequestBillCommand extends CommandUnprotectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
         DeliveryInfo deliveryInfo = null;
+
         User user = null;
         int userId = 0;
 

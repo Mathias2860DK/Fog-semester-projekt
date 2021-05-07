@@ -1,6 +1,8 @@
 package business.persistence;
 
+import business.entities.DeliveryInfo;
 import business.exceptions.UserException;
+import business.services.DeliveryInfoFacade;
 
 import java.sql.*;
 
@@ -10,7 +12,7 @@ public class DeliveryInfoMapper {
     public DeliveryInfoMapper(Database database) {
         this.database = database;
     }
-    public int insertDeliveryInfo(int userId, String name, String address, String zipCodeCity, int phone, String email, String remarks) throws UserException {
+    public int insertDeliveryInfo(DeliveryInfo deliveryInfo) throws UserException {
 
         try (Connection connection = database.connect()) {
 
@@ -25,13 +27,13 @@ public class DeliveryInfoMapper {
                     " VALUES (?,?,?,?,?,?,?);";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                ps.setInt(1, userId);
-                ps.setString(2, name);
-                ps.setString(3, address);
-                ps.setString(4, zipCodeCity);
-                ps.setInt(5, phone);
-                ps.setString(6, email);
-                ps.setString(7,remarks);
+                ps.setInt(1, deliveryInfo.getUserId());
+                ps.setString(2, deliveryInfo.getName());
+                ps.setString(3, deliveryInfo.getAddress());
+                ps.setString(4, deliveryInfo.getZipCodeCity());
+                ps.setInt(5, deliveryInfo.getPhone());
+                ps.setString(6, deliveryInfo.getEmail());
+                ps.setString(7, deliveryInfo.getRemarks());
 
 
                 ps.executeUpdate();
