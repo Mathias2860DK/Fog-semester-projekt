@@ -15,17 +15,18 @@
     <jsp:body>
         <h3>Du har givet os følgende leverings oplsyninger</h3>
 
-       <p>Navn: ${requestScope.name} </p>
-       <p>Email: ${requestScope.email} </p>
-       <p>Adresse: ${requestScope.adress} </p>
-       <p>Phone: ${requestScope.phone} </p>
-       <p>Postnummer og by: ${requestScope.zip_code_city} </p>
-       <p>Bemærkninger: ${requestScope.remarks} </p>
+       <p>Navn: ${sessionScope.deliveryInfo.name} </p>
+       <p>Email: ${sessionScope.deliveryInfo.email} </p>
+       <p>Adresse: ${sessionScope.deliveryInfo.address} </p>
+       <p>Phone: ${sessionScope.deliveryInfo.phone} </p>
+       <p>Postnummer og by: ${sessionScope.deliveryInfo.zipCodeCity} </p>
+       <p>Bemærkninger: ${sessionScope.deliveryInfo.remarks} </p>
 
         <h3>Her er dine ønskede carportmål og materialer:</h3>
 
-<p> height${sessionScope.carport.carportHeight}</p>
-<p>width ${sessionScope.carport.carportWidth}</p>
+<p>Carportens højde: ${sessionScope.carport.carportHeight}</p>
+<p>Carportens bredde: ${sessionScope.carport.carportWidth}</p>
+        <!--Noget redskabsskur eller ej? evt jsp if statement -->
         <form action="${pageContext.request.contextPath}/fc/requestreceiptpage" method="POST">
             <button class="btn btn-primary" type="submit" value="bekræft">Bekræft</button>
         </form>
