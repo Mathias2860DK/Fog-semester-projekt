@@ -32,6 +32,8 @@ public abstract class Command
         commands.put("designcarport", new DesignCarportCommand("designcarport"));
         commands.put("customizecarport", new CustomizeCarportCommand("designcarport"));
         commands.put("requestbill", new GenerateRequestBillCommand("requestbill"));
+        commands.put("requestreceiptpage", new SendRequestCommand("requestreceiptpage"));
+
     }
 
     public static Command fromPath(

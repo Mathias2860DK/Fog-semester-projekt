@@ -1,5 +1,7 @@
 package web.commands;
 
+import business.entities.DeliveryInfo;
+import business.entities.User;
 import business.exceptions.UserException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,21 +16,27 @@ public class GenerateRequestBillCommand extends CommandUnprotectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
+        HttpSession session = request.getSession();
+        DeliveryInfo deliveryInfo = null;
+        User user = null;
+        int userId = 0;
+
+        if (session.getAttribute("user") != null) {
+            user = (User) session.getAttribute("user");
+            userId = user.getId();
+        } else {
+            userId = 1;
+        }
+
         String name = request.getParameter("name");
         String adress = request.getParameter("adress");
         String zipCodeCity = request.getParameter("zip_code_city");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         String remarks = request.getParameter("remarks");
+        deliveryInfo = new DeliveryInfo(userId, name, adress, zipCodeCity, Integer.parseInt(phone), email, remarks);
 
-
-        request.setAttribute("adress",adress);
-        request.setAttribute("zip_code_city",zipCodeCity);
-        request.setAttribute("phone",phone);
-        request.setAttribute("email",email);
-        request.setAttribute("remarks",remarks);
-
-        request.setAttribute("name",name);
+        session.setAttribute("deliveryInfo", deliveryInfo);
         return pageToShow;
     }
 }

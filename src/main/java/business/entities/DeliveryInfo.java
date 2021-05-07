@@ -10,6 +10,16 @@ public class DeliveryInfo {
    private String email;
    private String remarks;
 
+    public DeliveryInfo(int userId, String name, String address, String zipCodeCity, int phone, String email, String remarks) {
+        this.userId = userId;
+        this.name = name;
+        this.address = address;
+        this.zipCodeCity = zipCodeCity;
+        this.phone = phone;
+        this.email = email;
+        this.remarks = remarks;
+    }
+
     public DeliveryInfo(int deliveryInfoId, int userId, String name, String address, String zipCodeCity, int phone, String email, String remarks) {
         this.deliveryInfoId = deliveryInfoId;
         this.userId = userId;

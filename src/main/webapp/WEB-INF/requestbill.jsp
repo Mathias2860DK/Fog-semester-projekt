@@ -26,6 +26,9 @@
 
 <p> height${sessionScope.carport.carportHeight}</p>
 <p>width ${sessionScope.carport.carportWidth}</p>
+        <form action="${pageContext.request.contextPath}/fc/requestreceiptpage" method="POST">
+            <button class="btn btn-primary" type="submit" value="bekræft">Bekræft</button>
+        </form>
 
     </jsp:body>
 </t:genericpage>

@@ -125,11 +125,11 @@
                                     <select class="form-control" id="roof_pitch_options" name="roof_pitch" title="Roof pitch">
                                         <option value="15">15 grader</option>
                                         <option value="20">20 grader</option>
-                                        <option selected="selected" value="25 grader">25 grader</option>
-                                        <option value="30 grader">30 grader</option>
-                                        <option value="35 grader">35 grader</option>
-                                        <option value="40 grader">40 grader</option>
-                                        <option value="45 grader">45 grader</option>
+                                        <option selected="selected" value="25">25 grader</option>
+                                        <option value="30">30 grader</option>
+                                        <option value="35">35 grader</option>
+                                        <option value="40">40 grader</option>
+                                        <option value="45">45 grader</option>
                                     </select>
                                     <!--Skal hentes fra db -->
 
