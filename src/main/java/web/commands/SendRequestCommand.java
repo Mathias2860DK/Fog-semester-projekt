@@ -33,8 +33,10 @@ public class SendRequestCommand extends CommandUnprotectedPage { //TODO: EVT bur
         int deliveryInfoId = deliveryInfoFacade.insertDeliveryInfo(deliveryInfo); // Her får vi carport fra sessionscop = get.
         //Her sætter ordre med oplysninger fra nedestående
         Order order = new Order(deliveryInfoId, carport, new Timestamp(System.currentTimeMillis()), "request", 0);
+
+        int orderId = orderFacade.insertOrder(carport, order, deliveryInfoId); //indsætter ordre til DB
+order.setOrderId(orderId);
         session.setAttribute("order",order); //her sætter vi ordre, så vi kan vise den på jsp siden med en get.
-        orderFacade.insertOrder(carport, order, deliveryInfoId); //indsætter ordre til DB
 
         return pageToShow;
     }
