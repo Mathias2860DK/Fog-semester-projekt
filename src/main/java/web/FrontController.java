@@ -2,10 +2,12 @@ package web;
 
 import business.exceptions.UserException;
 import business.persistence.Database;
+import business.persistence.MaterialsMapper;
 import web.commands.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -39,6 +41,13 @@ public class FrontController extends HttpServlet
         }
 
         // Initialize whatever global datastructures needed here:
+        MaterialsMapper materialsMapper = new MaterialsMapper(database);
+        try {
+            getServletContext().setAttribute("roofTypeList",materialsMapper.getAllRoofTypes());
+        } catch (UserException ex) {
+            Logger.getLogger("web").log(Level.SEVERE, ex.getMessage(), ex);
+        }
+
 
     }
 

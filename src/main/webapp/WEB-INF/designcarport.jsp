@@ -111,6 +111,10 @@
                                         <option value="Eternittag B7 - Rødbrun">Eternittag B7 - Rødbrun</option>
                                         <option value="Eternittag B7 - Teglrød">Eternittag B7 - Teglrød</option>
                                         <option value="Eternittag B7 - Rødflammet">Eternittag B7 - Rødflammet</option>
+                                        <c:forEach var="roof_type" items="${applicationScope.roofTypeList}">
+                                            <option value="${roof_type.toString()}">Tag type: ${roof_type.toString()}</option>
+
+                                        </c:forEach>
                                     </select>
                                     <!--Skal hentes fra db -->
                                 </div>
