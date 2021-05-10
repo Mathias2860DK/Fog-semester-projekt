@@ -11,8 +11,8 @@
     <jsp:attribute name="footer">
         <c:set var="addHomeLink" value="${false}" scope="request"/>
     </jsp:attribute>
-
     <jsp:body>
+
         <div class="container min-vh-100">
             <div class="row">
                 <section class="col-12">
@@ -89,9 +89,10 @@
                 </section>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">
-            <a style="color: white" href="fc/designcarport">Design din egen carport</a>
-        </button>
+        <form action="fc/redirect">
+            <input type="submit" class="btn btn-primary" name="designcarport" value="Design din egen carport">
+        </form>
+
 
 
 

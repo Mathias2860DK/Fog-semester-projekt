@@ -8,6 +8,9 @@
     font-size: smaller;
 }
 
+a {
+    text-decoration:none;
+}
 .logo {
     float: left;
     border: none !important;
