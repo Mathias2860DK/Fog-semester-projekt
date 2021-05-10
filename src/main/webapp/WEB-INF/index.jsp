@@ -14,7 +14,6 @@
 
     <jsp:body>
         <div class="container min-vh-100">
-            <button onclick="generatepdf" class="btn btn-primary" id="generatepdf">Download</button>
             <div class="row">
                 <section class="col-12">
 
@@ -22,28 +21,24 @@
                         <article role="article" class="col mt-5">
 
 
-                            <h2> YALLAH YALLAH YALLAH </h2>
+                            <h2>  consectetuer adipiscing elit</h2>
                             <p>
-                                YALLAH YALLAH YALLAH
-                                YALLAH YALLAH YALLAH
-                                YALLAH YALLAH YALLAH
-                                YALLAH YALLAH YALLAH
-
+                                giat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
+                                Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+                                Nam eget dui. Etiam rhoncus. Maecenas tempus, tellu
 
                                 <br/>
-                            <h5> TEST TEST </h5>
-                            TESTER TESTER TESTER TESTER
-                            TESTER TESTER TESTER TESTER
-                            TESTER TESTER TESTER TESTER
-                            TESTER TESTER TESTER TESTER
+                            <h5> tempus, tellu </h5>
+                            Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                            Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
+                            sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit v
                             <br/>
                             <br/>
 
-                            <h5>ÆBLER ÆBLER ÆBLER </h5>
-                            ÆBLER ÆBLER ÆBLER ÆBLER ÆBLER ÆBLER
-                            ÆBLER ÆBLER ÆBLER ÆBLER ÆBLER ÆBLER
-                            ÆBLER ÆBLER ÆBLER ÆBLER ÆBLER ÆBLER
-                            ÆBLER ÆBLER ÆBLER ÆBLER ÆBLER ÆBLER
+                            <h5>Maecenas tempus, tellus eget </h5>
+                            Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                            Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
+                            sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit v
                             </p>
                         </article>
                         <section class="col mt-5">
@@ -94,10 +89,10 @@
                 </section>
             </div>
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/fc/designcarport">
+        <button type="submit" class="btn btn-primary">
+            <a style="color: white" href="fc/designcarport">Design din egen carport</a>
+        </button>
 
-            <button type="submit" class="btn btn-primary">Design din carport</button>
-        </form>
 
 
     </jsp:body>
