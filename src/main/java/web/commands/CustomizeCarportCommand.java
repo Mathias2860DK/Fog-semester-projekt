@@ -43,6 +43,7 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         //toolroom parameters:
 
 int shedLength = 0;
+        int shedWidth = 0;
         if(submitRequest != null && carportShedSize == null){
             if (carportWidthInt == 0 || carportLengthInt == 0 || roof == null){//skal addes flere parametre.
 request.setAttribute("error","Du mangler at udfylde et eller flere felter");
@@ -52,8 +53,13 @@ request.setAttribute("error","Du mangler at udfylde et eller flere felter");
             session.setAttribute("carport",carport);
             return "deliveryinfomation";
         } else if (carportShedSize != null){
-            shedLength = carportWidthInt
-            carport = new Carport(carportWidthInt,carportLengthInt,roof, new Shed(0,carportWidthInt));
+            shedLength = carportLengthInt/4;
+            if(carportShedSize.equals("halfSize")){
+                shedWidth = carportWidthInt/2;
+            } else {
+                shedWidth = carportWidthInt;
+            }
+            carport = new Carport(carportWidthInt,carportLengthInt,roof, new Shed(shedLength,shedWidth));
         }
 
         return pageToShow;//designcarport
