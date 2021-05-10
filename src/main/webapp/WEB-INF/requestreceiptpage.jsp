@@ -69,6 +69,9 @@
                                             <li>${sessionScope.deliveryInfo.name}</li>
                                             <li>${sessionScope.deliveryInfo.address}</li>
                                             <li>${sessionScope.deliveryInfo.zipCodeCity}</li>
+                                            <li>${sessionScope.deliveryInfo.phone}</li>
+                                            <li>${sessionScope.deliveryInfo.email}</li>
+                                            <li>${sessionScope.deliveryInfo.remarks}</li>
                                         </ul>
                                     </div>
                                     <div>
@@ -83,18 +86,30 @@
                                                 <tbody>
                                                 <tr>
                                                     <td>Carport længde:</td>
-                                                    <td class="text-center">${sessionScope.carport.carportHeight}</td>
+                                                    <td class="text-center">${sessionScope.carport.carportLength}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Carport bredde:</td>
                                                     <td class="text-center">${sessionScope.carport.carportWidth}</td>
                                                 </tr>
                                                 <tr>
+                                                    <td>Carport højde:</td>
+                                                    <td class="text-center">${sessionScope.carport.carportHeight}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tag type:</td>
+                                                    <td class="text-center">${sessionScope.carport.roof}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tag bøjning:</td>
+                                                    <td class="text-center">${sessionScope.carport.roofPitch}</td>
+                                                </tr>
+                                                <tr>
                                                     <td>Redskabsskur længde:</td>
                                                     <td class="text-center">Nej</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Redskabsskur brede:</td>
+                                                    <td>Redskabsskur bredde:</td>
                                                     <td class="text-center">Nej</td>
                                                 </tr>
                                                 </tbody>
