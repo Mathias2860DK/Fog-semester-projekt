@@ -26,9 +26,8 @@ public class OrderMapper {
                     " `shed_length`, " +
                     " `date`, " +
                     " `status`, " +
-                    " `totalprice`, " +
-                    "`roof_pitch`)" +
-                    " VALUES (?,?,?,?,?,?,?,?,?,?);";
+                    " `totalprice`)" +
+                    " VALUES (?,?,?,?,?,?,?,?,?);";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, deliveryInfoId);
@@ -40,7 +39,6 @@ public class OrderMapper {
                 ps.setTimestamp(7,order.getDate());
                 ps.setString(8,order.getStatus());
                 ps.setDouble(9, order.getTotalprice());
-                ps.setInt(10, order.getCarport().getRoofPitch());
 
 
                 ps.executeUpdate();

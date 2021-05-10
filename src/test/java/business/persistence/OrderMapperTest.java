@@ -57,7 +57,7 @@ class OrderMapperTest {
     @Test
     void insertOrder() { //denne metode vil fejle, når vi laver det endelige carport objekt.
         //creates the carport object.
-        Carport carport = new Carport(720,680,"Betontagsten - Rød",15);
+        Carport carport = new Carport(720,680,"Betontagsten - Rød");
         Order order = new Order(1,carport,new Timestamp(System.currentTimeMillis()),"request",100);
         //orderMapper.insertOrder(carport,)
 

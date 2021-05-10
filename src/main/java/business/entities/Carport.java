@@ -3,15 +3,30 @@ package business.entities;
 public class Carport {
     private int carportWidth;
     private int carportLength;
-    private final int carportHeight = 210;
+    private final int carportHeightStart = 230;
+    private final int carportHeightEnd = 220;
     private String roof;
-    private int roofPitch;
+    private Shed shed;
 
-    public Carport(int carportWidth, int carportLength, String roof, int roofPitch) {
+    public Carport(int carportWidth, int carportLength, String roof, Shed shed) {
         this.carportWidth = carportWidth;
         this.carportLength = carportLength;
         this.roof = roof;
-        this.roofPitch = roofPitch;
+        this.shed = shed;
+    }
+
+    public int getCarportHeightStart() {
+        return carportHeightStart;
+    }
+
+    public int getCarportHeightEnd() {
+        return carportHeightEnd;
+    }
+
+    public Carport(int carportWidth, int carportLength, String roof) {
+        this.carportWidth = carportWidth;
+        this.carportLength = carportLength;
+        this.roof = roof;
     }
 
     public int getCarportWidth() {
@@ -30,23 +45,11 @@ public class Carport {
         this.carportLength = carportLength;
     }
 
-    public int getCarportHeight() {
-        return carportHeight;
-    }
-
     public String getRoof() {
         return roof;
     }
 
     public void setRoof(String roof) {
         this.roof = roof;
-    }
-
-    public int getRoofPitch() {
-        return roofPitch;
-    }
-
-    public void setRoofPitch(int roofPitch) {
-        this.roofPitch = roofPitch;
     }
 }

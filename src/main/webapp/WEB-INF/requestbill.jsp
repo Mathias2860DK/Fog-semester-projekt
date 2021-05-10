@@ -20,12 +20,16 @@
        <p>Adresse: ${sessionScope.deliveryInfo.address} </p>
        <p>Phone: ${sessionScope.deliveryInfo.phone} </p>
        <p>Postnummer og by: ${sessionScope.deliveryInfo.zipCodeCity} </p>
-       <p>Bemærkninger: ${sessionScope.deliveryInfo.remarks} </p>
+
 
         <h3>Her er dine ønskede carportmål og materialer:</h3>
 
-<p>Carportens højde: ${sessionScope.carport.carportHeight}</p>
-<p>Carportens bredde: ${sessionScope.carport.carportWidth}</p>
+<p></p>
+<p>Carportens højde er fastsat til ${sessionScope.carport.carportHeightStart} cm i den ene ende og ${sessionScope.carport.carportHeightEnd} cm i den anden</p>
+<p>Carportens bredde: ${sessionScope.carport.carportWidth} cm</p>
+        <p>Carportens længde ${sessionScope.carport.carportLength} cm</p>
+        <p>Tag type: ${sessionScope.carport.roof}</p>
+        <p>Bemærkninger: ${sessionScope.deliveryInfo.remarks} </p>
         <!--Noget redskabsskur eller ej? evt jsp if statement -->
         <form action="${pageContext.request.contextPath}/fc/requestreceiptpage" method="POST">
             <button class="btn btn-primary" type="submit" value="bekræft">Bekræft</button>

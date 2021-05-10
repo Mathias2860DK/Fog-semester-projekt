@@ -66,12 +66,12 @@
                                     <div>
                                         <ul class="list-unstyled">
                                             <li><strong>Oplysninger</strong></li>
-                                            <li>${sessionScope.deliveryInfo.name}</li>
-                                            <li>${sessionScope.deliveryInfo.address}</li>
-                                            <li>${sessionScope.deliveryInfo.zipCodeCity}</li>
-                                            <li>${sessionScope.deliveryInfo.phone}</li>
-                                            <li>${sessionScope.deliveryInfo.email}</li>
-                                            <li>${sessionScope.deliveryInfo.remarks}</li>
+                                            <li>Navn: ${sessionScope.deliveryInfo.name}</li>
+                                            <li>Adresse: ${sessionScope.deliveryInfo.address}</li>
+                                            <li>Postnummer og by: ${sessionScope.deliveryInfo.zipCodeCity}</li>
+                                            <li>Telefon: ${sessionScope.deliveryInfo.phone}</li>
+                                            <li>E-mail: ${sessionScope.deliveryInfo.email}</li>
+                                            <li>Bemærkninger: ${sessionScope.deliveryInfo.remarks}</li>
                                         </ul>
                                     </div>
                                     <div>
@@ -79,39 +79,45 @@
                                             <table class="table table-bordered">
                                                 <thead>
                                                 <tr>
+                                                    <th>Besrkivelse</th>
                                                     <th>Specifikationer</th>
-                                                    <th>Størrelse i cm</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr>
                                                     <td>Carport længde:</td>
-                                                    <td class="text-center">${sessionScope.carport.carportLength}</td>
+                                                    <td class="text-center">${sessionScope.carport.carportLength} cm</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Carport bredde:</td>
-                                                    <td class="text-center">${sessionScope.carport.carportWidth}</td>
+                                                    <td class="text-center">${sessionScope.carport.carportWidth} cm</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Carport højde:</td>
-                                                    <td class="text-center">${sessionScope.carport.carportHeight}</td>
+                                                    <td>Carport start højde:</td>
+                                                    <td class="text-center">${sessionScope.carport.carportHeightStart} cm</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Carport slut højde:</td>
+                                                    <td class="text-center">${sessionScope.carport.carportHeightEnd} cm</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Tag type:</td>
                                                     <td class="text-center">${sessionScope.carport.roof}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Tag bøjning:</td>
-                                                    <td class="text-center">${sessionScope.carport.roofPitch}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Redskabsskur længde:</td>
-                                                    <td class="text-center">Nej</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Redskabsskur bredde:</td>
-                                                    <td class="text-center">Nej</td>
-                                                </tr>
+                                                <c:if test="${sessionScope.carport.carportHeightEnd == 1000 }">
+                                                <p style="font-size: larger">This is what you can do, since your
+                                                    are logged in as a customer</p>
+                                                <p><a href="fc/customerpage">Customer Page</a>
+                                                    <tr>
+                                                        <td>Redskabsskur længde:</td>
+                                                        <td class="text-center">Ingen</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Redskabsskur bredde:</td>
+                                                        <td class="text-center">Ingen</td>
+                                                    </tr>
+                                                    </c:if>
+
                                                 </tbody>
                                             </table>
                                         </div>

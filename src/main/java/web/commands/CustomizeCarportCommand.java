@@ -1,6 +1,7 @@
 package web.commands;
 
 import business.entities.Carport;
+import business.entities.Shed;
 import business.exceptions.UserException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,19 +22,19 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         //makes sure that the parameters will be initialized.
         int carportWidthInt = 0;
         int carportLengthInt = 0;
-        int roofPitchInt = 0;
         //get request parameters from designcarport page
+        String carportShedSize = request.getParameter("shed-size");
         String carportWidth = request.getParameter("carport_width");
         String carportLength = request.getParameter("carport_length");
         String roof = request.getParameter("roof");
-        String roofPitch = request.getParameter("roof_pitch");
+
         String submitRequest = request.getParameter("submit_request");//Hvor skal vi hen? svg tegning eller send forespørgsel
 
         //This could go wrong. If it does: their values is 0.
         try {
             carportWidthInt = Integer.parseInt(carportWidth);
             carportLengthInt = Integer.parseInt(carportLength);
-            roofPitchInt= Integer.parseInt(roofPitch);
+
         } catch (NumberFormatException e){
             e.printStackTrace();
         }
@@ -42,14 +43,16 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         //toolroom parameters:
 
 
-        if(submitRequest != null){
-            if (carportWidthInt == 0 || carportLengthInt == 0 || roof == null || roofPitchInt == 0){//skal addes flere parametre.
+        if(submitRequest != null && carportShedSize == null){
+            if (carportWidthInt == 0 || carportLengthInt == 0 || roof == null){//skal addes flere parametre.
 request.setAttribute("error","Du mangler at udfylde et eller flere felter");
                 return pageToShow;
             }
-            carport = new Carport(carportWidthInt,carportLengthInt,roof,roofPitchInt);
+            carport = new Carport(carportWidthInt,carportLengthInt,roof);
             session.setAttribute("carport",carport);
             return "deliveryinfomation";
+        } else if (carportShedSize != null){
+            //carport = new Carport(carportWidthInt,carportLengthInt,roof, new Shed())
         }
 
         return pageToShow;//designcarport

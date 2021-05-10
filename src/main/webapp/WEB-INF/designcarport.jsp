@@ -121,32 +121,12 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12 col-xs-12">
-
-
-                                    <label title="Roof pitch" for="roof_pitch_options">
-                                        Taghældning
-                                    </label>
-                                    <select class="form-control" id="roof_pitch_options" name="roof_pitch" title="Roof pitch">
-                                        <option value="15">15 grader</option>
-                                        <option value="20">20 grader</option>
-                                        <option selected="selected" value="25">25 grader</option>
-                                        <option value="30">30 grader</option>
-                                        <option value="35">35 grader</option>
-                                        <option value="40">40 grader</option>
-                                        <option value="45">45 grader</option>
-                                    </select>
-                                    <!--Skal hentes fra db -->
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12 col-xs-12">
             <span>
             <b>
             Redskabsrum:
             </b>
             <br>
-            NB! Der skal beregnes 15 cm tagudhæng på hver side af redskabsrummet*
+            NB! Der kan vælges mellem fuld bredde eller halv bredde i forhold til carportens mål.
             </span>
                                 </div>
                             </div>
@@ -154,62 +134,13 @@
                                 <div class="col-md-12 col-xs-12">
 
 
-                                    <label title="Toolroom width" for="toolroom-width">
-                                        Redskabsrum bredde
+                                    <label title="shed size" for="shed-size">
+                                        Redskabsrum størrelse
                                     </label>
-                                    <select class="form-control" id="toolroom-width" name="toolroom_width" title="Toolroom width"><option selected="selected" value="Ønsker ikke redskabsrum">Ønsker ikke redskabsrum</option>
-                                        <option value="210">210 cm</option>
-                                        <option value="240">240 cm</option>
-                                        <option value="270">270 cm</option>
-                                        <option value="300">300 cm</option>
-                                        <option value="330">330 cm</option>
-                                        <option value="360">360 cm</option>
-                                        <option value="390">390 cm</option>
-                                        <option value="420">420 cm</option>
-                                        <option value="450">450 cm</option>
-                                        <option value="480">480 cm</option>
-                                        <option value="510">510 cm</option>
-                                        <option value="540">540 cm</option>
-                                        <option value="570">570 cm</option>
-                                        <option value="600">600 cm</option>
-                                        <option value="630">630 cm</option>
-                                        <option value="660">660 cm</option>
-                                        <option value="690">690 cm</option>
-                                        <option value="720">720 cm</option>
+                                    <select class="form-control" id="shed-size" name="shed-size" title="shed size"><option selected="selected" value="Ønsker ikke redskabsrum">Ønsker ikke redskabsrum</option>
+                                        <option value="halfSize">Halv bredde</option>
+                                        <option value="fullSize">Fuld bredde</option>
                                     </select>
-                                    <!--Skal hentes fra db -->
-
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12 col-xs-12">
-
-
-                                    <label title="Toolroom length" for="toolroom-length">
-                                        Redskabsrum længde
-                                    </label>
-                                    <select class="form-control" id="toolroom-length" name="" title="Toolroom length"><option selected="selected" value="Ønsker ikke redskabsrum">Ønsker ikke redskabsrum</option>
-                                        <option value="150">150 cm</option>
-                                        <option value="180">180 cm</option>
-                                        <option value="210">210 cm</option>
-                                        <option value="240">240 cm</option>
-                                        <option value="270">270 cm</option>
-                                        <option value="300">300 cm</option>
-                                        <option value="330">330 cm</option>
-                                        <option value="360">360 cm</option>
-                                        <option value="390">390 cm</option>
-                                        <option value="420">420 cm</option>
-                                        <option value="450">450 cm</option>
-                                        <option value="480">480 cm</option>
-                                        <option value="510">510 cm</option>
-                                        <option value="540">540 cm</option>
-                                        <option value="570">570 cm</option>
-                                        <option value="600">600 cm</option>
-                                        <option value="630">630 cm</option>
-                                        <option value="660">660 cm</option>
-                                        <option value="690">690 cm</option>
-                                    </select>
-                                    <!--Skal hentes fra db -->
 
                                 </div>
                             </div>
