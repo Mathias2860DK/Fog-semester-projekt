@@ -52,4 +52,8 @@ public class Carport {
     public void setRoof(String roof) {
         this.roof = roof;
     }
+
+    public Shed getShed() {
+        return shed;
+    }
 }

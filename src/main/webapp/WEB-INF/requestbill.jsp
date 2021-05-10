@@ -29,8 +29,15 @@
 <p>Carportens bredde: ${sessionScope.carport.carportWidth} cm</p>
         <p>Carportens længde ${sessionScope.carport.carportLength} cm</p>
         <p>Tag type: ${sessionScope.carport.roof}</p>
-        <p>Bemærkninger: ${sessionScope.deliveryInfo.remarks} </p>
-        <!--Noget redskabsskur eller ej? evt jsp if statement -->
+        <c:if test="${sessionScope.carport.shed != null}">
+            <p>Du har tilvalgt redskabsskur.</p>
+            <p>Redskubsskur længde: ${sessionScope.carport.shed.shedLength}</p>
+            <p>Redskubsskur bredde: ${sessionScope.carport.shed.shedWidth}</p>
+        </c:if>
+
+        <p>Bemærkninger:<c:if test="${sessionScope.deliveryInfo.remarks != null}"> ${sessionScope.deliveryInfo.remarks}</c:if>
+        <c:if test="${sessionScope.deliveryInfo.remarks == null || sessionScope.deliveryInfo.remarks == '' }">Ingen</c:if>
+    </p>
         <form action="${pageContext.request.contextPath}/fc/requestreceiptpage" method="POST">
             <button class="btn btn-primary" type="submit" value="bekræft">Bekræft</button>
         </form>

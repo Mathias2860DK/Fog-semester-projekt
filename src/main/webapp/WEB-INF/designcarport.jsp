@@ -137,7 +137,7 @@
                                     <label title="shed size" for="shed-size">
                                         Redskabsrum størrelse
                                     </label>
-                                    <select class="form-control" id="shed-size" name="shed-size" title="shed size"><option selected="selected" value="Ønsker ikke redskabsrum">Ønsker ikke redskabsrum</option>
+                                    <select class="form-control" id="shed-size" name="shed-size" title="shed size"><option selected="selected" value="no-shed">Ønsker ikke redskabsrum</option>
                                         <option value="halfSize">Halv bredde</option>
                                         <option value="fullSize">Fuld bredde</option>
                                     </select>

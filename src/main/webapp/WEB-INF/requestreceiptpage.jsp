@@ -44,8 +44,8 @@
                                 <!-- col-lg-6 end here -->
                                 <div class="col-lg-12">
                                     <!-- col-lg-12 start here -->
-                                    <h2>Tak for din forespørgsel!</h2>
-                                    <p>Vi behandler din forespørgsel hurtigst muligt!</p>
+                                    <h2>Tak for din forespørgsel</h2>
+                                    <p>Vi behandler din forespørgsel hurtigst muligt</p>
                                     <div>
                                         <div>
                                             <ul class="list-unstyled">
@@ -71,7 +71,9 @@
                                             <li>Postnummer og by: ${sessionScope.deliveryInfo.zipCodeCity}</li>
                                             <li>Telefon: ${sessionScope.deliveryInfo.phone}</li>
                                             <li>E-mail: ${sessionScope.deliveryInfo.email}</li>
-                                            <li>Bemærkninger: ${sessionScope.deliveryInfo.remarks}</li>
+                                            <li>Bemærkninger:<c:if test="${sessionScope.deliveryInfo.remarks != null}"> ${sessionScope.deliveryInfo.remarks}</c:if>
+                                                <c:if test="${sessionScope.deliveryInfo.remarks == null || sessionScope.deliveryInfo.remarks == '' }">Ingen</c:if>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div>
@@ -104,17 +106,14 @@
                                                     <td>Tag type:</td>
                                                     <td class="text-center">${sessionScope.carport.roof}</td>
                                                 </tr>
-                                                <c:if test="${sessionScope.carport.carportHeightEnd == 1000 }">
-                                                <p style="font-size: larger">This is what you can do, since your
-                                                    are logged in as a customer</p>
-                                                <p><a href="fc/customerpage">Customer Page</a>
+                                                <c:if test="${sessionScope.carport.shed != null}">
                                                     <tr>
                                                         <td>Redskabsskur længde:</td>
-                                                        <td class="text-center">Ingen</td>
+                                                        <td class="text-center">${sessionScope.carport.shed.shedLength} cm</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Redskabsskur bredde:</td>
-                                                        <td class="text-center">Ingen</td>
+                                                        <td class="text-center"> <p>${sessionScope.carport.shed.shedWidth} cm</p></td>
                                                     </tr>
                                                     </c:if>
 
@@ -124,7 +123,7 @@
                                     </div>
                                     <div>
                                         <p class="text-center">
-                                            Hvis du har nogle spørgsmål så send os en mail!
+                                            Hvis du har nogle spørgsmål så send os en mail
                                         </p>
                                     </div>
                                 </div>

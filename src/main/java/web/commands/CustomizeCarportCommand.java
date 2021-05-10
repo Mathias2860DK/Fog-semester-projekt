@@ -35,31 +35,34 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
             carportWidthInt = Integer.parseInt(carportWidth);
             carportLengthInt = Integer.parseInt(carportLength);
 
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
 
 
         //toolroom parameters:
 
-int shedLength = 0;
+        int shedLength = 0;
         int shedWidth = 0;
-        if(submitRequest != null && carportShedSize == null){
-            if (carportWidthInt == 0 || carportLengthInt == 0 || roof == null){//skal addes flere parametre.
-request.setAttribute("error","Du mangler at udfylde et eller flere felter");
+        //TODO: Refactor. Mabye calculation package
+        if (submitRequest != null && carportShedSize.equals("no-shed")) {
+            if (carportWidthInt == 0 || carportLengthInt == 0 || roof == null) {//skal addes flere parametre.
+                request.setAttribute("error", "Du mangler at udfylde et eller flere felter");
                 return pageToShow;
             }
-            carport = new Carport(carportWidthInt,carportLengthInt,roof);
-            session.setAttribute("carport",carport);
+            carport = new Carport(carportWidthInt, carportLengthInt, roof);
+            session.setAttribute("carport", carport);
             return "deliveryinfomation";
-        } else if (carportShedSize != null){
-            shedLength = carportLengthInt/4;
-            if(carportShedSize.equals("halfSize")){
-                shedWidth = carportWidthInt/2;
+        } else if (submitRequest != null && carportShedSize != null) {
+            shedLength = carportLengthInt / 4;
+            if (carportShedSize.equals("halfSize")) {
+                shedWidth = carportWidthInt / 2;
             } else {
                 shedWidth = carportWidthInt;
             }
-            carport = new Carport(carportWidthInt,carportLengthInt,roof, new Shed(shedLength,shedWidth));
+            carport = new Carport(carportWidthInt, carportLengthInt, roof, new Shed(shedLength, shedWidth));
+            session.setAttribute("carport", carport);
+            return "deliveryinfomation";
         }
 
         return pageToShow;//designcarport
