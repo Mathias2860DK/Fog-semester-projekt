@@ -5,10 +5,9 @@ public class Shed {
     private int shedWidth;
     private int postAmount = 4;
 
-    public Shed(int shedLength, int shedWidth, int postAmount) {
+    public Shed(int shedLength, int shedWidth) {
         this.shedLength = shedLength;
         this.shedWidth = shedWidth;
-        this.postAmount = postAmount;
     }
 
     public int getShedLength() {
