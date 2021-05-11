@@ -22,7 +22,7 @@
                 <div class="row mb-3">
                     <label class="col-sm-1 col-form-label" for="password">Password</label>
                     <div class="col-sm-4">
-                        <input class="form-control" type="password" name="password" placeholder="sesam">
+                        <input class="form-control" type="password" name="password" placeholder="password">
                     </div>
                 </div>
                 <c:if test="${requestScope.error != null }">

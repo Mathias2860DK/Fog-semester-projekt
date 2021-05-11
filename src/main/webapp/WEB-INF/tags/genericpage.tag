@@ -55,7 +55,7 @@
             </c:if>
             <c:if test="${sessionScope.user == null }">
                 <a type="button" class="btn btn-sm  btn-outline-secondary text-white"
-                   href="${pageContext.request.contextPath}/fc/loginpage text-white">Login</a>
+                   href="${pageContext.request.contextPath}/fc/loginpage">Login</a>
                 <a type="button" class="btn btn-sm  btn-outline-secondary text-white"
                    href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
             </c:if>
