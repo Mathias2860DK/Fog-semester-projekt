@@ -95,5 +95,84 @@ public class OrderMapper {
             }
 
         }
+    public List<Order> getAllOrdersByStatus(String dbStatus) throws UserException {
+        List<Order> orderListByStatus = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+
+            String sql = "SELECT * FROM order where status = " + dbStatus + ";";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int orderID = rs.getInt("order_id");
+                    //int deliveryInfoId = rs.getInt("delivery_info_id");
+                    int cpWidth = rs.getInt("cp_width");
+                    int cpLength = rs.getInt("cp_length");
+                    String cpRoofType = rs.getString("cp_roof_type");
+                    int shedWidth = rs.getInt("shed_width");
+                    int shedLength = rs.getInt("shed_length");
+                    Timestamp date = rs.getTimestamp("date");
+                    String status = rs.getString("status");
+                    double totalPrice = rs.getDouble("totalprice");
+
+                    Carport carport = new Carport(cpWidth,cpLength,cpRoofType);
+                    Order order = new Order(orderID,carport,date,status,totalPrice);
+                    orderListByStatus.add(order);
+
+
+//TODO: Execute methods to add:
+                }
+
+                return orderListByStatus;
+
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+
+        } catch(SQLException | UserException ex){
+            throw new UserException("Connection to database could not be established");
+        }
+
+    }
+
+    public List<Order> getAllOrders() throws UserException {
+        List<Order> orderList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+
+            String sql = "SELECT * FROM order";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int orderID = rs.getInt("order_id");
+                    //int deliveryInfoId = rs.getInt("delivery_info_id");
+                    int cpWidth = rs.getInt("cp_width");
+                    int cpLength = rs.getInt("cp_length");
+                    String cpRoofType = rs.getString("cp_roof_type");
+                    int shedWidth = rs.getInt("shed_width");
+                    int shedLength = rs.getInt("shed_length");
+                    Timestamp date = rs.getTimestamp("date");
+                    String status = rs.getString("status");
+                    double totalPrice = rs.getDouble("totalprice");
+
+                    Carport carport = new Carport(cpWidth,cpLength,cpRoofType);
+                    Order order = new Order(orderID,carport,date,status,totalPrice);
+                    orderList.add(order);
+
+
+//TODO: Execute methods to add:
+                }
+
+                return orderList;
+
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+
+        } catch(SQLException | UserException ex){
+            throw new UserException("Connection to database could not be established");
+        }
+
+    }
 
 }
