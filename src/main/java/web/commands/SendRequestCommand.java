@@ -5,6 +5,8 @@ import business.entities.DeliveryInfo;
 import business.entities.Order;
 import business.exceptions.UserException;
 import business.persistence.Database;
+import business.persistence.DeliveryInfoMapper;
+import business.persistence.OrderMapper;
 import business.services.DeliveryInfoFacade;
 import business.services.OrderFacade;
 
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class SendRequestCommand extends CommandUnprotectedPage { //TODO: EVT burde man lave det til en Protected da det er kundens // oplysninger man håndterer
     private DeliveryInfoFacade deliveryInfoFacade;
@@ -37,6 +40,7 @@ public class SendRequestCommand extends CommandUnprotectedPage { //TODO: EVT bur
         int orderId = orderFacade.insertOrder(order, deliveryInfoId); //indsætter ordre til DB
 order.setOrderId(orderId);
         session.setAttribute("order",order); //her sætter vi ordre, så vi kan vise den på jsp siden med en get.
+
 
         return pageToShow;
     }

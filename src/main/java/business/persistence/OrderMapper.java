@@ -5,6 +5,9 @@ import business.entities.Order;
 import business.exceptions.UserException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 //en ordre indeholder en carport, derfor ...
 public class OrderMapper {
     private Database database;
@@ -55,4 +58,42 @@ public class OrderMapper {
             throw new UserException(ex.getMessage());
         }
     }
+
+    public List<Order> getOrdersByDeliveryInfoId(List<Integer> deliveryInfoIdList, int deliveryInfoId) throws UserException {
+        List<Order> orderListById = new ArrayList<>();
+        int arrayLength = deliveryInfoIdList.size();
+        try (Connection connection = database.connect()) {
+
+                String sql = "SELECT * FROM order where delivery_info_id = " + deliveryInfoId + ";";
+
+                try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                    ResultSet rs = ps.executeQuery();
+                    while (rs.next()) {
+                        int orderID = rs.getInt("order_id");
+                        //int deliveryInfoId = rs.getInt("delivery_info_id");
+                        int cpWidth = rs.getInt("cp_width");
+                        int cpLength = rs.getInt("cp_length");
+                        String cpRoofType = rs.getString("cp_roof_type");
+                        int shedWidth = rs.getInt("shed_width");
+                        int shedLength = rs.getInt("shed_length");
+                        Timestamp date = rs.getTimestamp("date");
+                        String status = rs.getString("status");
+                        double totalPrice = rs.getDouble("totalprice");
+
+
+//TODO: Execute methods to add:
+                    }
+
+                    return orderListById;
+
+                } catch (SQLException ex) {
+                    throw new UserException(ex.getMessage());
+                }
+
+            } catch(SQLException | UserException ex){
+                throw new UserException("Connection to database could not be established");
+            }
+
+        }
+
 }

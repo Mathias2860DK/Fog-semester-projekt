@@ -13,6 +13,10 @@
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as a Customer of our wonderful site.
         Role: ${sessionScope.role}
+
+        <p>Se alle dine ordre</p>
+
+
     </jsp:body>
 
 </t:genericpage>

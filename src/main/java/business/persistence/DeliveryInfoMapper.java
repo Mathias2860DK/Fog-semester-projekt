@@ -1,10 +1,13 @@
 package business.persistence;
 
 import business.entities.DeliveryInfo;
+import business.entities.Order;
 import business.exceptions.UserException;
 import business.services.DeliveryInfoFacade;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DeliveryInfoMapper {
     private Database database;
@@ -50,6 +53,28 @@ public class DeliveryInfoMapper {
             }
         } catch (SQLException | UserException ex) {
             throw new UserException(ex.getMessage());
+        }
+    }
+
+    public List<Integer> getDeliveryInfoIdByUserId(int userId) throws UserException {
+        List<Integer> deliveryInfoIdList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT delivery_info_id FROM delivery_info where user_id = "+ userId +";";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+            int deliveryInfoId = rs.getInt(1);
+
+deliveryInfoIdList.add(deliveryInfoId);
+//TODO: Execute methods to add:
+                }
+                return deliveryInfoIdList;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException | UserException ex) {
+            throw new UserException("Connection to database could not be established");
         }
     }
 }
