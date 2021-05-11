@@ -34,6 +34,7 @@ public abstract class Command
         commands.put("requestbill", new GenerateRequestBillCommand("requestbill"));
         commands.put("requestreceiptpage", new SendRequestCommand("requestreceiptpage"));
 
+
     }
 
     public static Command fromPath(

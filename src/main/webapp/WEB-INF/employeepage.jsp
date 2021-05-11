@@ -12,5 +12,21 @@
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as a EMPLOYEE of our wonderful site.
 
+        <p>Her er alle ordrer:</p>
+        <c:forEach var="ordre" items="${requestScope.orderList}">
+            <p>Ordre ID: ${ordre.orderId}</p>
+            <p>Ordre ID: ${ordre.deliveryInfoId}</p>
+            <p>Ordre ID: ${ordre.carport.carportLength}</p>
+            <p>Carport bredde: ${ordre.carport.carportWidth}</p>
+            <p>Ordre ID: ${ordre.carport.shed.shedLength}</p>
+            <p>Ordre ID: ${ordre.carport.shed.shedWidth}</p>
+            <p>Ordre ID: ${ordre.carport.roof}</p>
+            <p>Ordre ID: ${ordre.status}</p>
+            <p>Ordre ID: ${ordre.date}</p>
+            <p>Ordre ID: ${ordre.totalprice}</p>
+
+        </c:forEach>
+
+
     </jsp:body>
 </t:genericpage>
