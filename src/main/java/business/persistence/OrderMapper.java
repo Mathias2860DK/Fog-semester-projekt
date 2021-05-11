@@ -141,7 +141,7 @@ public class OrderMapper {
         List<Order> orderList = new ArrayList<>();
         try (Connection connection = database.connect()) {
 
-            String sql = "SELECT * FROM order";
+            String sql = "SELECT * FROM fog.order;";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
@@ -173,7 +173,8 @@ public class OrderMapper {
             }
 
         } catch(SQLException | UserException ex){
-            throw new UserException("Connection to database could not be established");
+            throw new UserException(ex.getMessage());
+
         }
 
     }

@@ -18,6 +18,7 @@
     <meta name="theme-color" content="#7952b3">
 </head>
 <body>
+
     <!--
         This header is inspired by this bootstrap
         example: https://getbootstrap.com/docs/5.0/examples/pricing/
@@ -33,7 +34,22 @@
         <c:if test="${addHomeLink == null }">
             <a class="text-white" href="<%=request.getContextPath()%>">Hjem</a>
         </c:if>
-        <a class="text-white" href="#">Ordre</a>
+        <c:if test="${sessionScope.role == 'employee' }">
+            <a type="button" class="text-white"
+               href="${pageContext.request.contextPath}/fc/employeepage">Ordre</a>
+            <a type="button" class="text-white"
+               href="${pageContext.request.contextPath}/fc/employeepage">Matrialer</a>
+            <a type="button" class="text-white"
+               href="${pageContext.request.contextPath}/fc/employeepage">Kunder</a>
+        </c:if>
+        <c:if test="${sessionScope.role == 'customer' }">
+            <a type="button" class="text-white"
+               href="${pageContext.request.contextPath}/fc/customerpage">Mine ordre</a>
+            <a type="button" class="text-white"
+               href="${pageContext.request.contextPath}/fc/customerpage">Om fog</a>
+            <a type="button" class="text-white"
+               href="${pageContext.request.contextPath}/fc/customerpage">??</a>
+        </c:if>
     </nav>
 
     <div>

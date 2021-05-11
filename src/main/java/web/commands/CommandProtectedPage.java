@@ -19,14 +19,14 @@ public class CommandProtectedPage extends Command
     {
         this.pageToShow = pageToShow;
         this.role = role;
-        //orderMapper = new OrderMapper(database);
+        orderMapper = new OrderMapper(database);
 
     }
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-       // List<Order> orderList = orderMapper.getAllOrders();
-       // request.setAttribute("orderList",orderList);
+        List<Order> orderList = orderMapper.getAllOrders();
+        request.setAttribute("orderList",orderList);
 
         return pageToShow;
     }

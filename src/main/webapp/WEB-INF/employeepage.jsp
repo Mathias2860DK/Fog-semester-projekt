@@ -13,20 +13,31 @@
         You are now logged in as a EMPLOYEE of our wonderful site.
 
         <p>Her er alle ordrer:</p>
+        <div class="table-responsive">
+        <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Dato</th>
+            <th>E-mail</th>
+            <th>Pris</th>
+            <th>Status</th>
+        </tr>
+        </thead>
         <c:forEach var="ordre" items="${requestScope.orderList}">
-            <p>Ordre ID: ${ordre.orderId}</p>
-            <p>Ordre ID: ${ordre.deliveryInfoId}</p>
-            <p>Ordre ID: ${ordre.carport.carportLength}</p>
-            <p>Carport bredde: ${ordre.carport.carportWidth}</p>
-            <p>Ordre ID: ${ordre.carport.shed.shedLength}</p>
-            <p>Ordre ID: ${ordre.carport.shed.shedWidth}</p>
-            <p>Ordre ID: ${ordre.carport.roof}</p>
-            <p>Ordre ID: ${ordre.status}</p>
-            <p>Ordre ID: ${ordre.date}</p>
-            <p>Ordre ID: ${ordre.totalprice}</p>
+            <tbody>
+            <tr>
+                <td class="text-center">${ordre.orderId}</td>
+                <td class="text-center">${ordre.date}</td>
+                <td class="text-center">${ordre.deliveryInfoId}</td>
+                <td class="text-center">${ordre.totalprice}</td>
+                <td class="text-center">${ordre.status}</td>
+            </tr>
+            </tbody>
 
         </c:forEach>
-
+        </table>
+        </div>
 
     </jsp:body>
 </t:genericpage>
