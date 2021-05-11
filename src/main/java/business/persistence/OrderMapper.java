@@ -2,6 +2,7 @@ package business.persistence;
 
 import business.entities.Carport;
 import business.entities.Order;
+import business.entities.Shed;
 import business.exceptions.UserException;
 
 import java.sql.*;
@@ -105,7 +106,7 @@ public class OrderMapper {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     int orderID = rs.getInt("order_id");
-                    //int deliveryInfoId = rs.getInt("delivery_info_id");
+                    int deliveryInfoId = rs.getInt("delivery_info_id");
                     int cpWidth = rs.getInt("cp_width");
                     int cpLength = rs.getInt("cp_length");
                     String cpRoofType = rs.getString("cp_roof_type");
@@ -115,8 +116,9 @@ public class OrderMapper {
                     String status = rs.getString("status");
                     double totalPrice = rs.getDouble("totalprice");
 
-                    Carport carport = new Carport(cpWidth,cpLength,cpRoofType);
-                    Order order = new Order(orderID,carport,date,status,totalPrice);
+                    Shed shed = new Shed(shedLength,shedWidth);
+                    Carport carport = new Carport(cpWidth,cpLength,cpRoofType, shed);
+                    Order order = new Order(orderID,deliveryInfoId,carport,date,status,totalPrice);
                     orderListByStatus.add(order);
 
 
@@ -145,7 +147,7 @@ public class OrderMapper {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
                     int orderID = rs.getInt("order_id");
-                    //int deliveryInfoId = rs.getInt("delivery_info_id");
+                    int deliveryInfoId = rs.getInt("delivery_info_id");
                     int cpWidth = rs.getInt("cp_width");
                     int cpLength = rs.getInt("cp_length");
                     String cpRoofType = rs.getString("cp_roof_type");
@@ -155,8 +157,9 @@ public class OrderMapper {
                     String status = rs.getString("status");
                     double totalPrice = rs.getDouble("totalprice");
 
-                    Carport carport = new Carport(cpWidth,cpLength,cpRoofType);
-                    Order order = new Order(orderID,carport,date,status,totalPrice);
+                    Shed shed = new Shed(shedLength,shedWidth);
+                    Carport carport = new Carport(cpWidth,cpLength,cpRoofType, shed);
+                    Order order = new Order(orderID,deliveryInfoId,carport,date,status,totalPrice);
                     orderList.add(order);
 
 
