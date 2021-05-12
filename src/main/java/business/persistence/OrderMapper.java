@@ -21,7 +21,7 @@ public class OrderMapper {
 
         try (Connection connection = database.connect()) {
 
-            String sql = "INSERT INTO `order`" +
+            String sql = "INSERT INTO `orders`" +
                     " (`delivery_info_id`," +
                     " `cp_width`, " +
                     " `cp_length`, " +
@@ -141,7 +141,7 @@ public class OrderMapper {
         List<Order> orderList = new ArrayList<>();
         try (Connection connection = database.connect()) {
 
-            String sql = "SELECT * FROM fog.order;";
+            String sql = "SELECT * FROM orders;";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
