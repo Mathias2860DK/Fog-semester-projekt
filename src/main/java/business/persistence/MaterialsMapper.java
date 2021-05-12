@@ -1,5 +1,6 @@
 package business.persistence;
 
+import business.entities.Material;
 import business.exceptions.UserException;
 
 import java.sql.Connection;
@@ -33,6 +34,34 @@ public class MaterialsMapper {
 
                 }
                 return rooftypeList;
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException | UserException ex)
+        {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public static List<Material> getAllMaterials() throws UserException {
+        List<Material> materialList = new ArrayList<>();
+        try (Connection connection = database.connect())
+        {
+            String sql = "SELECT * FROM materials;";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next())
+                {
+                   String description = rs.getString("description");
+
+
+                }
+                return materialList;
             }
             catch (SQLException ex)
             {
