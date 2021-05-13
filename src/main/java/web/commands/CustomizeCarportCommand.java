@@ -1,8 +1,10 @@
 package web.commands;
 
+import business.calculations.CalcPart;
 import business.entities.Carport;
 import business.entities.Shed;
 import business.exceptions.UserException;
+import business.services.SVG;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,11 +32,7 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
 
         String submitRequest = request.getParameter("submit_request");//Hvor skal vi hen? svg tegning eller send forespørgsel
         String showSVG = request.getParameter("show_drawing");//Burde vise SVG tegning her på samme side
-        if(showSVG != null){
-        //TODO: Her skal tilføjes de begregninger til for mange af de forskellige matrialer der skal bruges
 
-
-        }
         //This could go wrong. If it does: their values is 0.
         try {
             carportWidthInt = Integer.parseInt(carportWidth);
@@ -42,6 +40,25 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
 
         } catch (NumberFormatException e) {
             e.printStackTrace();
+        }
+
+        //Calulate carport SVG parts:
+        int postAmount = CalcPart.calcPostAmount(carportLengthInt);
+        int rafters = CalcPart.calcRafters(carportLengthInt);
+        int remme = CalcPart.calcRem(carportLengthInt);
+        if(showSVG != null){
+        //TODO: Her skal tilføjes de begregninger til for mange af de forskellige matrialer der skal bruges
+            SVG svg = new SVG(0, 0, "0 0 800 600", 100, 50);
+
+            //rafters
+            for (int x = 0; x < rafters; x++) {
+                svg.addRect(100 + 50 * x, 0, carportLengthInt, 4.5);//4,5 rafter width
+            }
+            //remme
+            svg.addRect(210,70,9.7,9.7);
+
+            request.setAttribute("svgdrawing", svg.toString().replace(",","."));//Makes sure that it puts dot instead of comma.
+            return pageToShow;
         }
 
 

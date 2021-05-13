@@ -144,6 +144,9 @@
                                         <div style="margin-top: 3em;margin-bottom: 3em;">
                                             Klik her for at se din SVG tegning af din <a href="${pageContext.request.contextPath}/fc/showsvg"> carport </a>
                                         </div>
+                                        <c:if test="${requestScope.svgdrawing != null}">
+                                            ${requestScope.svgdrawing}
+                                        </c:if>
                                     </div>
                                 </div>
                             </div>
