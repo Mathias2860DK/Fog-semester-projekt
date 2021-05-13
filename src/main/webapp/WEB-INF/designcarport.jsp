@@ -96,23 +96,9 @@
                                         Tag
                                     </label>
                                     <select class="form-control" id="rooftype_options" name="roof" title="rooftype/colors"><option selected="selected" value="">Vælg tagtype/farve</option>
-                                        <option value="Betontagsten - Rød">Betontagsten - Rød</option>
-                                        <option value="Betontagsten - Teglrød">Betontagsten - Teglrød</option>
-                                        <option value="Betontagsten - Brun">Betontagsten - Brun</option>
-                                        <option value="Betontagsten - Sort">Betontagsten - Sort</option>
-                                        <option value="Eternittag B6 - Grå">Eternittag B6 - Grå</option>
-                                        <option value="Eternittag B6 - Sort">Eternittag B6 - Sort</option>
-                                        <option value="Eternittag B6 - Mokka (brun)">Eternittag B6 - Mokka (brun)</option>
-                                        <option value="Eternittag B6 - Rødbrun">Eternittag B6 - Rødbrun</option>
-                                        <option value="Eternittag B6 - Teglrød">Eternittag B6 - Teglrød</option>
-                                        <option value="Eternittag B7 - Grå">Eternittag B7 - Grå</option>
-                                        <option value="Eternittag B7 - Sort">Eternittag B7 - Sort</option>
-                                        <option value="Eternittag B7 - Mokka (brun)">Eternittag B7 - Mokka (brun)</option>
-                                        <option value="Eternittag B7 - Rødbrun">Eternittag B7 - Rødbrun</option>
-                                        <option value="Eternittag B7 - Teglrød">Eternittag B7 - Teglrød</option>
-                                        <option value="Eternittag B7 - Rødflammet">Eternittag B7 - Rødflammet</option>
+
                                         <c:forEach var="roof_type" items="${applicationScope.roofTypeList}">
-                                            <option value="${roof_type.toString()}">Tag type: ${roof_type.toString()}</option>
+                                            <option value="${roof_type.toString()}">${roof_type.toString()}</option>
 
                                         </c:forEach>
                                     </select>
