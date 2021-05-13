@@ -5,7 +5,6 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
     </jsp:attribute>
 
     <jsp:attribute name="footer">

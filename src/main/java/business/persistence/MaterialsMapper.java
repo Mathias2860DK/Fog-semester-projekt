@@ -46,7 +46,7 @@ public class MaterialsMapper {
         }
     }
 
-    public static List<Material> getAllMaterials() throws UserException {
+    public List<Material> getAllMaterials() throws UserException {
         List<Material> materialList = new ArrayList<>();
         try (Connection connection = database.connect())
         {
@@ -57,8 +57,18 @@ public class MaterialsMapper {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())
                 {
+                    //String description, int length, int width, int height, String unit, double price, String materialType, int materialId
                    String description = rs.getString("description");
+                   int length = rs.getInt("length");
+                   int width = rs.getInt("width");
+                   int height = rs.getInt("height");
+                   String unit = rs.getString("unit");
+                   double price = rs.getDouble("price");
+                   String materialType = rs.getString("material_type");
+                   int materialId = rs.getInt("material_id");
 
+                   Material material = new Material(description,length,width,height,unit,price,materialType,materialId);
+                   materialList.add(material);
 
                 }
                 return materialList;

@@ -33,6 +33,7 @@ public abstract class Command
         commands.put("customizecarport", new CustomizeCarportCommand("designcarport"));
         commands.put("requestbill", new GenerateRequestBillCommand("requestbill"));
         commands.put("requestreceiptpage", new SendRequestCommand("requestreceiptpage"));
+        commands.put("materialspage", new ShowMaterialsPage("materialspage","employee"));
 
 
     }

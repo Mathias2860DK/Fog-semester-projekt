@@ -23,7 +23,7 @@
         This header is inspired by this bootstrap
         example: https://getbootstrap.com/docs/5.0/examples/pricing/
     -->
-<header class="d-flex flex-column flex-md-row align-items-center p-3 pb-0 px-md-4 mb-4 bg-white border-bottom shadow-sm text-white">
+<header class="d-flex flex-column flex-md-row align-items-center p-3 pb-0 px-md-4 mb-4 bg-white text-white">
     <div class="h5 my-0 me-md-auto fw-normal">
         <p>Demo Project for DAT 2. semester</p>
         <p style="font-size: larger">
@@ -38,7 +38,7 @@
             <a type="button" class="text-white"
                href="${pageContext.request.contextPath}/fc/employeepage">Ordre</a>
             <a type="button" class="text-white"
-               href="${pageContext.request.contextPath}/fc/employeepage">Matrialer</a>
+               href="${pageContext.request.contextPath}/fc/materialspage">Matrialer</a>
             <a type="button" class="text-white"
                href="${pageContext.request.contextPath}/fc/employeepage">Kunder</a>
         </c:if>
