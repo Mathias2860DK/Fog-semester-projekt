@@ -141,6 +141,9 @@
                                         </c:if>
                                         <input type="submit" name="submit_request" title="Send request" value="Send forespørgsel" class="">
                                         <input type="submit" name="show_drawing" title="show drawing" value="Vis tegning" class="">
+                                        <div style="margin-top: 3em;margin-bottom: 3em;">
+                                            Klik her for at se din SVG tegning af din <a href="${pageContext.request.contextPath}/fc/showsvg"> carport </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

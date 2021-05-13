@@ -29,7 +29,12 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         String roof = request.getParameter("roof");
 
         String submitRequest = request.getParameter("submit_request");//Hvor skal vi hen? svg tegning eller send forespørgsel
+        String showSVG = request.getParameter("show_drawing");//Burde vise SVG tegning her på samme side
+        if(showSVG != null){
+        //TODO: Her skal tilføjes de begregninger til for mange af de forskellige matrialer der skal bruges
 
+
+        }
         //This could go wrong. If it does: their values is 0.
         try {
             carportWidthInt = Integer.parseInt(carportWidth);
