@@ -21,7 +21,7 @@
                         <article role="article" class="col mt-5">
 
 
-                            <h2>  consectetuer adipiscing elit</h2>
+                            <h2>  Velkommen til fog trælast</h2>
                             <p>
                                 giat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
                                 Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
