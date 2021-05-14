@@ -14,7 +14,40 @@
         You are now logged in as a Customer of our wonderful site.
         Role: ${sessionScope.role}
 
-        <p>Se alle dine ordre</p>
+        <p>Her er alle ordrer:</p>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Dato For Forespørgsel</th>
+                    <th>Pris</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <c:if test="${requestScope.sortedList != null}">
+<p>Du har aldrig bestilt en carport hos os. Det er en skam.</p>
+                </c:if>
+                    <c:forEach var="ordre" items="${requestScope.orderList}">
+                        <tbody>
+                        <tr>
+                            <td class="text-center">${ordre.orderId}</td>
+                            <td class="text-center">${ordre.date}</td>
+                            <c:if test="${ordre.totalprice == 0}">
+                                <td class="text-center">Forespørgsel under behandling</td>
+                            </c:if>
+                            <c:if test="${ordre.totalprice > 1}">
+                                <td class="text-center">${ordre.totalprice} kr</td>
+                            </c:if>
+
+                            <td class="text-center">${ordre.status}</td>
+                        </tr>
+                        </tbody>
+
+                    </c:forEach>
+
+            </table>
+        </div>
 
 
     </jsp:body>

@@ -36,12 +36,12 @@ public class OrderMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, deliveryInfoId);
                 ps.setInt(2, order.getCarport().getCarportWidth());
-                ps.setInt(3,  order.getCarport().getCarportLength());
+                ps.setInt(3, order.getCarport().getCarportLength());
                 ps.setString(4, order.getCarport().getRoof());
                 ps.setInt(5, 0);//carport.getShedWidth());
                 ps.setInt(6, 0);//getShedLength);
-                ps.setTimestamp(7,order.getDate());
-                ps.setString(8,order.getStatus());
+                ps.setTimestamp(7, order.getDate());
+                ps.setString(8, order.getStatus());
                 ps.setDouble(9, order.getTotalprice());
 
 
@@ -60,47 +60,50 @@ public class OrderMapper {
         }
     }
 
-    public List<Order> getOrdersByDeliveryInfoId(List<Integer> deliveryInfoIdList, int deliveryInfoId) throws UserException {
-        List<Order> orderListById = new ArrayList<>();
-        int arrayLength = deliveryInfoIdList.size();
+    public Order getOrdersByDeliveryInfoId(int deliveryInfoId) throws UserException {
+        Order order = null;
         try (Connection connection = database.connect()) {
 
-                String sql = "SELECT * FROM order where delivery_info_id = " + deliveryInfoId + ";";
+            String sql = "SELECT * FROM orders where delivery_info_id = " + deliveryInfoId + ";";
 
-                try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                    ResultSet rs = ps.executeQuery();
-                    while (rs.next()) {
-                        int orderID = rs.getInt("order_id");
-                        //int deliveryInfoId = rs.getInt("delivery_info_id");
-                        int cpWidth = rs.getInt("cp_width");
-                        int cpLength = rs.getInt("cp_length");
-                        String cpRoofType = rs.getString("cp_roof_type");
-                        int shedWidth = rs.getInt("shed_width");
-                        int shedLength = rs.getInt("shed_length");
-                        Timestamp date = rs.getTimestamp("date");
-                        String status = rs.getString("status");
-                        double totalPrice = rs.getDouble("totalprice");
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int orderID = rs.getInt("order_id");
+                    //int deliveryInfoId = rs.getInt("delivery_info_id");
+                    int cpWidth = rs.getInt("cp_width");
+                    int cpLength = rs.getInt("cp_length");
+                    String cpRoofType = rs.getString("cp_roof_type");
+                    int shedWidth = rs.getInt("shed_width");
+                    int shedLength = rs.getInt("shed_length");
+                    Timestamp date = rs.getTimestamp("date");
+                    String status = rs.getString("status");
+                    double totalPrice = rs.getDouble("totalprice");
 
+                    Shed shed = new Shed(shedLength, shedWidth);
+                    Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
+                    order = new Order(orderID,deliveryInfoId, carport, date, status, totalPrice);
 
-//TODO: Execute methods to add:
-                    }
-
-                    return orderListById;
-
-                } catch (SQLException ex) {
-                    throw new UserException(ex.getMessage());
                 }
 
-            } catch(SQLException | UserException ex){
-                throw new UserException("Connection to database could not be established");
+                return order;
+
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
             }
 
+        } catch (SQLException | UserException ex) {
+            ex.printStackTrace();
+            throw new UserException(ex.getMessage());
         }
+
+    }
+
     public List<Order> getAllOrdersByStatus(String dbStatus) throws UserException {
         List<Order> orderListByStatus = new ArrayList<>();
         try (Connection connection = database.connect()) {
 
-            String sql = "SELECT * FROM order where status = " + dbStatus + ";";
+            String sql = "SELECT * FROM orders where status = " + dbStatus + ";";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
@@ -116,9 +119,9 @@ public class OrderMapper {
                     String status = rs.getString("status");
                     double totalPrice = rs.getDouble("totalprice");
 
-                    Shed shed = new Shed(shedLength,shedWidth);
-                    Carport carport = new Carport(cpWidth,cpLength,cpRoofType, shed);
-                    Order order = new Order(orderID,deliveryInfoId,carport,date,status,totalPrice);
+                    Shed shed = new Shed(shedLength, shedWidth);
+                    Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
+                    Order order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
                     orderListByStatus.add(order);
 
 
@@ -131,7 +134,7 @@ public class OrderMapper {
                 throw new UserException(ex.getMessage());
             }
 
-        } catch(SQLException | UserException ex){
+        } catch (SQLException | UserException ex) {
             throw new UserException("Connection to database could not be established");
         }
 
@@ -157,9 +160,9 @@ public class OrderMapper {
                     String status = rs.getString("status");
                     double totalPrice = rs.getDouble("totalprice");
 
-                    Shed shed = new Shed(shedLength,shedWidth);
-                    Carport carport = new Carport(cpWidth,cpLength,cpRoofType, shed);
-                    Order order = new Order(orderID,deliveryInfoId,carport,date,status,totalPrice);
+                    Shed shed = new Shed(shedLength, shedWidth);
+                    Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
+                    Order order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
                     orderList.add(order);
 
 
@@ -172,7 +175,7 @@ public class OrderMapper {
                 throw new UserException(ex.getMessage());
             }
 
-        } catch(SQLException | UserException ex){
+        } catch (SQLException | UserException ex) {
             throw new UserException(ex.getMessage());
 
         }

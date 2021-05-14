@@ -23,4 +23,7 @@ public class OrderFacade {
     public List<Order> getAllOrders() throws UserException{
         return orderMapper.getAllOrders();
     }
+    public Order getOrdersByDeliveryInfoId(int deliveryInfoId) throws UserException {
+        return orderMapper.getOrdersByDeliveryInfoId(deliveryInfoId);
+    }
 }

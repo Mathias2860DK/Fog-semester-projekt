@@ -55,7 +55,7 @@ public class DeliveryInfoMapper {
             throw new UserException(ex.getMessage());
         }
     }
-
+//Used to retrieve all DeliveryInfoId's by userId. To later display all orders from that particular user
     public List<Integer> getDeliveryInfoIdByUserId(int userId) throws UserException {
         List<Integer> deliveryInfoIdList = new ArrayList<>();
         try (Connection connection = database.connect()) {
@@ -67,7 +67,7 @@ public class DeliveryInfoMapper {
             int deliveryInfoId = rs.getInt(1);
 
 deliveryInfoIdList.add(deliveryInfoId);
-//TODO: Execute methods to add:
+
                 }
                 return deliveryInfoIdList;
             } catch (SQLException ex) {

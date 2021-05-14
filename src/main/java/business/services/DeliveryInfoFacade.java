@@ -5,6 +5,8 @@ import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.DeliveryInfoMapper;
 
+import java.util.List;
+
 public class DeliveryInfoFacade {
         DeliveryInfoMapper deliveryInfoMapper;
 
@@ -13,5 +15,8 @@ public class DeliveryInfoFacade {
         }
     public int insertDeliveryInfo(DeliveryInfo deliveryInfo) throws UserException {
             return deliveryInfoMapper.insertDeliveryInfo(deliveryInfo);
+    }
+    public List<Integer> getDeliveryInfoIdByUserId(int userId) throws UserException {
+            return deliveryInfoMapper.getDeliveryInfoIdByUserId(userId);
     }
 }

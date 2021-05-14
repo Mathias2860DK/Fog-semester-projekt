@@ -56,7 +56,7 @@
         </c:if>
         <c:if test="${sessionScope.role == 'customer' }">
             <a type="button" class="text-white"
-               href="${pageContext.request.contextPath}/fc/customerpage">Mine ordre</a>
+               href="${pageContext.request.contextPath}/fc/custommerorders">Mine ordre</a>
             <a type="button" class="text-white"
                href="${pageContext.request.contextPath}/fc/customerpage">Om fog</a>
             <a type="button" class="text-white"

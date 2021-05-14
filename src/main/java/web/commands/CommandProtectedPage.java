@@ -17,8 +17,6 @@ public class CommandProtectedPage extends Command {
     public CommandProtectedPage(String pageToShow, String role) {
         this.pageToShow = pageToShow;
         this.role = role;
-        orderMapper = new OrderMapper(database);
-
     }
 
     @Override
