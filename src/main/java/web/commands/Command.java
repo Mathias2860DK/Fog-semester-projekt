@@ -35,6 +35,7 @@ public abstract class Command
         commands.put("requestreceiptpage", new SendRequestCommand("requestreceiptpage"));
         commands.put("materialspage", new ShowMaterialsPage("materialspage","employee"));
         commands.put("showsvg", new ShowSVGCommand("svgpage"));
+        commands.put("employeeorders", new GetOrdersCommand("employeepage","employee"));
 
 
     }
