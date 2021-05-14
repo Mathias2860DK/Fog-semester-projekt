@@ -33,7 +33,7 @@
         <a class="logo navbar-brand ml-5" href="<%=request.getContextPath()%>" title="Logo">
             <img heigth="90" width="90" src="css/images/fogLogo.png" alt="Fog logo" >
         </a>
-        <p style="font-size: larger">
+        <p style="$font-size: larger">
             <jsp:invoke fragment="header"/>
         </p>
     </div>
