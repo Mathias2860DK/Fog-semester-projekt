@@ -12,10 +12,10 @@
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as a EMPLOYEE of our wonderful FOG site.
 
-        <form action="${pageContext.request.contextPath}/fc/employeepage" method="POST">>
-            <label for="status"> Choose status for orders </label>
-            <select name="sortBy" id="status">
-                <option value="all orders">Alle ordre</option>
+        <form action="${pageContext.request.contextPath}/fc/employeepage" method="POST">
+            <label for="sortBy"> Choose status for orders </label>
+            <select name="sortBy" id="sortBy">
+                <option value="all orders" selected="all orders" >all orders</option>
                 <option value="request">Request</option>
                 <option value="offer sent">Offer sent</option>
                 <option value="accepted">Accepted</option>
@@ -39,6 +39,9 @@
             <th>Status</th>
         </tr>
         </thead>
+            <c:if test="${requestScope.orderList != null}">
+
+
         <c:forEach var="ordre" items="${requestScope.orderList}">
             <tbody>
             <tr>
@@ -51,6 +54,7 @@
             </tbody>
 
         </c:forEach>
+            </c:if>
         </table>
         </div>
 

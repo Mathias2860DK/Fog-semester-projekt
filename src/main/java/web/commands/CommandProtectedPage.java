@@ -26,12 +26,9 @@ public class CommandProtectedPage extends Command {
         List<Order> orderList = orderMapper.getAllOrders();
         String sortBy = request.getParameter("sortBy");
         if (sortBy.equals("all orders")){
-            for (int i = 0; i < orderList.size(); i++){
-                    orderList.add(orderList.get(i));
-                    request.setAttribute("orderList", orderList);
-            }
+            request.setAttribute("orderList", orderList);
         }
-
+//test
         if (sortBy.equals("request")) {
             for (int i = 0; i < orderList.size(); i++) {
                 if (orderList.get(i).getStatus().equals("request")) {
