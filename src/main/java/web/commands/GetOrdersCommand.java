@@ -23,11 +23,14 @@ public class GetOrdersCommand extends CommandProtectedPage {
         List<Order> orderList = orderMapper.getAllOrders();
         List<Order> sortedList = new ArrayList<>();
         int maxLength = orderList.size();
-
+        request.setAttribute("sortedList", orderList);
         String sortBy = request.getParameter("sortBy");
+        if (sortBy != null){
+
         if (sortBy.equals("all orders")){
             request.setAttribute("sortedList", orderList);
         }
+
 //test
         if (sortBy.equals("request")) {
             for (int i = 0; i < maxLength; i++) {
@@ -78,7 +81,7 @@ public class GetOrdersCommand extends CommandProtectedPage {
                 }
             }
         }
-
+        }
 
 
         return pageToShow;

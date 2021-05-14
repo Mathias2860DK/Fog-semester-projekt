@@ -48,7 +48,7 @@
 
         <c:if test="${sessionScope.role == 'employee' }">
             <a type="button" class="text-white"
-               href="${pageContext.request.contextPath}/fc/employeepage">Ordre</a>
+               href="${pageContext.request.contextPath}/fc/employeeorders">Ordre</a>
             <a type="button" class="text-white"
                href="${pageContext.request.contextPath}/fc/materialspage">Matrialer</a>
             <a type="button" class="text-white"
