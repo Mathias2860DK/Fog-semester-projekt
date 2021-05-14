@@ -25,7 +25,7 @@
         example: https://getbootstrap.com/docs/5.0/examples/pricing/
     -->
     <div id="header-picture">
-        <img class="img-fluid" src="${pageContext.request.contextPath}/css/images/test.png">
+        <img class="img-fluid" src="${pageContext.request.contextPath}/css/images/test2.png">
     </div>
 <header class="d-flex flex-column flex-md-row align-items-center p-3 pb-0 px-md-4 mb-4 bg-white text-white">
     <div class="h5 my-0 me-md-auto fw-normal">

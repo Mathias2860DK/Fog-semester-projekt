@@ -10,7 +10,22 @@
     </jsp:attribute>
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
+        You are now logged in as a EMPLOYEE of our wonderful FOG site.
+
+        <form action="${pageContext.request.contextPath}/fc/employeepage" method="POST">>
+            <label for="status"> Choose status for orders </label>
+            <select name="sortBy" id="status">
+                <option value="all orders">Alle ordre</option>
+                <option value="request">Request</option>
+                <option value="offer sent">Offer sent</option>
+                <option value="accepted">Accepted</option>
+                <option value="paid">Paid</option>
+                <option value="declined">Declined</option>
+                <option value="finished">Finished</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
 
         <p>Her er alle ordrer:</p>
         <div class="table-responsive">
