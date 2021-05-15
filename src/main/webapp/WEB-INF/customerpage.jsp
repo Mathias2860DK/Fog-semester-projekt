@@ -30,8 +30,15 @@
                 </c:if>
                     <c:forEach var="ordre" items="${requestScope.orderList}">
                         <tbody>
+
+
                         <tr>
-                            <td class="text-center">${ordre.orderId}</td>
+
+                            <td class="text-center">
+                                <form name="customerorder" action="${pageContext.request.contextPath}/fc/showcustomerorder"  method="POST">
+                                <button name="customerorder" class="btn btn-primary" type="submit" value="${ordre}">${ordre.orderId}</button>
+                        </form>
+                            </td>
                             <td class="text-center">${ordre.date}</td>
                             <c:if test="${ordre.totalprice == 0}">
                                 <td class="text-center">Forespørgsel under behandling</td>
