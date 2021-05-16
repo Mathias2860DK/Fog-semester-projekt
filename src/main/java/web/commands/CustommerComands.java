@@ -47,7 +47,7 @@ public class CustommerComands extends CommandProtectedPage{
             orderList.add(orderMapper.getOrdersByDeliveryInfoId(deliveryInfoIdByUserList.get(i)));
         }
 
-        request.setAttribute("orderList",orderList);
+        session.setAttribute("orderList",orderList);
 
         return pageToShow;
     }

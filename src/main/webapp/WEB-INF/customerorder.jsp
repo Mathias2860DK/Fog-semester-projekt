@@ -14,10 +14,10 @@
         You are now logged in as a Customer of our wonderful site.
         Role: ${sessionScope.role}
 
-        <p>Caport bredde: ${requestScope.customerorder.carport.carportWidth}</p>
-        <p>Carport længde:${requestScope.customerorder.carport.carportLength}</p>
-        <p>Tag: ${requestScope.customerorder.carport.roof}</p>
-        <p>${requestScope.customerorder.carport.carportWidth}</p>
+        <p>Caport bredde: ${sessionScope.order.carport.carportWidth}</p>
+        <p>Carport længde:${sessionScope.order.carport.carportLength}</p>
+        <p>Tag: ${sessionScope.customerorder.carport.roof}</p>
+        <p>${sessionScope.customerorder.carport.carportWidth}</p>
 
     </jsp:body>
 

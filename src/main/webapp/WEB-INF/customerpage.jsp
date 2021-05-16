@@ -25,10 +25,10 @@
                     <th>Status</th>
                 </tr>
                 </thead>
-                <c:if test="${requestScope.sortedList != null}">
+                <c:if test="${sessionScope.orderList == null}">
 <p>Du har aldrig bestilt en carport hos os. Det er en skam.</p>
                 </c:if>
-                    <c:forEach var="ordre" items="${requestScope.orderList}">
+                    <c:forEach var="ordre" items="${sessionScope.orderList}">
                         <tbody>
 
 
@@ -36,7 +36,7 @@
 
                             <td class="text-center">
                                 <form name="customerorder" action="${pageContext.request.contextPath}/fc/showcustomerorder"  method="POST">
-                                <button name="customerorder" class="btn btn-primary" type="submit" value="${ordre}">${ordre.orderId}</button>
+                                <button name="customerorder" class="btn btn-primary" type="submit" value="${ordre.orderId}">${ordre.orderId}</button>
                         </form>
                             </td>
                             <td class="text-center">${ordre.date}</td>
