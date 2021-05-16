@@ -89,7 +89,7 @@
                 </section>
             </div>
         </div>
-        <form action="fc/redirect">
+        <form action="${pageContext.request.contextPath}/fc/redirect">
             <input type="submit" class="btn btn-primary" name="designcarport" value="Design din egen carport">
         </form>
 

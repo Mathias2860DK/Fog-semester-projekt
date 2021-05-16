@@ -18,6 +18,15 @@ public class Shed {
         return shedWidth;
     }
 
+    @Override
+    public String toString() {
+        return "Shed{" +
+                "shedLength=" + shedLength +
+                ", shedWidth=" + shedWidth +
+                ", postAmount=" + postAmount +
+                '}';
+    }
+
     public int getPostAmount() {
         return postAmount;
     }

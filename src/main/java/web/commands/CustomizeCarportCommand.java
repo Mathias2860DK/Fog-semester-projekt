@@ -30,6 +30,7 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         String carportLength = request.getParameter("carport_length");
         String roof = request.getParameter("roof");
 
+
         String submitRequest = request.getParameter("submit_request");//Hvor skal vi hen? svg tegning eller send forespørgsel
         String showSVG = request.getParameter("show_drawing");//Burde vise SVG tegning her på samme side
 
@@ -68,7 +69,7 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         int shedWidth = 0;
         //TODO: Refactor. Mabye calculation package
         if (submitRequest != null && carportShedSize.equals("no-shed")) {
-            if (carportWidthInt == 0 || carportLengthInt == 0 || roof == null) {//skal addes flere parametre.
+            if (carportWidthInt == 0 || carportLengthInt == 0 || roof == null || roof.equals("")) {//skal addes flere parametre.
                 request.setAttribute("error", "Du mangler at udfylde et eller flere felter");
                 return pageToShow;
             }
