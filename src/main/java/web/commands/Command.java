@@ -38,6 +38,7 @@ public abstract class Command
         commands.put("employeeorders", new GetOrdersCommand("employeepage","employee"));
         commands.put("custommerorders", new CustommerComands("customerpage","customer"));
         commands.put("showcustomerorder", new ShowCustomerOrder("customerorder","customer"));
+        commands.put("showorderdetailsadmin", new ShowOrderDetailsCommand("adminorder","employee"));
 
 
     }
