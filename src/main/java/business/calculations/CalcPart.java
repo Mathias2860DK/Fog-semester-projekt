@@ -14,11 +14,19 @@ public class CalcPart {
 return amountOfPosts;
     }
 
-    public static int calcRafters(int carportLength){//rafters = spær
+    public static int calcRafters(int carportLength, int spaceBetweenRafters){//rafters = spær //spaceBetweenRafters is always 55(for now)
         //(Carport længde-10) / 55 +1 =  15
-return (carportLength-10)/55+1;
+return (carportLength-10)/spaceBetweenRafters+1;
     }
-    public static int calcRem(int carportLength){//rem engelsk?
-        return 2;
+    public static int calcRem(int carportLength,int remLength){//rem engelsk?
+        int remAmount = ((carportLength*2)/remLength)+1;
+
+
+        return remAmount;
     }
+    public static int calcRoof(int carportLength, int carportWidth, int roofLength, int roofWidth){
+        int amount = ((carportLength/roofLength)+1)*((carportWidth/roofWidth)+1);
+        return amount;
+    }
+
 }
