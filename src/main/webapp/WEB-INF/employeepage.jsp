@@ -48,7 +48,12 @@
         <c:forEach var="ordre" items="${requestScope.sortedList}">
             <tbody>
             <tr>
-                <td class="text-center">${ordre.orderId}</td>
+                <td class="text-center">
+                    <form action="${pageContext.request.contextPath}/fc/showorderdetailsadmin"  method="POST">
+                        <button name="customerorder" class="btn btn-primary" type="submit" value="${ordre.orderId}">${ordre.orderId}</button>
+                        <input type="hidden" name="customerorder" value="${ordre.orderId}">
+                    </form>
+                </td>
                 <td class="text-center">${ordre.date}</td>
                 <td class="text-center">${ordre.deliveryInfoId}</td>
                 <td class="text-center">${ordre.totalprice}</td>
