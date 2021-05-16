@@ -12,6 +12,7 @@
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as a EMPLOYEE of our wonderful FOG site.
 
+
         <form action="${pageContext.request.contextPath}/fc/employeeorders" method="POST">
             <label for="sortBy"> Choose status for orders </label>
             <select name="sortBy" id="sortBy">
@@ -25,6 +26,7 @@
             </select>
             <br><br>
             <input type="submit" value="Submit">
+           <!-- <button name="customerorder" class="btn btn-primary" type="submit" value="${ordre.orderId}">${ordre.orderId}</button>-->
         </form>
 
 

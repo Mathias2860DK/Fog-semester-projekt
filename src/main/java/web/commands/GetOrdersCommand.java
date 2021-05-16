@@ -25,6 +25,7 @@ public class GetOrdersCommand extends CommandProtectedPage {
         int maxLength = orderList.size();
         request.setAttribute("sortedList", orderList);
         String sortBy = request.getParameter("sortBy");
+        System.out.println(sortBy);
         if (sortBy != null){
 
         if (sortBy.equals("all orders")){
@@ -52,32 +53,32 @@ public class GetOrdersCommand extends CommandProtectedPage {
         if (sortBy.equals("accepted")) {
             for (int i = 0; i < orderList.size(); i++) {
                 if (orderList.get(i).getStatus().equals("accepted")) {
-                    orderList.add(orderList.get(i));
-                    request.setAttribute("orderList", orderList);
+                    sortedList.add(orderList.get(i));
+                    request.setAttribute("sortedList", sortedList);
                 }
             }
         }
         if (sortBy.equals("paid")) {
             for (int i = 0; i < orderList.size(); i++) {
                 if (orderList.get(i).getStatus().equals("paid")) {
-                    orderList.add(orderList.get(i));
-                    request.setAttribute("orderList", orderList);
+                    sortedList.add(orderList.get(i));
+                    request.setAttribute("sortedList", sortedList);
                 }
             }
         }
         if (sortBy.equals("declined")) {
             for (int i = 0; i < orderList.size(); i++) {
                 if (orderList.get(i).getStatus().equals("declined")) {
-                    orderList.add(orderList.get(i));
-                    request.setAttribute("orderList", orderList);
+                    sortedList.add(orderList.get(i));
+                    request.setAttribute("sortedList", sortedList);
                 }
             }
         }
         if (sortBy.equals("finished")) {
             for (int i = 0; i < orderList.size(); i++) {
                 if (orderList.get(i).getStatus().equals("finished")) {
-                    orderList.add(orderList.get(i));
-                    request.setAttribute("orderList", orderList);
+                    sortedList.add(orderList.get(i));
+                    request.setAttribute("sortedList", sortedList);
                 }
             }
         }
