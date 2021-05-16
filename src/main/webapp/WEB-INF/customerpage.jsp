@@ -35,8 +35,9 @@
                         <tr>
 
                             <td class="text-center">
-                                <form name="customerorder" action="${pageContext.request.contextPath}/fc/showcustomerorder"  method="POST">
+                                <form action="${pageContext.request.contextPath}/fc/showcustomerorder"  method="POST">
                                 <button name="customerorder" class="btn btn-primary" type="submit" value="${ordre.orderId}">${ordre.orderId}</button>
+                                    <input type="hidden" name="customerorder" value="${ordre.orderId}">
                         </form>
                             </td>
                             <td class="text-center">${ordre.date}</td>

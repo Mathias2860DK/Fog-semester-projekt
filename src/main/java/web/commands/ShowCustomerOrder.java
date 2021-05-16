@@ -18,11 +18,12 @@ public class ShowCustomerOrder extends CommandProtectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
         Order order = null;
-        int orderId = (int) session.getAttribute("customerorder");
+        String orderId = request.getParameter("customerorder");
+        int orderIdInt = Integer.parseInt(orderId);
         List<Order> orderList = (List<Order>) session.getAttribute("orderList");
 
         for (int i = 0; i < orderList.size(); i++) {
-            if (orderList.get(i).getOrderId() == orderId){
+            if (orderList.get(i).getOrderId() == orderIdInt){
                 order = orderList.get(i);
                 session.setAttribute("order",order);
             } else {
