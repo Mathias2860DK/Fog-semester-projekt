@@ -19,4 +19,7 @@ public class DeliveryInfoFacade {
     public List<Integer> getDeliveryInfoIdByUserId(int userId) throws UserException {
             return deliveryInfoMapper.getDeliveryInfoIdByUserId(userId);
     }
+    public int deleteDeliveryInfo(int deliveryInfoId) throws UserException {
+            return deliveryInfoMapper.deleteDeliveryInfo(deliveryInfoId);
+    }
 }

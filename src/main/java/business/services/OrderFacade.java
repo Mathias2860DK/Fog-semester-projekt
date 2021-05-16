@@ -26,4 +26,7 @@ public class OrderFacade {
     public Order getOrdersByDeliveryInfoId(int deliveryInfoId) throws UserException {
         return orderMapper.getOrdersByDeliveryInfoId(deliveryInfoId);
     }
+    public int deleteOrder(int orderId) throws UserException {
+        return orderMapper.deleteOrder(orderId);
+    }
 }
