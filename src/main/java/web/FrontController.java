@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class FrontController extends HttpServlet
 {
     private final static String USER = "root";
-    private final static String PASSWORD = "Agnsgaard1998!";
+    private final static String PASSWORD = "Vinter2020";
     private final static String URL = "jdbc:mysql://localhost:3306/fog?serverTimezone=CET";
 
     public static Database database;

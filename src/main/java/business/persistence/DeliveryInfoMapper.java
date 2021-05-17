@@ -82,7 +82,7 @@ public class DeliveryInfoMapper {
     public int deleteDeliveryInfo(int deliveryInfoId) throws UserException {
         try (Connection connection = database.connect()) {
 
-            String sql = "DELETE FROM orders WHERE delivery_info_id = " + deliveryInfoId + ";";
+            String sql = "DELETE FROM delivery_info WHERE delivery_info_id = " + deliveryInfoId + ";";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
