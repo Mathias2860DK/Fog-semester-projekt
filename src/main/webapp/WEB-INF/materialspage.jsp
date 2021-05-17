@@ -12,10 +12,9 @@
         <c:set var="addHomeLink" value="${false}" scope="request"/>
     </jsp:attribute>
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
-
-        <p>Her er alle matrialer:</p>
+        <div class="col-xs-1 text-center" style="margin-bottom: 45px">
+            <h1 class="display-4">Materiale oversigt</h1>
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -28,6 +27,7 @@
                     <th>Højde</th>
                     <th>Enhed</th>
                     <th>Pris</th>
+                    <th class="no-sort">Handling</th>
                 </tr>
                 </thead>
                 <c:forEach var="material" items="${requestScope.materialList}">
@@ -41,6 +41,11 @@
                         <td class="text-center">${material.height}</td>
                         <td class="text-center">${material.unit}</td>
                         <td class="text-center">${material.price}</td>
+                        <td class="text-center">
+                            <form action="${pageContext.request.contextPath}/fc/editMaterials">
+                                <button name="materialId" class="btn btn-primary" type="submit" value="${material.materialId}">Rediger</button>
+                            </form>
+                        </td>
                     </tr>
                     </tbody>
 

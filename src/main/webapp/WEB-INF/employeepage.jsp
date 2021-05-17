@@ -4,33 +4,14 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Employee Roles
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a EMPLOYEE of our wonderful FOG site.
+        <div class="col-xs-1 text-center"  style="margin-bottom: 45px">
+            <h1 class="display-4">Odre oversigt</h1>
+        </div>
 
-
-        <form action="${pageContext.request.contextPath}/fc/employeeorders" method="POST">
-            <label for="sortBy"> Choose status for orders </label>
-            <select name="sortBy" id="sortBy">
-                <option value="all orders" selected="all orders" >all orders</option>
-                <option value="request">Request</option>
-                <option value="offer sent">Offer sent</option>
-                <option value="accepted">Accepted</option>
-                <option value="paid">Paid</option>
-                <option value="declined">Declined</option>
-                <option value="finished">Finished</option>
-            </select>
-            <br><br>
-            <input type="submit" value="Submit">
-           <!-- <button name="customerorder" class="btn btn-primary" type="submit" value="${ordre.orderId}">${ordre.orderId}</button>-->
-        </form>
-
-
-        <p>Her er alle ordrer:</p>
         <div class="table-responsive">
         <table class="table table-bordered">
         <thead>
@@ -39,7 +20,20 @@
             <th>Dato</th>
             <th>E-mail</th>
             <th>Pris</th>
-            <th>Status</th>
+            <th><form action="${pageContext.request.contextPath}/fc/employeeorders" method="POST">
+                <label>Status</label>
+                <select name="sortBy" id="">
+                    <option value="all orders" selected="all orders" >all orders</option>
+                    <option value="request">Request</option>
+                    <option value="offer sent">Offer sent</option>
+                    <option value="accepted">Accepted</option>
+                    <option value="paid">Paid</option>
+                    <option value="declined">Declined</option>
+                    <option value="finished">Finished</option>
+                </select>
+                <input type="submit" value="Submit">
+                <!-- <button name="customerorder" class="btn btn-primary" type="submit" value="${ordre.orderId}">${ordre.orderId}</button>-->
+            </form></th>
         </tr>
         </thead>
             <c:if test="${requestScope.sortedList != null}">
