@@ -182,4 +182,28 @@ public class OrderMapper {
 
     }
 
+    public int deleteOrder(int orderId) throws UserException {
+        try (Connection connection = database.connect())
+        {
+
+            String sql = "DELETE FROM orders WHERE order_id = " + orderId + ";";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException | UserException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
 }

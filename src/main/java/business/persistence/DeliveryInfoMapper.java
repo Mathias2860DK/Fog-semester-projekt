@@ -1,9 +1,7 @@
 package business.persistence;
 
-import business.entities.Carport;
 import business.entities.DeliveryInfo;
 import business.entities.Order;
-import business.entities.Shed;
 import business.exceptions.UserException;
 import business.services.DeliveryInfoFacade;
 
@@ -57,19 +55,18 @@ public class DeliveryInfoMapper {
             throw new UserException(ex.getMessage());
         }
     }
-
-    //Used to retrieve all DeliveryInfoId's by userId. To later display all orders from that particular user
+//Used to retrieve all DeliveryInfoId's by userId. To later display all orders from that particular user
     public List<Integer> getDeliveryInfoIdByUserId(int userId) throws UserException {
         List<Integer> deliveryInfoIdList = new ArrayList<>();
         try (Connection connection = database.connect()) {
-            String sql = "SELECT delivery_info_id FROM delivery_info where user_id = " + userId + ";";
+            String sql = "SELECT delivery_info_id FROM delivery_info where user_id = "+ userId +";";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int deliveryInfoId = rs.getInt(1);
+            int deliveryInfoId = rs.getInt(1);
 
-                    deliveryInfoIdList.add(deliveryInfoId);
+deliveryInfoIdList.add(deliveryInfoId);
 
                 }
                 return deliveryInfoIdList;
@@ -78,6 +75,30 @@ public class DeliveryInfoMapper {
             }
         } catch (SQLException | UserException ex) {
             throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public int deleteDeliveryInfo(int deliveryInfoId) throws UserException {
+        try (Connection connection = database.connect())
+        {
+
+            String sql = "DELETE FROM orders WHERE delivery_info_id = " + deliveryInfoId + ";";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException | UserException ex)
+        {
+            throw new UserException(ex.getMessage());
         }
     }
 
@@ -103,13 +124,13 @@ public class DeliveryInfoMapper {
                     customerList.add(deliveryInfos);
 
                 }
-                    return customerList;
-                } catch(SQLException ex){
-                    throw new UserException(ex.getMessage());
-                }
-
-            } catch (SQLException | UserException ex) {
+                return customerList;
+            } catch(SQLException ex){
                 throw new UserException(ex.getMessage());
             }
+
+        } catch (SQLException | UserException ex) {
+            throw new UserException(ex.getMessage());
         }
+    }
 }

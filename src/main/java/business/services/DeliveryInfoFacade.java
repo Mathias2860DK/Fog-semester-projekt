@@ -1,7 +1,6 @@
 package business.services;
 
 import business.entities.DeliveryInfo;
-import business.entities.Order;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.persistence.DeliveryInfoMapper;
@@ -19,6 +18,9 @@ public class DeliveryInfoFacade {
     }
     public List<Integer> getDeliveryInfoIdByUserId(int userId) throws UserException {
             return deliveryInfoMapper.getDeliveryInfoIdByUserId(userId);
+    }
+    public int deleteDeliveryInfo(int deliveryInfoId) throws UserException {
+        return deliveryInfoMapper.deleteDeliveryInfo(deliveryInfoId);
     }
     public List<DeliveryInfo> getAllCustomers() throws UserException {
         return deliveryInfoMapper.getAllCustomers();

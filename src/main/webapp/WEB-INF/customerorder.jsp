@@ -12,7 +12,7 @@
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
         You are now logged in as a Customer of our wonderful site.
-
+        <c:if test="${sessionScope.order != null }">
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -56,6 +56,17 @@
                 </tbody>
             </table>
         </div>
+
+        <form action="${pageContext.request.contextPath}/fc/showcustomerorder"  method="POST">
+            <button name="delete-del-info-id" class="btn btn-primary text-danger" type="submit" value="${sessionScope.order.deliveryInfoId}">Slet ordre</button>
+        </form>
+
+        </c:if>
+        <c:if test="${requestScope.sucess != null }">
+            <p style="color:green">
+                    ${requestScope.sucess}
+            </p>
+        </c:if>
 
     </jsp:body>
 

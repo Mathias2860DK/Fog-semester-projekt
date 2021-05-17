@@ -40,7 +40,8 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
             carportLengthInt = Integer.parseInt(carportLength);
 
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            throw new UserException(e.getMessage());
+
         }
 
         //Calulate carport SVG parts:
