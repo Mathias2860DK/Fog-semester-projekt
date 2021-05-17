@@ -1,6 +1,7 @@
 package business.persistence;
 
 import business.entities.Carport;
+import business.entities.DeliveryInfo;
 import business.entities.Order;
 import business.entities.Shed;
 import business.exceptions.UserException;
@@ -82,7 +83,7 @@ public class OrderMapper {
 
                     Shed shed = new Shed(shedLength, shedWidth);
                     Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
-                    order = new Order(orderID,deliveryInfoId, carport, date, status, totalPrice);
+                    order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
 
                 }
 
@@ -183,27 +184,62 @@ public class OrderMapper {
     }
 
     public int deleteOrder(int orderId) throws UserException {
-        try (Connection connection = database.connect())
-        {
+        try (Connection connection = database.connect()) {
 
             String sql = "DELETE FROM orders WHERE order_id = " + orderId + ";";
 
-            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
-            {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 int rowsAffected = ps.executeUpdate();
                 return rowsAffected;
 
-            }
-            catch (SQLException ex)
-            {
+            } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
-        }
-        catch (SQLException | UserException ex)
-        {
+        } catch (SQLException | UserException ex) {
             throw new UserException(ex.getMessage());
         }
     }
 
+    public Order getOrderById(int orderId) throws UserException {
+        Order order = null;
+        try (Connection connection = database.connect()) {
+
+            String sql = "SELECT * FROM orders WHERE order_id = " + orderId + ";";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int orderID = rs.getInt("order_id");
+                    int deliveryInfoId = rs.getInt("delivery_info_id");
+                    int cpWidth = rs.getInt("cp_width");
+                    int cpLength = rs.getInt("cp_length");
+                    String cpRoofType = rs.getString("cp_roof_type");
+                    int shedWidth = rs.getInt("shed_width");
+                    int shedLength = rs.getInt("shed_length");
+                    Timestamp date = rs.getTimestamp("date");
+                    String status = rs.getString("status");
+                    double totalPrice = rs.getDouble("totalprice");
+
+
+                   Shed shed = new Shed(shedLength, shedWidth);
+                   Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
+                   order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
+
+//TODO: Execute methods to add:
+                }
+
+                return order;
+
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+
+        } catch (SQLException | UserException ex) {
+            throw new UserException(ex.getMessage());
+
+        }
+
+    }
 }
+
