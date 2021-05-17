@@ -3,10 +3,7 @@ package business.persistence;
 import business.entities.Material;
 import business.exceptions.UserException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,4 +80,29 @@ public class MaterialsMapper {
             throw new UserException("Connection to database could not be established");
         }
     }
+
+    public int deleteMaterial(int materialId) throws UserException {
+        try (Connection connection = database.connect())
+        {
+
+            String sql = "DELETE FROM materials WHERE material_id = " + materialId + ";";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException | UserException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
 }

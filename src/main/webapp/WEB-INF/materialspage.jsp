@@ -30,7 +30,7 @@
                     <th class="no-sort">Handling</th>
                 </tr>
                 </thead>
-                <c:forEach var="material" items="${requestScope.materialList}">
+                <c:forEach var="material" items="${sessionScope.materialList}">
                     <tbody>
                     <tr>
                         <td class="text-center">${material.materialId}</td>
@@ -43,7 +43,10 @@
                         <td class="text-center">${material.price}</td>
                         <td class="text-center">
                             <form action="${pageContext.request.contextPath}/fc/editMaterials">
-                                <button name="materialId" class="btn btn-primary" type="submit" value="${material.materialId}">Rediger</button>
+                                <button name="materialIdEdit" class="btn-warning" type="submit" value="${material.materialId}">Rediger</button>
+                            </form>
+                            <form action="${pageContext.request.contextPath}/fc/editMaterials">
+                                <button name="materialIdDelete" class="btn-danger" type="submit" value="${material.materialId}">Slet</button>
                             </form>
                         </td>
                     </tr>
@@ -52,6 +55,18 @@
                 </c:forEach>
             </table>
         </div>
+
+        <c:if test="${requestScope.error != null}">
+            <div class="col-xs-1 text-center" style="margin-bottom: 45px">
+                <p style="color: red">${requestScope.error}</p>
+            </div>
+
+        </c:if>
+        <c:if test="${requestScope.sucess != null}">
+            <div class="col-xs-1 text-center" style="margin-bottom: 45px">
+                <p style="color: green">${requestScope.sucess}</p>
+            </div>
+        </c:if>
 
     </jsp:body>
 </t:genericpage>

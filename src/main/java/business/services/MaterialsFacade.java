@@ -17,4 +17,8 @@ public class MaterialsFacade {
     public List<Material> getAllMaterials() throws UserException {
         return materialsMapper.getAllMaterials();
     }
+
+    public int deleteMaterial(int materialId) throws UserException {
+        return materialsMapper.deleteMaterial(materialId);
+    }
 }

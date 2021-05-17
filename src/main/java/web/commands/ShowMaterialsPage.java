@@ -6,6 +6,7 @@ import business.services.MaterialsFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,9 +20,10 @@ MaterialsFacade materialsFacade;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
+        HttpSession session = request.getSession();
         List<Material> materialList = new ArrayList<>();
 materialList = materialsFacade.getAllMaterials();
-request.setAttribute("materialList",materialList);
+session.setAttribute("materialList",materialList);
         return pageToShow;
     }
 }

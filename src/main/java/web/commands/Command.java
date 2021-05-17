@@ -40,6 +40,7 @@ public abstract class Command
         commands.put("showcustomerorder", new ShowCustomerOrder("customerorder","customer"));
         commands.put("showorderdetailsadmin", new ShowOrderDetailsCommand("getallcustomers","employee"));
         commands.put("showallcustomers", new ShowAllCustomers("getallcustomers","employee"));
+        commands.put("editMaterials", new ManageMaterials("manageMaterials","employee"));
 
 
 
