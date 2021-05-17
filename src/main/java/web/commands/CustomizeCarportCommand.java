@@ -44,8 +44,8 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         }
 
         //Calulate carport SVG parts:
-        int rafterLength = 0;//not relevant for svg
-        int remLength = 0;//not relevant for svg
+        int rafterLength = 1;//not relevant for svg
+        int remLength = 1;//not relevant for svg
         int postAmount = CalcPart.calcPostAmount(carportLengthInt);
         int rafters = CalcPart.calcRafters(carportLengthInt,rafterLength);
         int remme = CalcPart.calcRem(carportLengthInt,remLength);

@@ -1,7 +1,9 @@
 package business.persistence;
 
+import business.entities.Carport;
 import business.entities.DeliveryInfo;
 import business.entities.Order;
+import business.entities.Shed;
 import business.exceptions.UserException;
 import business.services.DeliveryInfoFacade;
 
@@ -55,18 +57,19 @@ public class DeliveryInfoMapper {
             throw new UserException(ex.getMessage());
         }
     }
-//Used to retrieve all DeliveryInfoId's by userId. To later display all orders from that particular user
+
+    //Used to retrieve all DeliveryInfoId's by userId. To later display all orders from that particular user
     public List<Integer> getDeliveryInfoIdByUserId(int userId) throws UserException {
         List<Integer> deliveryInfoIdList = new ArrayList<>();
         try (Connection connection = database.connect()) {
-            String sql = "SELECT delivery_info_id FROM delivery_info where user_id = "+ userId +";";
+            String sql = "SELECT delivery_info_id FROM delivery_info where user_id = " + userId + ";";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-            int deliveryInfoId = rs.getInt(1);
+                    int deliveryInfoId = rs.getInt(1);
 
-deliveryInfoIdList.add(deliveryInfoId);
+                    deliveryInfoIdList.add(deliveryInfoId);
 
                 }
                 return deliveryInfoIdList;
@@ -77,4 +80,36 @@ deliveryInfoIdList.add(deliveryInfoId);
             throw new UserException("Connection to database could not be established");
         }
     }
+
+    public List<DeliveryInfo> getAllCustomers() throws UserException {
+        List<DeliveryInfo> customerList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+
+            String sql = "SELECT * FROM delivery_info;";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int userId = rs.getInt("user_id");
+                    String navn = rs.getString("name");
+                    String adresse = rs.getString("adress");
+                    String zip = rs.getString("zipcode_city");
+                    int telefon = rs.getInt("phone");
+                    String email = rs.getString("email");
+                    String remark = rs.getString("remarks");
+
+
+                    DeliveryInfo deliveryInfos = new DeliveryInfo(userId, navn, adresse, zip, telefon, email, remark);
+                    customerList.add(deliveryInfos);
+
+                }
+                    return customerList;
+                } catch(SQLException ex){
+                    throw new UserException(ex.getMessage());
+                }
+
+            } catch (SQLException | UserException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        }
 }

@@ -52,7 +52,7 @@
             <a type="button" class="text-white"
                href="${pageContext.request.contextPath}/fc/materialspage">Matrialer</a>
             <a type="button" class="text-white"
-               href="${pageContext.request.contextPath}/fc/employeepage">Kunder</a>
+               href="${pageContext.request.contextPath}/fc/showallcustomers">Kunder</a>
         </c:if>
         <c:if test="${sessionScope.role == 'customer' }">
             <a type="button" class="text-white"
