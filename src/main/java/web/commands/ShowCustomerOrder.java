@@ -44,8 +44,9 @@ public class ShowCustomerOrder extends CommandProtectedPage {
         if (delete != null){
             order = (Order) session.getAttribute("order");
             int deliveryInfoId = Integer.parseInt(delete);
-            deliveryInfoFacade.deleteDeliveryInfo(deliveryInfoId);
             orderFacade.deleteOrder(order.getOrderId());
+            deliveryInfoFacade.deleteDeliveryInfo(deliveryInfoId);
+
             request.setAttribute("sucess","Ordren er slette");
             session.setAttribute("order",null);
             return pageToShow;

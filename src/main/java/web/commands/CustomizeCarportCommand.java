@@ -40,7 +40,8 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
             carportLengthInt = Integer.parseInt(carportLength);
 
         } catch (NumberFormatException e) {
-            throw new UserException(e.getMessage());
+            request.setAttribute("error", "Du mangler at udfylde et eller flere felter");
+            return pageToShow;
 
         }
 

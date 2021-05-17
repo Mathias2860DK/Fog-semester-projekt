@@ -31,9 +31,9 @@
     <div class="h5 my-0 me-md-auto fw-normal">
 
         <a class="logo navbar-brand ml-5" href="<%=request.getContextPath()%>" title="Logo">
-            <img heigth="90" width="90" src="css/images/fogLogo.png" alt="Fog logo" >
+            <img heigth="90" width="90" src="${pageContext.request.contextPath}/css/images/fogLogo.png" alt="Fog logo" >
         </a>
-        <p style="$font-size: larger">
+        <p style="font-size: larger">
             <jsp:invoke fragment="header"/>
         </p>
     </div>
@@ -100,6 +100,12 @@
     <br>
     <jsp:invoke fragment="footer"/>
 </div>
+
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"
+    ></script>
 
 </body>
 </html>

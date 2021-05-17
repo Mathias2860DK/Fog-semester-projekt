@@ -56,16 +56,18 @@
                 </tbody>
             </table>
         </div>
-
+            <div class="col-md-12 text-center">
         <form action="${pageContext.request.contextPath}/fc/showcustomerorder"  method="POST">
-            <button name="delete-del-info-id" class="btn btn-primary text-danger" type="submit" value="${sessionScope.order.deliveryInfoId}">Slet ordre</button>
+            <button name="delete-del-info-id" class="btn btn-danger" type="submit" value="${sessionScope.order.deliveryInfoId}">Slet ordre</button>
         </form>
-
+            </div>
         </c:if>
         <c:if test="${requestScope.sucess != null }">
-            <p style="color:green">
+            <div class="col-md-12 text-center">
+            <h2 style="color:green">
                     ${requestScope.sucess}
-            </p>
+            </h2>
+            </div>
         </c:if>
 
     </jsp:body>
