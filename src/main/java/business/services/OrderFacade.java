@@ -32,4 +32,7 @@ public class OrderFacade {
     public Order getOrderById(int orderId) throws UserException {
         return orderMapper.getOrderById(orderId);
     }
+    public int updateStatusAndPrice(int orderId, String status, double totalPrice) throws UserException {
+        return orderMapper.updateStatusAndPrice(orderId,status,totalPrice);
+    }
 }

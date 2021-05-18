@@ -58,6 +58,6 @@ class CalcPartTest {
         assertEquals(2, CalcPart.calcVandBrædtFront(480,360));
     }
 
-    @Test
-    void calccCarport(){assertEquals(,6850);}
+    //@Test
+    //void calccCarport(){assertEquals(,6850);}
 }

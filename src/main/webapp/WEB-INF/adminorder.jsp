@@ -39,6 +39,7 @@
                     <li>Pris: ${sessionScope.order.totalprice}</li>
                 </ul>
             </div>
+
             <div>
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -99,6 +100,30 @@
         <!-- col-lg-12 end here -->
         </div>
         </div>
+
+        <div class="col-xs-1 text-center" style="margin-bottom: 45px">
+
+
+            <p>Kostpris: Pris: ${sessionScope.order.totalprice}</p>
+        <p>Anbefalet salgspris${sessionScope.order.totalprice*1.39}</p>
+
+            <form action="${pageContext.request.contextPath}/fc/updatecarportprice" method="post" class="ng-pristine ng-valid">
+                <div class="form-group">
+                <label>Salgspris  ${sessionScope.salesprice} kr.</label>
+                    <input name="salesprice" type="text" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success" name="salesprice">Opdater salgspris</button>
+            </form>
+
+             <p>Dækingsgrad: ${sessionScope.contributionRatio} %</p>
+        </div>
+
+        <form action="${pageContext.request.contextPath}/fc/sendOfferToCustomer" method="post" class="ng-pristine ng-valid">
+            <button type="submit" class="btn btn-primary" name="sendOfferToId" value="${sessionScope.order.orderId}">Send tilbud til kunden</button>
+        </form>
+
+
+
 
 
 

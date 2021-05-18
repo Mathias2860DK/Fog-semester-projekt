@@ -42,6 +42,9 @@ public abstract class Command
         commands.put("showallcustomers", new ShowAllCustomers("getallcustomers","employee"));
         commands.put("editMaterials", new ManageMaterials("manageMaterials","employee"));
 
+        commands.put("updatecarportprice", new UpdatePriceCommand("adminorder","employee"));
+        commands.put("sendOfferToCustomer", new SendOfferToCustomer("adminorder","employee"));
+
 
 
     }
