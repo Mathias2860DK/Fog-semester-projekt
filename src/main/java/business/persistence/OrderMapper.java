@@ -266,5 +266,29 @@ public class OrderMapper {
         }
     }
 
+    public int updateStatus(int orderId, String status) throws UserException {
+        try (Connection connection = database.connect()) {
+
+            String sql = "UPDATE orders SET status = '" + status + "'" +
+                    " WHERE (order_id = '"+ orderId +"')";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
+            {
+
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+
+            }
+            catch (SQLException ex)
+            {
+                throw new UserException(ex.getMessage());
+            }
+        }
+        catch (SQLException | UserException ex)
+        {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
 }
 

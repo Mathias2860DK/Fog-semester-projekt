@@ -46,7 +46,6 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
         order = orderFacade.getOrderById(orderIdInt);
         totalPrice = calcCarport.totalPrice(order, materialsFacade);
         session.setAttribute("order", order);
-        System.out.println(totalPrice);
 
 
 

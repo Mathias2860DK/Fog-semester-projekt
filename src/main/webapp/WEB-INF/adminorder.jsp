@@ -36,7 +36,7 @@
                     <li>ID: ${sessionScope.order.orderId}</li>
                     <li>Dato: ${sessionScope.order.date}</li>
                     <li>Status: ${sessionScope.order.status}</li>
-                    <li>Pris: ${sessionScope.order.totalprice}</li>
+                    <li>Nuværende pris på ordre: ${sessionScope.order.totalprice}</li>
                 </ul>
             </div>
 
@@ -109,8 +109,8 @@
 
             <form action="${pageContext.request.contextPath}/fc/updatecarportprice" method="post" class="ng-pristine ng-valid">
                 <div class="form-group">
-                <label>Salgspris  ${sessionScope.salesprice} kr.</label>
-                    <input name="salesprice" type="text" class="form-control">
+                <label>Salgspris kr.</label>
+                    <input name="salesprice" type="text" class="form-control" value="${sessionScope.salesprice}">
                 </div>
                 <button type="submit" class="btn btn-success" name="salesprice">Opdater salgspris</button>
             </form>
@@ -120,7 +120,9 @@
 
         <form action="${pageContext.request.contextPath}/fc/sendOfferToCustomer" method="post" class="ng-pristine ng-valid">
             <button type="submit" class="btn btn-primary" name="sendOfferToId" value="${sessionScope.order.orderId}">Send tilbud til kunden</button>
+            <button type="submit" class="btn btn-primary" name="statusPaid" value="${sessionScope.order.orderId}">Markér ordren som betalt</button>
         </form>
+
 
 
 

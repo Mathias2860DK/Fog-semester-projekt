@@ -35,4 +35,7 @@ public class OrderFacade {
     public int updateStatusAndPrice(int orderId, String status, double totalPrice) throws UserException {
         return orderMapper.updateStatusAndPrice(orderId,status,totalPrice);
     }
+    public int updateStatus(int orderId, String status) throws UserException {
+        return orderMapper.updateStatus(orderId,status);
+    }
 }

@@ -20,15 +20,36 @@ public class SendOfferToCustomer extends CommandProtectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         Order order = null;
         HttpSession session = request.getSession();
-       // double salesPrice = (double)
-        String salesprice = (String) session.getAttribute("salesprice");
-        String orderId = request.getParameter("sendOfferToId");
-        int orderIdInt = Integer.parseInt(orderId);
-        order = orderFacade.getOrderById(orderIdInt);
-        order.setTotalprice(Double.parseDouble(salesprice));
-        String status = "offer sent";
-        orderFacade.updateStatusAndPrice(orderIdInt,status, order.getTotalprice());
 
+        String salesprice = (String) session.getAttribute("salesprice");
+        String sendOfferToId = request.getParameter("sendOfferToId");
+        String statusPaid = request.getParameter("statusPaid");
+
+        if (sendOfferToId != null) {
+
+            int sendOfferToIdInt = Integer.parseInt(sendOfferToId);
+            order = orderFacade.getOrderById(sendOfferToIdInt);
+            order.setTotalprice(Double.parseDouble(salesprice));
+            String status = "offer sent";
+            int rowsAffected = orderFacade.updateStatusAndPrice(sendOfferToIdInt, status, order.getTotalprice());
+            session.setAttribute("order",order);
+            if (rowsAffected == 1){
+                request.setAttribute("msg","Kundens status er nu ændret");
+            } else {
+                request.setAttribute("error","Der er sket en fejl. Kontakt IT");
+            }
+        }
+
+        if (statusPaid != null){
+            int orderIdPaid = Integer.parseInt(statusPaid);
+            int rowsAffected = orderFacade.updateStatus(orderIdPaid,"paid");
+            session.setAttribute("order",order);
+            if (rowsAffected == 1){
+                request.setAttribute("msg","Kundens status er nu ændret");
+            } else {
+                request.setAttribute("error","Der er sket en fejl. Kontakt IT");
+            }
+        }
         return pageToShow;
     }
 }

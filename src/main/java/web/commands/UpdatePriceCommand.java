@@ -23,7 +23,10 @@ session.setAttribute("salesprice",salesPrice);
         double costPrice = order.getTotalprice();
 
 double salesPriceDouble = Double.parseDouble(salesPrice);
-double contributionRatio = (salesPriceDouble/costPrice)*10;//procent
+
+//(5629,5-4050)/4050*100
+        double contributionRatio = (salesPriceDouble-costPrice)/costPrice*100;//procent
+//double contributionRatio = (costPrice/salesPriceDouble)*100;//procent
         NumberFormat formatter = new DecimalFormat("#0.00");
 session.setAttribute("contributionRatio", formatter.format(contributionRatio));
 
