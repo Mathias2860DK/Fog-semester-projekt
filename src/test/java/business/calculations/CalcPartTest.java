@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalcPartTest {
+    CalcCarport carport = new CalcCarport();
 
     @Test
     void calcPostAmount() {
@@ -56,4 +57,7 @@ class CalcPartTest {
     void calcVandBrædtFront() {
         assertEquals(2, CalcPart.calcVandBrædtFront(480,360));
     }
+
+    @Test
+    void calccCarport(){assertEquals(,6850);}
 }

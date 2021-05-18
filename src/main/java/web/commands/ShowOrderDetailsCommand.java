@@ -1,5 +1,6 @@
 package web.commands;
 
+import business.calculations.CalcCarport;
 import business.calculations.CalcPart;
 import business.entities.DeliveryInfo;
 import business.entities.Material;
@@ -20,6 +21,8 @@ import java.util.List;
 public class ShowOrderDetailsCommand extends CommandProtectedPage {
     private OrderFacade orderFacade;
     private MaterialsFacade materialsFacade;
+    private CalcCarport calcCarport = new CalcCarport();
+    double totalPrice = 0;
 
     public ShowOrderDetailsCommand(String pageToShow, String role) {
         super(pageToShow, role);
@@ -42,59 +45,9 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
         }
         order = orderFacade.getOrderById(orderIdInt);
         session.setAttribute("order", order);
-        int carportLength = order.getCarport().getCarportLength();
-        int carportWidth = order.getCarport().getCarportWidth();
-        double totalPrice = 0;
+        totalPrice = calcCarport.totalPrice(order, materialsFacade);
+        System.out.println(totalPrice);
 
-        for (Material thisMaterial : materialsFacade.getAllMaterials()) {
-            if (thisMaterial.getMaterialId() == 4) {
-                thisMaterial.setAmount(CalcPart.calcSubStarboardsBackAndFront(order.getCarport().getCarportWidth(), thisMaterial.getLength()));
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 5) {
-                thisMaterial.setAmount(CalcPart.calcSubStarboardsSides(carportLength, thisMaterial.getLength()));
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 6) {
-                thisMaterial.setAmount(CalcPart.calcOverSternFor(carportWidth, thisMaterial.getLength()));
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 7) {
-                thisMaterial.setAmount(CalcPart.calcOverSternSider(carportLength, thisMaterial.getLength()));
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 8) {
-                thisMaterial.setAmount(0);//ikke oprettet
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 9) {
-                thisMaterial.setAmount(0);//ikke oprettet
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 10) {
-                thisMaterial.setAmount(0);//ikke oprettet
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 11) {
-                thisMaterial.setAmount(CalcPart.calcRem(carportLength,thisMaterial.getLength()));
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 12) {
-                thisMaterial.setAmount(0);//ikke oprettet
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 13) {
-                thisMaterial.setAmount(CalcPart.calcRafters(carportLength,55));
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 14) {
-                thisMaterial.setAmount(CalcPart.calcPostAmount(carportLength));
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if (thisMaterial.getMaterialId() == 15) {
-                thisMaterial.setAmount(0);//ikke oprettet
-            } else if (thisMaterial.getMaterialId() == 16) {
-                thisMaterial.setAmount(CalcPart.calcVandBrædtSider(carportLength,thisMaterial.getLength()));
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            }else if(thisMaterial.getMaterialId()==17){
-                thisMaterial.setAmount(CalcPart.calcVandBrædtFront(carportWidth,thisMaterial.getLength()));
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            } else if(thisMaterial.getMaterialId()==18){
-                thisMaterial.setAmount(CalcPart.calcRoof(carportLength,carportWidth,thisMaterial.getLength(),thisMaterial.getWidth()));
-                totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
-            }
-
-        }
-        order.setTotalprice(totalPrice);
 
 
         return pageToShow;
