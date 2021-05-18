@@ -2,6 +2,7 @@ package web.commands;
 
 import business.calculations.CalcCarport;
 import business.calculations.CalcPart;
+import business.entities.Carport;
 import business.entities.DeliveryInfo;
 import business.entities.Material;
 import business.entities.Order;
@@ -36,6 +37,7 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
         HttpSession session = request.getSession();
         String orderId = request.getParameter("customerorder");
         Order order = null;
+        Carport carport = null;
         int orderIdInt = 0;
         try {
             orderIdInt = Integer.parseInt(orderId);
@@ -44,8 +46,11 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
             throw new UserException(e.getMessage());
         }
         order = orderFacade.getOrderById(orderIdInt);
-        totalPrice = calcCarport.totalPrice(order, materialsFacade);
-        session.setAttribute("order", order);
+        carport = new Carport(order.getCarport().getCarportWidth(),order.getCarport().getCarportWidth(),"");
+        totalPrice = calcCarport.totalPrice(carport,order, materialsFacade);
+        session.setAttribute("carport", carport);
+        session.setAttribute("order",order);
+        System.out.println(totalPrice);
 
 
 

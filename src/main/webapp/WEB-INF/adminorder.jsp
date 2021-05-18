@@ -104,8 +104,8 @@
         <div class="col-xs-1 text-center" style="margin-bottom: 45px">
 
 
-            <p>Kostpris: Pris: ${sessionScope.order.totalprice}</p>
-        <p>Anbefalet salgspris${sessionScope.order.totalprice*1.39}</p>
+            <p>Kostpris: Pris: ${sessionScope.carport.costPrice}</p>
+        <p>Anbefalet salgspris${sessionScope.carport.costPrice*1.39}</p>
 
             <form action="${pageContext.request.contextPath}/fc/updatecarportprice" method="post" class="ng-pristine ng-valid">
                 <div class="form-group">

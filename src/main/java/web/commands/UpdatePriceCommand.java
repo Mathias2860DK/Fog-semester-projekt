@@ -1,5 +1,6 @@
 package web.commands;
 
+import business.entities.Carport;
 import business.entities.Order;
 import business.exceptions.UserException;
 
@@ -19,8 +20,9 @@ public class UpdatePriceCommand extends CommandProtectedPage {
         HttpSession session = request.getSession();
         String salesPrice = request.getParameter("salesprice");
 session.setAttribute("salesprice",salesPrice);
+        Carport carport = (Carport) session.getAttribute("carport");
         Order order = (Order) session.getAttribute("order");
-        double costPrice = order.getTotalprice();
+        double costPrice = carport.getCostPrice();
 
 double salesPriceDouble = Double.parseDouble(salesPrice);
 

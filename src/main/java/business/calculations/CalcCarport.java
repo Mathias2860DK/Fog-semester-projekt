@@ -1,12 +1,13 @@
 package business.calculations;
 
+import business.entities.Carport;
 import business.entities.Material;
 import business.entities.Order;
 import business.exceptions.UserException;
 import business.services.MaterialsFacade;
 
 public class CalcCarport {
-    public double totalPrice(Order order, MaterialsFacade materialsFacade) throws UserException {
+    public double totalPrice(Carport carport, Order order, MaterialsFacade materialsFacade) throws UserException {
         int carportLength = order.getCarport().getCarportLength();
         int carportWidth = order.getCarport().getCarportWidth();
         double totalPrice = 0;
@@ -59,7 +60,8 @@ public class CalcCarport {
             }
 
         }
-        order.setTotalprice(totalPrice);
+
+        carport.setCostPrice(totalPrice);
         return totalPrice;
     }
 }

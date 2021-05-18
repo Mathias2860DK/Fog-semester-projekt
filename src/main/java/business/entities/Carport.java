@@ -7,6 +7,19 @@ public class Carport {
     private final int carportHeightEnd = 220;
     private String roof;
     private Shed shed;
+    private double costPrice;
+
+    public void setShed(Shed shed) {
+        this.shed = shed;
+    }
+
+    public double getCostPrice() {
+        return costPrice;
+    }
+
+    public void setCostPrice(double costPrice) {
+        this.costPrice = costPrice;
+    }
 
     public Carport(int carportWidth, int carportLength, String roof, Shed shed) {
         this.carportWidth = carportWidth;
