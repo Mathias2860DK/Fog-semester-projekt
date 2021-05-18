@@ -1,11 +1,14 @@
 package web.commands;
 
+import business.calculations.CalcCarport;
+import business.calculations.CalcPart;
 import business.entities.DeliveryInfo;
 import business.entities.Material;
 import business.entities.Order;
 import business.exceptions.UserException;
 import business.persistence.Database;
 import business.services.DeliveryInfoFacade;
+import business.services.MaterialsFacade;
 import business.services.OrderFacade;
 import com.sun.tools.corba.se.idl.constExpr.Or;
 
@@ -17,9 +20,14 @@ import java.util.List;
 
 public class ShowOrderDetailsCommand extends CommandProtectedPage {
     private OrderFacade orderFacade;
+    private MaterialsFacade materialsFacade;
+    private CalcCarport calcCarport = new CalcCarport();
+    double totalPrice = 0;
+
     public ShowOrderDetailsCommand(String pageToShow, String role) {
         super(pageToShow, role);
         orderFacade = new OrderFacade(database);
+        materialsFacade = new MaterialsFacade(database);
     }
 
 
@@ -32,11 +40,16 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
         try {
             orderIdInt = Integer.parseInt(orderId);
 
-        }catch(NumberFormatException e){
-          throw new UserException(e.getMessage());
+        } catch (NumberFormatException e) {
+            throw new UserException(e.getMessage());
         }
         order = orderFacade.getOrderById(orderIdInt);
-        session.setAttribute("order",order);
+        session.setAttribute("order", order);
+        totalPrice = calcCarport.totalPrice(order, materialsFacade);
+        System.out.println(totalPrice);
+
+
+
         return pageToShow;
     }
 }

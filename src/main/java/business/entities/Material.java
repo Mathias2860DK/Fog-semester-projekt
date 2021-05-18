@@ -9,6 +9,15 @@ public class Material {
     private double price; // price of the material
     private String materialType;//length and width dimension
     private int materialId;
+    private int amount;
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
     public Material(String description, int length, int width, int height, String unit, double price, String materialType, int materialId) {
         this.description = description;
