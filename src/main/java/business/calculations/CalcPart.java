@@ -66,11 +66,11 @@ return amount;
         // but the following is beautiful and manageable;
         int amount = 0;
         if(carportWidth<overSternForLength){
-            amount = 2;
+            amount = 1;
         } else if(carportWidth>overSternForLength && carportWidth < (overSternForLength*2)){
-            amount = 4;
+            amount = 2;
         } else if(carportWidth>(overSternForLength*2)){
-            amount = 6;
+            amount = 3;
         }
 
         return amount;

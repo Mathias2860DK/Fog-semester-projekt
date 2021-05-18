@@ -25,7 +25,6 @@ public class GetOrdersCommand extends CommandProtectedPage {
         int maxLength = orderList.size();
         request.setAttribute("sortedList", orderList);
         String sortBy = request.getParameter("sortBy");
-        System.out.println(sortBy);
         if (sortBy != null){
 
         if (sortBy.equals("all orders")){

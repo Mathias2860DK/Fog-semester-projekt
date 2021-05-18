@@ -94,7 +94,7 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
             }
 
         }
-        System.out.println(totalPrice);
+        order.setTotalprice(totalPrice);
 
 
         return pageToShow;
