@@ -50,7 +50,7 @@ return amount;
     }
 
     public static int calcSubStarboardsSides(int carportLength, int subStarboardSidesLength){
-        //((carportLength+5)/subStarboardLength)*2+1; is the best for economical reasons,
+        //(carportLength/subStarboardLength)*2+1; is the best for economical reasons,
         // but the following is beautiful and manageable;
         int amount = 0;
         if(carportLength<subStarboardSidesLength){
@@ -76,7 +76,7 @@ return amount;
         return amount;
     }
     public static int calcOverSternSider(int carportLength, int overSternSiderLength) {
-        //((carportLength+5)/OverSternSiderLength)*2+1; is the best for economical reasons,
+        //(carportLength/OverSternSiderLength)*2+1; is the best for economical reasons,
         // but the following is beautiful and manageable;
         int amount = 0;
         if (carportLength < overSternSiderLength) {
@@ -88,7 +88,7 @@ return amount;
 
     }
     public static int calcVandBrædtSider(int carportLength, int vandBrædtSiderLength) {
-        //((carportLength+5)/vandBrædtSiderLength)*2+1; is the best for economical reasons,
+        //(carportLength/vandBrædtSiderLength)*2+1; is the best for economical reasons,
         // but the following is beautiful and manageable;
         int amount = 0;
         if (carportLength < vandBrædtSiderLength) {
@@ -99,7 +99,7 @@ return amount;
         return amount;
     }
     public static int calcVandBrædtFront(int carportWidth, int vandBrædtFrontLength){
-        //((carportWidth+5)/overSternForLength)*2+1; is the best for economical reasons,
+        //((carportWidth+5)/overSternForLength)+1; is the best for economical reasons,
         // but the following is beautiful and manageable;
         int amount = 0;
         if(carportWidth<vandBrædtFrontLength){
