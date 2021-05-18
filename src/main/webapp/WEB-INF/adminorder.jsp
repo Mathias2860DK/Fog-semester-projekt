@@ -101,11 +101,29 @@
         </div>
         </div>
 
+
         <div class="col-xs-1 text-center" style="margin-bottom: 45px">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Kostpris</th>
+                    <th>Anbefalet pris</th>
+                    <th>Nuværende pris</th>
+                    <th>Nuværende dækningsgrad</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td> ${sessionScope.carport.costPrice} kr.</td>
+                    <td class="text-center">${sessionScope.carport.costPrice*1.39} kr.</td>
+                    <td class="text-center">${sessionScope.order.totalprice} kr.</td>
+                    <td class="text-center">${sessionScope.contributionRatio} %</td>
+                </tr>
+                </tbody>
+                </table>
+        </div>
 
-
-            <p>Kostpris: Pris: ${sessionScope.carport.costPrice}</p>
-        <p>Anbefalet salgspris${sessionScope.carport.costPrice*1.39}</p>
 
             <form action="${pageContext.request.contextPath}/fc/updatecarportprice" method="post" class="ng-pristine ng-valid">
                 <div class="form-group">
@@ -114,8 +132,6 @@
                 </div>
                 <button type="submit" class="btn btn-success" name="salesprice">Opdater salgspris</button>
             </form>
-
-             <p>Dækingsgrad: ${sessionScope.contributionRatio} %</p>
         </div>
 
         <form action="${pageContext.request.contextPath}/fc/sendOfferToCustomer" method="post" class="ng-pristine ng-valid">
