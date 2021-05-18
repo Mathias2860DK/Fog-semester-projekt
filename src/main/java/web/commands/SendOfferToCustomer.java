@@ -34,7 +34,7 @@ public class SendOfferToCustomer extends CommandProtectedPage {
             int rowsAffected = orderFacade.updateStatusAndPrice(sendOfferToIdInt, status, order.getTotalprice());
             session.setAttribute("order",order);
             if (rowsAffected == 1){
-                request.setAttribute("msg","Kundens status er nu ændret");
+                request.setAttribute("succes","Kundens status er nu ændret");
             } else {
                 request.setAttribute("error","Der er sket en fejl. Kontakt IT");
             }
@@ -42,10 +42,11 @@ public class SendOfferToCustomer extends CommandProtectedPage {
 
         if (statusPaid != null){
             int orderIdPaid = Integer.parseInt(statusPaid);
+            order = orderFacade.getOrderById(orderIdPaid);
             int rowsAffected = orderFacade.updateStatus(orderIdPaid,"paid");
             session.setAttribute("order",order);
             if (rowsAffected == 1){
-                request.setAttribute("msg","Kundens status er nu ændret");
+                request.setAttribute("sucess","Kundens status er nu ændret");
             } else {
                 request.setAttribute("error","Der er sket en fejl. Kontakt IT");
             }

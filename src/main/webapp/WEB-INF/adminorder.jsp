@@ -10,8 +10,25 @@
     </jsp:attribute>
     <jsp:body>
 
+        <c:if test="${requestScope.sucess != null }">
+            <div class="col-md-12 text-center">
+                <h2 style="color:green">
+                        ${requestScope.sucess}
+                </h2>
+            </div>
+        </c:if>
+        <c:if test="${requestScope.error != null }">
+            <div class="col-md-12 text-center">
+                <h2 style="color:red">
+                        ${requestScope.error}
+                </h2>
+            </div>
+        </c:if>
+
         <div class="col-lg-12">
             <!-- col-lg-12 start here -->
+
+
             <h2>Her er den valgte kundes ordre:</h2>
             <div>
                 <div>
@@ -138,6 +155,15 @@
             <button type="submit" class="btn btn-primary" name="sendOfferToId" value="${sessionScope.order.orderId}">Send tilbud til kunden</button>
             <button type="submit" class="btn btn-primary" name="statusPaid" value="${sessionScope.order.orderId}">Markér ordren som betalt</button>
         </form>
+
+
+        <p>Klik her for at se styklisten</p>
+
+        <form action="${pageContext.request.contextPath}/fc/showBomAdminOrder" method="post" class="ng-pristine ng-valid">
+            <button type="submit" class="btn btn-primary" name="bomByOrderId" value="${sessionScope.order.orderId}">Se stykliste</button>
+
+        </form>
+
 
 
 

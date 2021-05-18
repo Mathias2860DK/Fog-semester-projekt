@@ -45,6 +45,9 @@ public abstract class Command
         commands.put("updatecarportprice", new UpdatePriceCommand("adminorder","employee"));
         commands.put("sendOfferToCustomer", new SendOfferToCustomer("adminorder","employee"));
 
+        //vis stykliste på adminorder:
+        commands.put("showBomAdminOrder", new ShowBomAdminOrder("adminorder","employee"));
+
 
 
     }

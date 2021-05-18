@@ -12,7 +12,6 @@ import java.util.List;
 public class CommandProtectedPage extends Command {
     public String role;
     public String pageToShow;
-    private OrderMapper orderMapper;
 
     public CommandProtectedPage(String pageToShow, String role) {
         this.pageToShow = pageToShow;

@@ -1,5 +1,6 @@
 package business.calculations;
 
+import business.entities.Bom;
 import business.entities.Carport;
 import business.entities.Material;
 import business.entities.Order;
@@ -14,7 +15,7 @@ public class CalcCarport {
 
         for (Material thisMaterial : materialsFacade.getAllMaterials()) {
             if (thisMaterial.getMaterialId() == 4) {
-                thisMaterial.setAmount(CalcPart.calcSubStarboardsBackAndFront(order.getCarport().getCarportWidth(), thisMaterial.getLength()));
+                thisMaterial.setAmount(CalcPart.calcSubStarboardsBackAndFront(carportWidth, thisMaterial.getLength()));
                 totalPrice = totalPrice + (thisMaterial.getPrice()* thisMaterial.getAmount());
             } else if (thisMaterial.getMaterialId() == 5) {
                 thisMaterial.setAmount(CalcPart.calcSubStarboardsSides(carportLength, thisMaterial.getLength()));
