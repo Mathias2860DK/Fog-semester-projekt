@@ -1,5 +1,8 @@
 package business.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Carport {
     private int carportWidth;
     private int carportLength;
@@ -8,6 +11,7 @@ public class Carport {
     private String roof;
     private Shed shed;
     private double costPrice;
+    private List<Material> materialList = new ArrayList<>(); //bomList
 
     public void setShed(Shed shed) {
         this.shed = shed;
@@ -19,6 +23,14 @@ public class Carport {
 
     public void setCostPrice(double costPrice) {
         this.costPrice = costPrice;
+    }
+
+    public List<Material> getMaterialList() {
+        return materialList;
+    }
+
+    public void setMaterialList(List<Material> materialList) {
+        this.materialList = materialList;
     }
 
     public Carport(int carportWidth, int carportLength, String roof, Shed shed) {

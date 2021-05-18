@@ -161,8 +161,36 @@
 
         <form action="${pageContext.request.contextPath}/fc/showBomAdminOrder" method="post" class="ng-pristine ng-valid">
             <button type="submit" class="btn btn-primary" name="bomByOrderId" value="${sessionScope.order.orderId}">Se stykliste</button>
-
         </form>
+
+        <c:if test="${requestScope.bomByOrderId != null }">
+            <div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Beskrivelse</th>
+                            <th>Antal</th>
+                            <th>Enhed</th>
+                            <th>Beskrivelse af brug</th>
+                        </tr>
+                        </thead>
+                        <c:forEach var="material" items="${sessionScope.carport.materialList}">
+                        <tbody>
+                        <tr>
+                            <td class="text-center">${material.materialType}</td>
+                            <td class="text-center">${material.amount}</td>
+                            <td class="text-center">${material.unit}</td>
+                            <td class="text-center">${material.description}</td>
+                        </tr>
+                        </tbody>
+
+                        </c:forEach>
+                    </table>
+                </div>
+            </div>
+        </c:if>
+
 
 
 

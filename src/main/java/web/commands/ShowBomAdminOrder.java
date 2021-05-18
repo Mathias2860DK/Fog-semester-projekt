@@ -25,11 +25,14 @@ private MaterialsFacade materialsFacade;
         Order order = null;
         Carport carport = null;
         HttpSession session = request.getSession();
-        int orderId = (int) session.getAttribute("bomByOrderId");
-        order = orderFacade.getOrderById(orderId);
+        String orderId = request.getParameter("bomByOrderId");
+        request.setAttribute("bomByOrderId",orderId); //Check if it null on jsp page. If not --> display on jsp page
+        int orderIdInt = Integer.parseInt(orderId);
+        order = orderFacade.getOrderById(orderIdInt);
         carport = order.getCarport();
         CalcCarport calcCarport = new CalcCarport();
-        calcCarport.totalPrice(carport,order,materialsFacade);
+        carport = calcCarport.getCarportWithMaterials(carport,materialsFacade);
+        session.setAttribute("carport",carport);
 
 
         return pageToShow;
