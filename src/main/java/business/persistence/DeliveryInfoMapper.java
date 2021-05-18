@@ -55,18 +55,19 @@ public class DeliveryInfoMapper {
             throw new UserException(ex.getMessage());
         }
     }
-//Used to retrieve all DeliveryInfoId's by userId. To later display all orders from that particular user
+
+    //Used to retrieve all DeliveryInfoId's by userId. To later display all orders from that particular user
     public List<Integer> getDeliveryInfoIdByUserId(int userId) throws UserException {
         List<Integer> deliveryInfoIdList = new ArrayList<>();
         try (Connection connection = database.connect()) {
-            String sql = "SELECT delivery_info_id FROM delivery_info where user_id = "+ userId +";";
+            String sql = "SELECT delivery_info_id FROM delivery_info where user_id = " + userId + ";";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-            int deliveryInfoId = rs.getInt(1);
+                    int deliveryInfoId = rs.getInt(1);
 
-deliveryInfoIdList.add(deliveryInfoId);
+                    deliveryInfoIdList.add(deliveryInfoId);
 
                 }
                 return deliveryInfoIdList;
@@ -79,31 +80,26 @@ deliveryInfoIdList.add(deliveryInfoId);
     }
 
     public int deleteDeliveryInfo(int deliveryInfoId) throws UserException {
-        try (Connection connection = database.connect())
-        {
+        try (Connection connection = database.connect()) {
 
             String sql = "DELETE FROM delivery_info WHERE delivery_info_id = " + deliveryInfoId + ";";
 
-            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
-            {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 int rowsAffected = ps.executeUpdate();
                 return rowsAffected;
 
-            }
-            catch (SQLException ex)
-            {
+            } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
-        }
-        catch (SQLException | UserException ex)
-        {
+        } catch (SQLException | UserException ex) {
             throw new UserException(ex.getMessage());
         }
     }
 
     public List<DeliveryInfo> getAllCustomers() throws UserException {
         List<DeliveryInfo> customerList = new ArrayList<>();
+        List<DeliveryInfo> customerModi = new ArrayList<>();
         try (Connection connection = database.connect()) {
 
             String sql = "SELECT * FROM delivery_info;";
@@ -121,11 +117,20 @@ deliveryInfoIdList.add(deliveryInfoId);
 
 
                     DeliveryInfo deliveryInfos = new DeliveryInfo(userId, navn, adresse, zip, telefon, email, remark);
-                    customerList.add(deliveryInfos);
-
+                    if (deliveryInfos.getUserId() != 1) {
+                        customerModi.add(deliveryInfos);
+                        if(!customerModi.contains(deliveryInfos.getUserId())){
+                            customerList.add(deliveryInfos);
+                        }
+                    }
+                   /* for (DeliveryInfo deliveryInfo: customerModi) {
+                        if (!customerList.contains(deliveryInfo.getUserId())){
+                            customerList.add(deliveryInfo);
+                        }
+                    }*/
                 }
                 return customerList;
-            } catch(SQLException ex){
+            } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
 
