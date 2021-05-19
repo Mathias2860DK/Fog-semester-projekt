@@ -46,12 +46,11 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
             throw new UserException(e.getMessage());
         }
         order = orderFacade.getOrderById(orderIdInt);
-        carport = new Carport(order.getCarport().getCarportWidth(),order.getCarport().getCarportWidth(),"");
-        totalPrice = calcCarport.totalPrice(carport,order, materialsFacade);
+        carport = new Carport(order.getCarport().getCarportWidth(), order.getCarport().getCarportWidth(), "");
+        totalPrice = calcCarport.totalPrice(carport, order, materialsFacade);
         session.setAttribute("carport", carport);
-        session.setAttribute("order",order);
+        session.setAttribute("order", order);
         System.out.println(totalPrice);
-
 
 
         return pageToShow;

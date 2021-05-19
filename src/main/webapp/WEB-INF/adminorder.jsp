@@ -94,7 +94,7 @@
                             </tr>
                             <tr>
                                 <td>Redskabsskur bredde:</td>
-                                <td class="text-center"> <p>${sessionScope.carport.shed.shedWidth} cm</p></td>
+                                <td class="text-center"><p>${sessionScope.carport.shed.shedWidth} cm</p></td>
                             </tr>
                         </c:if>
 
@@ -120,46 +120,57 @@
 
 
         <div class="col-xs-1 text-center" style="margin-bottom: 45px">
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>Kostpris</th>
-                    <th>Anbefalet pris</th>
-                    <th>Nuværende pris</th>
-                    <th>Nuværende dækningsgrad</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td> ${sessionScope.carport.costPrice} kr.</td>
-                    <td class="text-center">${sessionScope.carport.costPrice*1.39} kr.</td>
-                    <td class="text-center">${sessionScope.order.totalprice} kr.</td>
-                    <td class="text-center">${sessionScope.contributionRatio} %</td>
-                </tr>
-                </tbody>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Kostpris</th>
+                        <th>Anbefalet pris</th>
+                        <th>Nuværende pris</th>
+                        <th>Nuværende dækningsgrad</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td> ${sessionScope.carport.costPrice} kr.</td>
+                        <td class="text-center">${sessionScope.carport.costPrice*1.39} kr.</td>
+                        <td class="text-center">${sessionScope.order.totalprice} kr.</td>
+                        <td class="text-center">${sessionScope.contributionRatio} %</td>
+                    </tr>
+                    </tbody>
                 </table>
-        </div>
+            </div>
 
 
-            <form action="${pageContext.request.contextPath}/fc/updatecarportprice" method="post" class="ng-pristine ng-valid">
+            <form action="${pageContext.request.contextPath}/fc/updatecarportprice" method="post"
+                  class="ng-pristine ng-valid">
                 <div class="form-group">
-                <label>Salgspris kr.</label>
+                    <label>Salgspris kr.</label>
                     <input name="salesprice" type="text" class="form-control" value="${sessionScope.salesprice}">
                 </div>
-                <button style="margin-top: 25px" type="submit" class="btn btn-danger" name="salesprice">Opdater salgspris</button>
+                <button style="margin-top: 25px" type="submit" class="btn btn-danger" name="salesprice">Opdater
+                    salgspris
+                </button>
             </form>
         </div>
         <div class="col-md-12 text-center">
-        <form action="${pageContext.request.contextPath}/fc/sendOfferToCustomer" method="post" class="ng-pristine ng-valid">
-            <button style="margin-right: 40px" type="submit" class="btn btn-success" name="sendOfferToId" value="${sessionScope.order.orderId}">Send tilbud til kunden</button>
-            <button type="submit" class="btn btn-success" name="statusPaid" value="${sessionScope.order.orderId}">Markér ordren som betalt</button>
-        </form>
+            <form action="${pageContext.request.contextPath}/fc/sendOfferToCustomer" method="post"
+                  class="ng-pristine ng-valid">
+                <button style="margin-right: 40px" type="submit" class="btn btn-success" name="sendOfferToId"
+                        value="${sessionScope.order.orderId}">Send tilbud til kunden
+                </button>
+                <button type="submit" class="btn btn-success" name="statusPaid" value="${sessionScope.order.orderId}">
+                    Markér ordren som betalt
+                </button>
+            </form>
 
 
-        <form action="${pageContext.request.contextPath}/fc/showBomAdminOrder" method="post" class="ng-pristine ng-valid">
-            <button style="margin-top: 25px" type="submit" class="btn btn-info" name="bomByOrderId" value="${sessionScope.order.orderId}">Se stykliste</button>
-        </form>
+            <form action="${pageContext.request.contextPath}/fc/showBomAdminOrder" method="post"
+                  class="ng-pristine ng-valid">
+                <button style="margin-top: 25px" type="submit" class="btn btn-info" name="bomByOrderId"
+                        value="${sessionScope.order.orderId}">Se stykliste
+                </button>
+            </form>
         </div>
         <c:if test="${requestScope.bomByOrderId != null }">
             <div>
@@ -175,28 +186,21 @@
                         </tr>
                         </thead>
                         <c:forEach var="material" items="${sessionScope.carport.materialList}">
-                        <tbody>
-                        <tr>
-                            <td class="text-center">${material.height}x${material.width} ${material.materialType}</td>
-                            <td class="text-center">${material.length}</td>
-                            <td class="text-center">${material.amount}</td>
-                            <td class="text-center">${material.unit}</td>
-                            <td class="text-center">${material.description}</td>
-                        </tr>
-                        </tbody>
+                            <tbody>
+                            <tr>
+                                <td class="text-center">${material.height}x${material.width} ${material.materialType}</td>
+                                <td class="text-center">${material.length}</td>
+                                <td class="text-center">${material.amount}</td>
+                                <td class="text-center">${material.unit}</td>
+                                <td class="text-center">${material.description}</td>
+                            </tr>
+                            </tbody>
 
                         </c:forEach>
                     </table>
                 </div>
             </div>
         </c:if>
-
-
-
-
-
-
-
 
 
     </jsp:body>

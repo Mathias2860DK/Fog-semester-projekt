@@ -12,9 +12,10 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustommerComands extends CommandProtectedPage{
+public class CustommerComands extends CommandProtectedPage {
     private DeliveryInfoFacade deliveryInfoFacade;
     private OrderMapper orderMapper;
+
     public CustommerComands(String pageToShow, String role) {
         super(pageToShow, role);
         deliveryInfoFacade = new DeliveryInfoFacade(database);
@@ -47,7 +48,7 @@ public class CustommerComands extends CommandProtectedPage{
             orderList.add(orderMapper.getOrdersByDeliveryInfoId(deliveryInfoIdByUserList.get(i)));
         }
 
-        session.setAttribute("orderList",orderList);
+        session.setAttribute("orderList", orderList);
 
         return pageToShow;
     }

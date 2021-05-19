@@ -21,7 +21,7 @@
                         <article role="article" class="col mt-5">
 
 
-                            <h2>  Velkommen til fog trælast</h2>
+                            <h2> Velkommen til fog trælast</h2>
                             <p>
                                 giat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
                                 Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
@@ -29,14 +29,16 @@
 
                                 <br/>
                             <h5> tempus, tellu </h5>
-                            Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                            Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
+                            ultricies nisi. Nam eget dui.
                             Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
                             sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit v
                             <br/>
                             <br/>
 
                             <h5>Maecenas tempus, tellus eget </h5>
-                            Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                            Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
+                            ultricies nisi. Nam eget dui.
                             Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
                             sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit v
                             </p>
@@ -96,16 +98,13 @@
                     <section style="margin-top: 10px" class="col-12 text-center">
 
                         <form action="${pageContext.request.contextPath}/fc/redirect">
-                            <input type="submit" class="btn btn-primary" name="designcarport" value="Design din egen carport">
+                            <input type="submit" class="btn btn-primary" name="designcarport"
+                                   value="Design din egen carport">
                         </form>
-                        </section>
+                    </section>
                 </div>
             </div>
         </div>
-
-
-
-
 
 
     </jsp:body>

@@ -6,11 +6,9 @@ package business.exceptions;
 public class UserException extends Exception {
 
     /**
-     *
      * @param msg The message we want to display for the user if something goes wrong.
      */
-    public UserException(String msg)
-    {
+    public UserException(String msg) {
         super(msg);
     }
 

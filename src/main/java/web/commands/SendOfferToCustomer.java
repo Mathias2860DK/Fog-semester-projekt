@@ -32,23 +32,23 @@ public class SendOfferToCustomer extends CommandProtectedPage {
             order.setTotalprice(Double.parseDouble(salesprice));
             String status = "offer sent";
             int rowsAffected = orderFacade.updateStatusAndPrice(sendOfferToIdInt, status, order.getTotalprice());
-            session.setAttribute("order",order);
-            if (rowsAffected == 1){
-                request.setAttribute("succes","Kundens status er nu ændret");
+            session.setAttribute("order", order);
+            if (rowsAffected == 1) {
+                request.setAttribute("succes", "Kundens status er nu ændret");
             } else {
-                request.setAttribute("error","Der er sket en fejl. Kontakt IT");
+                request.setAttribute("error", "Der er sket en fejl. Kontakt IT");
             }
         }
 
-        if (statusPaid != null){
+        if (statusPaid != null) {
             int orderIdPaid = Integer.parseInt(statusPaid);
             order = orderFacade.getOrderById(orderIdPaid);
-            int rowsAffected = orderFacade.updateStatus(orderIdPaid,"paid");
-            session.setAttribute("order",order);
-            if (rowsAffected == 1){
-                request.setAttribute("sucess","Kundens status er nu ændret");
+            int rowsAffected = orderFacade.updateStatus(orderIdPaid, "paid");
+            session.setAttribute("order", order);
+            if (rowsAffected == 1) {
+                request.setAttribute("sucess", "Kundens status er nu ændret");
             } else {
-                request.setAttribute("error","Der er sket en fejl. Kontakt IT");
+                request.setAttribute("error", "Der er sket en fejl. Kontakt IT");
             }
         }
         return pageToShow;

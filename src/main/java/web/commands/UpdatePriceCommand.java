@@ -19,18 +19,18 @@ public class UpdatePriceCommand extends CommandProtectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
         String salesPrice = request.getParameter("salesprice");
-session.setAttribute("salesprice",salesPrice);
+        session.setAttribute("salesprice", salesPrice);
         Carport carport = (Carport) session.getAttribute("carport");
         Order order = (Order) session.getAttribute("order");
         double costPrice = carport.getCostPrice();
 
-double salesPriceDouble = Double.parseDouble(salesPrice);
+        double salesPriceDouble = Double.parseDouble(salesPrice);
 
 //(5629,5-4050)/4050*100
-        double contributionRatio = (salesPriceDouble-costPrice)/costPrice*100;//procent
+        double contributionRatio = (salesPriceDouble - costPrice) / costPrice * 100;//procent
 //double contributionRatio = (costPrice/salesPriceDouble)*100;//procent
         NumberFormat formatter = new DecimalFormat("#0.00");
-session.setAttribute("contributionRatio", formatter.format(contributionRatio));
+        session.setAttribute("contributionRatio", formatter.format(contributionRatio));
 
         //String salesPrice = session.("salesprice");
 

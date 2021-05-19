@@ -7,13 +7,11 @@ import business.exceptions.UserException;
 
 /**
  * The UserFacade class uses the Facade Design Pattern and hides the complexity of the UserMapper class
- *
  */
 public class UserFacade {
     UserMapper userMapper;
 
     /**
-     *
      * @param database The database the UserFacade class uses.
      */
     public UserFacade(Database database) {
@@ -21,8 +19,7 @@ public class UserFacade {
     }
 
     /**
-     *
-     * @param email The email used for logging in
+     * @param email    The email used for logging in
      * @param password The password used for logging in
      * @return Calls the UserMapper's login method, with the parameters provided in this method
      * @throws UserException If something goes wrong
@@ -32,8 +29,7 @@ public class UserFacade {
     }
 
     /**
-     *
-     * @param email email
+     * @param email    email
      * @param password password
      * @return the newly created user
      * @throws UserException If something goes wrong

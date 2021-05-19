@@ -53,7 +53,7 @@
                                                 <li><strong>Forespørgsel</strong> ${sessionScope.order.orderId}</li>
                                                 <li>
                                                     <strong>Dato for oprettelse af forespørgsel</strong>
-                                                    ${sessionScope.order.date}
+                                                        ${sessionScope.order.date}
                                                 </li>
 
                                                 <li>
@@ -71,7 +71,8 @@
                                             <li>Postnummer og by: ${sessionScope.deliveryInfo.zipCodeCity}</li>
                                             <li>Telefon: ${sessionScope.deliveryInfo.phone}</li>
                                             <li>E-mail: ${sessionScope.deliveryInfo.email}</li>
-                                            <li>Bemærkninger:<c:if test="${sessionScope.deliveryInfo.remarks != null}"> ${sessionScope.deliveryInfo.remarks}</c:if>
+                                            <li>Bemærkninger:<c:if
+                                                    test="${sessionScope.deliveryInfo.remarks != null}"> ${sessionScope.deliveryInfo.remarks}</c:if>
                                                 <c:if test="${sessionScope.deliveryInfo.remarks == null || sessionScope.deliveryInfo.remarks == '' }">Ingen</c:if>
                                             </li>
                                         </ul>
@@ -88,7 +89,8 @@
                                                 <tbody>
                                                 <tr>
                                                     <td>Carport længde:</td>
-                                                    <td class="text-center">${sessionScope.carport.carportLength} cm</td>
+                                                    <td class="text-center">${sessionScope.carport.carportLength} cm
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Carport bredde:</td>
@@ -96,11 +98,15 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Carport start højde:</td>
-                                                    <td class="text-center">${sessionScope.carport.carportHeightStart} cm</td>
+                                                    <td class="text-center">${sessionScope.carport.carportHeightStart}
+                                                        cm
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Carport slut højde:</td>
-                                                    <td class="text-center">${sessionScope.carport.carportHeightEnd} cm</td>
+                                                    <td class="text-center">${sessionScope.carport.carportHeightEnd}
+                                                        cm
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td>Tag type:</td>
@@ -109,13 +115,16 @@
                                                 <c:if test="${sessionScope.carport.shed != null}">
                                                     <tr>
                                                         <td>Redskabsskur længde:</td>
-                                                        <td class="text-center">${sessionScope.carport.shed.shedLength} cm</td>
+                                                        <td class="text-center">${sessionScope.carport.shed.shedLength}
+                                                            cm
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>Redskabsskur bredde:</td>
-                                                        <td class="text-center"> <p>${sessionScope.carport.shed.shedWidth} cm</p></td>
+                                                        <td class="text-center">
+                                                            <p>${sessionScope.carport.shed.shedWidth} cm</p></td>
                                                     </tr>
-                                                    </c:if>
+                                                </c:if>
 
                                                 </tbody>
                                             </table>

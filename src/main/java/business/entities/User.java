@@ -6,13 +6,11 @@ package business.entities;
  */
 public class User {
     /**
-     *
-     * @param email The users email
+     * @param email    The users email
      * @param password The users password
-     * @param role The users role
+     * @param role     The users role
      */
-    public User(String email, String password, String role)
-    {
+    public User(String email, String password, String role) {
         this.email = email;
         this.password = password;
         this.role = role;

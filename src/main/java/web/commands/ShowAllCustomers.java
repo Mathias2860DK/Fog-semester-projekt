@@ -11,6 +11,7 @@ import java.util.List;
 
 public class ShowAllCustomers extends CommandProtectedPage {
     DeliveryInfoFacade deliveryInfoFacade;
+
     public ShowAllCustomers(String pageToShow, String role) {
         super(pageToShow, role);
         deliveryInfoFacade = new DeliveryInfoFacade(database);
@@ -20,7 +21,7 @@ public class ShowAllCustomers extends CommandProtectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         List<DeliveryInfo> getAllCustomers = new ArrayList<>();
         getAllCustomers = deliveryInfoFacade.getAllCustomers();
-        request.setAttribute("getAllCustomers",getAllCustomers);
+        request.setAttribute("getAllCustomers", getAllCustomers);
         return pageToShow;
     }
 }

@@ -222,9 +222,9 @@ public class OrderMapper {
                     double totalPrice = rs.getDouble("totalprice");
 
 
-                   Shed shed = new Shed(shedLength, shedWidth);
-                   Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
-                   order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
+                    Shed shed = new Shed(shedLength, shedWidth);
+                    Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
+                    order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
 
 //TODO: Execute methods to add:
                 }
@@ -246,22 +246,17 @@ public class OrderMapper {
         try (Connection connection = database.connect()) {
 
             String sql = "UPDATE orders SET status = '" + status + "', totalprice = '" + totalPrice +
-                    "' WHERE (order_id = '"+ orderId +"')";
+                    "' WHERE (order_id = '" + orderId + "')";
 
-            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
-            {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 int rowsAffected = ps.executeUpdate();
                 return rowsAffected;
 
-            }
-            catch (SQLException ex)
-            {
+            } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
-        }
-        catch (SQLException | UserException ex)
-        {
+        } catch (SQLException | UserException ex) {
             throw new UserException(ex.getMessage());
         }
     }
@@ -270,22 +265,17 @@ public class OrderMapper {
         try (Connection connection = database.connect()) {
 
             String sql = "UPDATE orders SET status = '" + status + "'" +
-                    " WHERE (order_id = '"+ orderId +"')";
+                    " WHERE (order_id = '" + orderId + "')";
 
-            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
-            {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
                 int rowsAffected = ps.executeUpdate();
                 return rowsAffected;
 
-            }
-            catch (SQLException ex)
-            {
+            } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
-        }
-        catch (SQLException | UserException ex)
-        {
+        } catch (SQLException | UserException ex) {
             throw new UserException(ex.getMessage());
         }
     }

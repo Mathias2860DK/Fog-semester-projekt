@@ -14,10 +14,9 @@ public class Database {
     private final String URL;
 
     /**
-     *
-     * @param user TDB
+     * @param user     TDB
      * @param password Password for the database connection
-     * @param url Url for the database connection
+     * @param url      Url for the database connection
      * @throws ClassNotFoundException TDB - Problem occoured when loading the class
      */
     public Database(String user, String password, String url) throws ClassNotFoundException {

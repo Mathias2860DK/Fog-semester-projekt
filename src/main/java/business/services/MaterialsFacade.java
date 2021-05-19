@@ -14,6 +14,7 @@ public class MaterialsFacade {
     public MaterialsFacade(Database database) {
         materialsMapper = new MaterialsMapper(database);
     }
+
     public List<Material> getAllMaterials() throws UserException {
         return materialsMapper.getAllMaterials();
     }

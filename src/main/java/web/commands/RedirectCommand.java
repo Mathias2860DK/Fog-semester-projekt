@@ -13,10 +13,10 @@ public class RedirectCommand extends CommandUnprotectedPage {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         //only purpose of this Command class is to redirect to the correct page.
-       String carportdesign = request.getParameter("designcarport");
-       if (carportdesign != null){
-           return "designcarport";
-       }
+        String carportdesign = request.getParameter("designcarport");
+        if (carportdesign != null) {
+            return "designcarport";
+        }
         return pageToShow;
     }
 }

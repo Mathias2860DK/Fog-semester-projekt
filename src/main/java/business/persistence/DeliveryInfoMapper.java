@@ -96,6 +96,7 @@ public class DeliveryInfoMapper {
             throw new UserException(ex.getMessage());
         }
     }
+
     public List<DeliveryInfo> getAllDeliveryInfo() throws UserException {
         List<DeliveryInfo> customerList = new ArrayList<>();
         try (Connection connection = database.connect()) {
@@ -115,7 +116,7 @@ public class DeliveryInfoMapper {
                     String remark = rs.getString("remarks");
 
 
-                    DeliveryInfo deliveryInfos = new DeliveryInfo(deliveryInfoId,userId, navn, adresse, zip, telefon, email, remark);
+                    DeliveryInfo deliveryInfos = new DeliveryInfo(deliveryInfoId, userId, navn, adresse, zip, telefon, email, remark);
 
                     customerList.add(deliveryInfos);
                 }
@@ -152,7 +153,7 @@ public class DeliveryInfoMapper {
                     DeliveryInfo deliveryInfos = new DeliveryInfo(userId, navn, adresse, zip, telefon, email, remark);
                     if (deliveryInfos.getUserId() != 1) {
                         customerModi.add(deliveryInfos);
-                        if(!customerModi.contains(deliveryInfos.getUserId())){
+                        if (!customerModi.contains(deliveryInfos.getUserId())) {
                             customerList.add(deliveryInfos);
                         }
                     }
@@ -171,6 +172,7 @@ public class DeliveryInfoMapper {
             throw new UserException(ex.getMessage());
         }
     }
+
     public String getCustomerEmail(int deliveryId) throws UserException {
         String email = null;
         for (DeliveryInfo deliveryInfo : getAllDeliveryInfo()) {

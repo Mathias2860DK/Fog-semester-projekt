@@ -49,10 +49,10 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         int rafterLength = 1;//not relevant for svg
         int remLength = 1;//not relevant for svg
         int postAmount = CalcPart.calcPostAmount(carportLengthInt);
-        int rafters = CalcPart.calcRafters(carportLengthInt,rafterLength);
-        int remme = CalcPart.calcRem(carportLengthInt,remLength);
-        if(showSVG != null){
-        //TODO: Her skal tilføjes de begregninger til for mange af de forskellige matrialer der skal bruges
+        int rafters = CalcPart.calcRafters(carportLengthInt, rafterLength);
+        int remme = CalcPart.calcRem(carportLengthInt, remLength);
+        if (showSVG != null) {
+            //TODO: Her skal tilføjes de begregninger til for mange af de forskellige matrialer der skal bruges
             SVG svg = new SVG(0, 0, "0 0 800 600", 100, 50);
 
             //rafters
@@ -60,9 +60,9 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
                 svg.addRect(100 + 50 * x, 0, carportLengthInt, 4.5);//4,5 rafter width
             }
             //remme
-            svg.addRect(210,70,9.7,9.7);
+            svg.addRect(210, 70, 9.7, 9.7);
 
-            request.setAttribute("svgdrawing", svg.toString().replace(",","."));//Makes sure that it puts dot instead of comma.
+            request.setAttribute("svgdrawing", svg.toString().replace(",", "."));//Makes sure that it puts dot instead of comma.
             return pageToShow;
         }
 

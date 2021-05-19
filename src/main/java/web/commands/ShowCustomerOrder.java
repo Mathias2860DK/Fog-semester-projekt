@@ -14,6 +14,7 @@ import java.util.List;
 public class ShowCustomerOrder extends CommandProtectedPage {
     private OrderFacade orderFacade;
     private DeliveryInfoFacade deliveryInfoFacade;
+
     public ShowCustomerOrder(String pageToShow, String role) {
         super(pageToShow, role);
         this.orderFacade = new OrderFacade(database);
@@ -33,9 +34,9 @@ public class ShowCustomerOrder extends CommandProtectedPage {
             for (int i = 0; i < orderList.size(); i++) {
                 if (orderList.get(i).getOrderId() == orderIdInt) {
                     order = orderList.get(i);
-                   if (order.getStatus().equals("offer sent")){
-                       request.setAttribute("offer-sent","offer sent");
-                   }
+                    if (order.getStatus().equals("offer sent")) {
+                        request.setAttribute("offer-sent", "offer sent");
+                    }
                     session.setAttribute("order", order);
                     return pageToShow;
                 } else {
@@ -44,21 +45,21 @@ public class ShowCustomerOrder extends CommandProtectedPage {
             }
         }
         String delete = request.getParameter("delete-del-info-id");
-        if (delete != null){
+        if (delete != null) {
             order = (Order) session.getAttribute("order");
             int deliveryInfoId = Integer.parseInt(delete);
             orderFacade.deleteOrder(order.getOrderId());
             deliveryInfoFacade.deleteDeliveryInfo(deliveryInfoId);
 
-            request.setAttribute("sucess","Ordren er slettet");
-            session.setAttribute("order",null);
+            request.setAttribute("sucess", "Ordren er slettet");
+            session.setAttribute("order", null);
             return pageToShow;
         }
-String accept = request.getParameter("accept-del-info-id");
-        if (accept != null){
+        String accept = request.getParameter("accept-del-info-id");
+        if (accept != null) {
             order = (Order) session.getAttribute("order");
-            orderFacade.updateStatus(order.getOrderId(),"accepted");
-            request.setAttribute("sucess","Ordren er accepteret. Du bliver kontaktet snarest muligt");
+            orderFacade.updateStatus(order.getOrderId(), "accepted");
+            request.setAttribute("sucess", "Ordren er accepteret. Du bliver kontaktet snarest muligt");
         }
 
         return pageToShow;

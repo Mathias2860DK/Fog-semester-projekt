@@ -25,33 +25,34 @@
                 </tr>
                 </thead>
                 <c:if test="${sessionScope.orderList == null}">
-<p>Du har aldrig bestilt en carport hos os. Det er en skam.</p>
+                    <p>Du har aldrig bestilt en carport hos os. Det er en skam.</p>
                 </c:if>
-                    <c:forEach var="ordre" items="${sessionScope.orderList}">
-                        <tbody>
+                <c:forEach var="ordre" items="${sessionScope.orderList}">
+                    <tbody>
 
 
-                        <tr>
+                    <tr>
 
-                            <td class="text-center">
-                                <form action="${pageContext.request.contextPath}/fc/showcustomerorder"  method="POST">
-                                <button name="customerorder" class="btn btn-primary" type="submit" value="${ordre.orderId}">${ordre.orderId}</button>
-                                    <input type="hidden" name="customerorder" value="${ordre.orderId}">
-                        </form>
-                            </td>
-                            <td class="text-center">${ordre.date}</td>
-                            <c:if test="${ordre.totalprice == 0}">
-                                <td class="text-center">Forespørgsel under behandling</td>
-                            </c:if>
-                            <c:if test="${ordre.totalprice > 1}">
-                                <td class="text-center">${ordre.totalprice} kr</td>
-                            </c:if>
+                        <td class="text-center">
+                            <form action="${pageContext.request.contextPath}/fc/showcustomerorder" method="POST">
+                                <button name="customerorder" class="btn btn-primary" type="submit"
+                                        value="${ordre.orderId}">${ordre.orderId}</button>
+                                <input type="hidden" name="customerorder" value="${ordre.orderId}">
+                            </form>
+                        </td>
+                        <td class="text-center">${ordre.date}</td>
+                        <c:if test="${ordre.totalprice == 0}">
+                            <td class="text-center">Forespørgsel under behandling</td>
+                        </c:if>
+                        <c:if test="${ordre.totalprice > 1}">
+                            <td class="text-center">${ordre.totalprice} kr</td>
+                        </c:if>
 
-                            <td class="text-center">${ordre.status}</td>
-                        </tr>
-                        </tbody>
+                        <td class="text-center">${ordre.status}</td>
+                    </tr>
+                    </tbody>
 
-                    </c:forEach>
+                </c:forEach>
 
             </table>
         </div>

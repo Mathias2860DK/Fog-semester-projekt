@@ -1,14 +1,14 @@
 package business.entities;
 
 public class DeliveryInfo {
-   private int deliveryInfoId;
-   private int userId; //UU-id
-   private String name;
-   private String address;
-   private String zipCodeCity;
-   private int phone;
-   private String email;
-   private String remarks;
+    private int deliveryInfoId;
+    private int userId; //UU-id
+    private String name;
+    private String address;
+    private String zipCodeCity;
+    private int phone;
+    private String email;
+    private String remarks;
 
     public DeliveryInfo(int userId, String name, String address, String zipCodeCity, int phone, String email, String remarks) {
         this.userId = userId;

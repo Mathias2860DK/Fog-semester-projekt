@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShowMaterialsPage extends CommandProtectedPage {
-MaterialsFacade materialsFacade;
+    MaterialsFacade materialsFacade;
+
     public ShowMaterialsPage(String pageToShow, String role) {
         super(pageToShow, role);
         materialsFacade = new MaterialsFacade(database);
@@ -22,8 +23,8 @@ MaterialsFacade materialsFacade;
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
         List<Material> materialList = new ArrayList<>();
-materialList = materialsFacade.getAllMaterials();
-session.setAttribute("materialList",materialList);
+        materialList = materialsFacade.getAllMaterials();
+        session.setAttribute("materialList", materialList);
         return pageToShow;
     }
 }

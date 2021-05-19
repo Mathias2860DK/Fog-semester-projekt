@@ -7,7 +7,6 @@ import java.sql.*;
 
 /**
  * The UserMapper class function is retrieve,delete and insert into the database via SQL-queries
- *
  */
 public class UserMapper {
     private Database database;
@@ -17,8 +16,8 @@ public class UserMapper {
     }
 
 //Creates user in the database
+
     /**
-     *
      * @param user The Users data
      * @throws UserException If something goes wrong
      */
@@ -47,8 +46,7 @@ public class UserMapper {
     }
 
     /**
-     *
-     * @param email Login email
+     * @param email    Login email
      * @param password password
      * @return The user
      * @throws UserException If something goes wrong.

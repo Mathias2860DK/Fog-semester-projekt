@@ -17,7 +17,8 @@
         <div class="formbuilder-block">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="${pageContext.request.contextPath}/fc/customizecarport" method="post" class="ng-pristine ng-valid">
+                    <form action="${pageContext.request.contextPath}/fc/customizecarport" method="post"
+                          class="ng-pristine ng-valid">
                         <div id="table" class="form-horizontal col-md-12 col-xs-12">
                             <div class="form-group">
                                 <div class="col-md-12 col-xs-12">
@@ -33,7 +34,8 @@
                                     <label title="Carport bredde" for="Input_864110810">
                                         Carport bredde
                                     </label>
-                                    <select class="form-control" name="carport_width" title="carport width"><option selected="selected" value="">Vælg bredde</option>
+                                    <select class="form-control" name="carport_width" title="carport width">
+                                        <option selected="selected" value="">Vælg bredde</option>
                                         <option value="240">240 cm</option>
                                         <option value="270">270 cm</option>
                                         <option value="300">300 cm</option>
@@ -63,7 +65,9 @@
                                     <label title="carport length" for="carport_length_options">
                                         Carport længde
                                     </label>
-                                    <select class="form-control" id="carport_length_options" name="carport_length" title="carport length"><option selected="selected" value="">Vælg længde</option>
+                                    <select class="form-control" id="carport_length_options" name="carport_length"
+                                            title="carport length">
+                                        <option selected="selected" value="">Vælg længde</option>
                                         <option value="240">240 cm</option>
                                         <option value="270">270 cm</option>
                                         <option value="300">300 cm</option>
@@ -95,7 +99,9 @@
                                     <label title="rooftype/colors" for="rooftype_options">
                                         Tag
                                     </label>
-                                    <select class="form-control" id="rooftype_options" name="roof" title="rooftype/colors"><option selected="selected" value="">Vælg tagtype/farve</option>
+                                    <select class="form-control" id="rooftype_options" name="roof"
+                                            title="rooftype/colors">
+                                        <option selected="selected" value="">Vælg tagtype/farve</option>
 
                                         <c:forEach var="roof_type" items="${applicationScope.roofTypeList}">
                                             <option value="${roof_type.toString()}">${roof_type.toString()}</option>
@@ -123,7 +129,8 @@
                                     <label title="shed size" for="shed-size">
                                         Redskabsrum størrelse
                                     </label>
-                                    <select class="form-control" id="shed-size" name="shed-size" title="shed size"><option selected="selected" value="no-shed">Ønsker ikke redskabsrum</option>
+                                    <select class="form-control" id="shed-size" name="shed-size" title="shed size">
+                                        <option selected="selected" value="no-shed">Ønsker ikke redskabsrum</option>
                                         <option value="halfSize">Halv bredde</option>
                                         <option value="fullSize">Fuld bredde</option>
                                     </select>
@@ -135,41 +142,45 @@
                                     <hr>
                                 </div>
 
-                                    <div class="col-md-6 col-xs-12">
-                                        <c:if test="${requestScope.error != null}">
-                                            <p style="color: red">${requestScope.error}</p>
-                                        </c:if>
-                                        <input type="submit" name="submit_request" title="Send request" value="Send forespørgsel" class="">
-                                        <input type="submit" name="show_drawing" title="show drawing" value="Vis tegning" class="">
-                                        <div style="margin-top: 3em;margin-bottom: 3em;">
-                                            Klik her for at se din SVG tegning af din <a href="${pageContext.request.contextPath}/fc/showsvg"> carport </a>
-                                        </div>
-                                        <c:if test="${requestScope.svgdrawing != null}">
-                                            ${requestScope.svgdrawing}
-                                        </c:if>
+                                <div class="col-md-6 col-xs-12">
+                                    <c:if test="${requestScope.error != null}">
+                                        <p style="color: red">${requestScope.error}</p>
+                                    </c:if>
+                                    <input type="submit" name="submit_request" title="Send request"
+                                           value="Send forespørgsel" class="">
+                                    <input type="submit" name="show_drawing" title="show drawing" value="Vis tegning"
+                                           class="">
+                                    <div style="margin-top: 3em;margin-bottom: 3em;">
+                                        Klik her for at se din SVG tegning af din <a
+                                            href="${pageContext.request.contextPath}/fc/showsvg"> carport </a>
                                     </div>
+                                    <c:if test="${requestScope.svgdrawing != null}">
+                                        ${requestScope.svgdrawing}
+                                    </c:if>
                                 </div>
                             </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="form-group">
 
-                            </div>
+                        </div>
 
 
-                    </form>        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
-            <c:if test="${sessionScope.role == 'employee' }">
-                <p style="font-size: larger">This is what you can do,
-                    since your are logged in as an employee</p>
-                 <p><a href="fc/employeepage">Employee Page</a>
-             </c:if>
+        <c:if test="${sessionScope.role == 'employee' }">
+            <p style="font-size: larger">This is what you can do,
+                since your are logged in as an employee</p>
+            <p><a href="fc/employeepage">Employee Page</a>
+        </c:if>
 
-             <c:if test="${sessionScope.role == 'customer' }">
-                <p style="font-size: larger">This is what you can do, since your
-                    are logged in as a customer</p>
-                <a href="fc/customerpage">Customer Page</a>
-            </c:if>
+        <c:if test="${sessionScope.role == 'customer' }">
+            <p style="font-size: larger">This is what you can do, since your
+                are logged in as a customer</p>
+            <a href="fc/customerpage">Customer Page</a>
+        </c:if>
 
         </div>
 
