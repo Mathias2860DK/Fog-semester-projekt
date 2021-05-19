@@ -54,6 +54,7 @@
                     <li>Dato: ${sessionScope.order.date}</li>
                     <li>Status: ${sessionScope.order.status}</li>
                     <li>Nuværende pris på ordre: ${sessionScope.order.totalprice}</li>
+                    <li>Email: ${sessionScope.order.email}</li>
                 </ul>
             </div>
 

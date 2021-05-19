@@ -4,6 +4,7 @@ import business.entities.Order;
 import business.exceptions.UserException;
 import business.persistence.OrderMapper;
 import business.services.DeliveryInfoFacade;
+import business.services.OrderFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,12 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetOrdersCommand extends CommandProtectedPage {
-    private OrderMapper orderMapper;
+    private OrderFacade orderFacade;
     private DeliveryInfoFacade deliveryInfoFacade;
 
     public GetOrdersCommand(String pageToShow, String role) {
         super(pageToShow, role);
-        orderMapper = new OrderMapper(database);
+        orderFacade = new OrderFacade(database);
         deliveryInfoFacade = new DeliveryInfoFacade(database);
 
     }
@@ -25,7 +26,7 @@ public class GetOrdersCommand extends CommandProtectedPage {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
-        List<Order> orderList = orderMapper.getAllOrders();
+        List<Order> orderList = orderFacade.getAllOrders();
         List<Order> sortedList = new ArrayList<>();
         String email = null;
         for (Order thisOrder : orderList) {

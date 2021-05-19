@@ -22,6 +22,7 @@ import java.util.List;
 public class ShowOrderDetailsCommand extends CommandProtectedPage {
     private OrderFacade orderFacade;
     private MaterialsFacade materialsFacade;
+    private DeliveryInfoFacade deliveryInfoFacade;
     private CalcCarport calcCarport = new CalcCarport();
     double totalPrice = 0;
 
@@ -29,6 +30,7 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
         super(pageToShow, role);
         orderFacade = new OrderFacade(database);
         materialsFacade = new MaterialsFacade(database);
+        deliveryInfoFacade = new DeliveryInfoFacade(database);
     }
 
 
@@ -39,6 +41,7 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
         Order order = null;
         Carport carport = null;
         int orderIdInt = 0;
+        String email = null;
         try {
             orderIdInt = Integer.parseInt(orderId);
 
@@ -48,9 +51,10 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
         order = orderFacade.getOrderById(orderIdInt);
         carport = new Carport(order.getCarport().getCarportWidth(), order.getCarport().getCarportWidth(), "");
         totalPrice = calcCarport.totalPrice(carport, order, materialsFacade);
+        email = deliveryInfoFacade.getCustomerEmail(order.getDeliveryInfoId());
+        order.setEmail(email);
         session.setAttribute("carport", carport);
         session.setAttribute("order", order);
-        System.out.println(totalPrice);
 
 
         return pageToShow;
