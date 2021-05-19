@@ -147,22 +147,20 @@
                 <label>Salgspris kr.</label>
                     <input name="salesprice" type="text" class="form-control" value="${sessionScope.salesprice}">
                 </div>
-                <button type="submit" class="btn btn-success" name="salesprice">Opdater salgspris</button>
+                <button style="margin-top: 25px" type="submit" class="btn btn-danger" name="salesprice">Opdater salgspris</button>
             </form>
         </div>
-
+        <div class="col-md-12 text-center">
         <form action="${pageContext.request.contextPath}/fc/sendOfferToCustomer" method="post" class="ng-pristine ng-valid">
-            <button type="submit" class="btn btn-primary" name="sendOfferToId" value="${sessionScope.order.orderId}">Send tilbud til kunden</button>
-            <button type="submit" class="btn btn-primary" name="statusPaid" value="${sessionScope.order.orderId}">Markér ordren som betalt</button>
+            <button style="margin-right: 40px" type="submit" class="btn btn-success" name="sendOfferToId" value="${sessionScope.order.orderId}">Send tilbud til kunden</button>
+            <button type="submit" class="btn btn-success" name="statusPaid" value="${sessionScope.order.orderId}">Markér ordren som betalt</button>
         </form>
 
-
-        <p>Klik her for at se styklisten</p>
 
         <form action="${pageContext.request.contextPath}/fc/showBomAdminOrder" method="post" class="ng-pristine ng-valid">
-            <button type="submit" class="btn btn-primary" name="bomByOrderId" value="${sessionScope.order.orderId}">Se stykliste</button>
+            <button style="margin-top: 25px" type="submit" class="btn btn-info" name="bomByOrderId" value="${sessionScope.order.orderId}">Se stykliste</button>
         </form>
-
+        </div>
         <c:if test="${requestScope.bomByOrderId != null }">
             <div>
                 <div class="table-responsive">
@@ -170,6 +168,7 @@
                         <thead>
                         <tr>
                             <th>Beskrivelse</th>
+                            <th>Længde</th>
                             <th>Antal</th>
                             <th>Enhed</th>
                             <th>Beskrivelse af brug</th>
@@ -178,7 +177,8 @@
                         <c:forEach var="material" items="${sessionScope.carport.materialList}">
                         <tbody>
                         <tr>
-                            <td class="text-center">${material.materialType}</td>
+                            <td class="text-center">${material.height}x${material.width} ${material.materialType}</td>
+                            <td class="text-center">${material.length}</td>
                             <td class="text-center">${material.amount}</td>
                             <td class="text-center">${material.unit}</td>
                             <td class="text-center">${material.description}</td>

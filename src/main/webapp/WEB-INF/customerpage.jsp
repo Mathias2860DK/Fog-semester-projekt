@@ -10,11 +10,10 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a Customer of our wonderful site.
-        Role: ${sessionScope.role}
 
-        <p>Her er alle ordrer:</p>
+        <div class="col-xs-1 text-center" style="margin-bottom: 45px">
+            <h1 class="display-4">Mine ordre</h1>
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>

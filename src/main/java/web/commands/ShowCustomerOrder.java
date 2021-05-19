@@ -47,11 +47,16 @@ public class ShowCustomerOrder extends CommandProtectedPage {
             orderFacade.deleteOrder(order.getOrderId());
             deliveryInfoFacade.deleteDeliveryInfo(deliveryInfoId);
 
-            request.setAttribute("sucess","Ordren er slette");
+            request.setAttribute("sucess","Ordren er slettet");
             session.setAttribute("order",null);
             return pageToShow;
         }
-
+String accept = request.getParameter("accept-del-info-id");
+        if (accept != null){
+            order = (Order) session.getAttribute("order");
+            orderFacade.updateStatus(order.getOrderId(),"accepted");
+            request.setAttribute("sucess","Ordren er accepteret. Du bliver kontaktet snarest muligt");
+        }
 
         return pageToShow;
     }

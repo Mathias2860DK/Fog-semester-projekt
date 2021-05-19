@@ -32,7 +32,9 @@ private MaterialsFacade materialsFacade;
         carport = order.getCarport();
         CalcCarport calcCarport = new CalcCarport();
         carport = calcCarport.getCarportWithMaterials(carport,materialsFacade);
+        calcCarport.totalPrice(carport,order, materialsFacade);
         session.setAttribute("carport",carport);
+
 
 
         return pageToShow;
