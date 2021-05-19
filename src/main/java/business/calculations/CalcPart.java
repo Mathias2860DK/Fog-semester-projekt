@@ -38,9 +38,9 @@ return amount;
         //((carportWidth+5)/subStarboardLength)*2+1; is the best for economical reasons,
         // but the following is beautiful and manageable;
         int amount = 0;
-        if(carportWidth<subStarboardBackAndFrontLength){
+        if(carportWidth<subStarboardBackAndFrontLength || carportWidth == subStarboardBackAndFrontLength){
             amount = 2;
-        } else if(carportWidth>subStarboardBackAndFrontLength && carportWidth < (subStarboardBackAndFrontLength*2)){
+        } else if(carportWidth>subStarboardBackAndFrontLength || carportWidth < (subStarboardBackAndFrontLength*2) || carportWidth == (subStarboardBackAndFrontLength*2)){
             amount = 4;
         } else if(carportWidth>(subStarboardBackAndFrontLength*2)){
             amount = 6;
@@ -53,7 +53,7 @@ return amount;
         //(carportLength/subStarboardLength)*2+1; is the best for economical reasons,
         // but the following is beautiful and manageable;
         int amount = 0;
-        if(carportLength<subStarboardSidesLength){
+        if(carportLength<subStarboardSidesLength || carportLength == subStarboardSidesLength){
             amount = 2;
         } else if(carportLength>subStarboardSidesLength){
             amount = 4;
@@ -65,9 +65,9 @@ return amount;
         //((carportWidth+5)/overSternForLength)*2+1; is the best for economical reasons,
         // but the following is beautiful and manageable;
         int amount = 0;
-        if(carportWidth<overSternForLength){
+        if(carportWidth<overSternForLength || carportWidth == overSternForLength){
             amount = 1;
-        } else if(carportWidth>overSternForLength && carportWidth < (overSternForLength*2)){
+        } else if(carportWidth>overSternForLength || carportWidth < (overSternForLength*2) || carportWidth == (overSternForLength*2)){
             amount = 2;
         } else if(carportWidth>(overSternForLength*2)){
             amount = 3;
@@ -79,7 +79,7 @@ return amount;
         //(carportLength/OverSternSiderLength)*2+1; is the best for economical reasons,
         // but the following is beautiful and manageable;
         int amount = 0;
-        if (carportLength < overSternSiderLength) {
+        if (carportLength < overSternSiderLength || carportLength == overSternSiderLength) {
             amount = 2;
         } else if (carportLength > overSternSiderLength) {
             amount = 4;
@@ -91,7 +91,7 @@ return amount;
         //(carportLength/vandBrædtSiderLength)*2+1; is the best for economical reasons,
         // but the following is beautiful and manageable;
         int amount = 0;
-        if (carportLength < vandBrædtSiderLength) {
+        if (carportLength < vandBrædtSiderLength || carportLength == vandBrædtSiderLength) {
             amount = 2;
         } else if (carportLength > vandBrædtSiderLength) {
             amount = 4;
@@ -102,9 +102,9 @@ return amount;
         //((carportWidth+5)/overSternForLength)+1; is the best for economical reasons,
         // but the following is beautiful and manageable;
         int amount = 0;
-        if(carportWidth<vandBrædtFrontLength){
+        if(carportWidth<vandBrædtFrontLength || carportWidth == vandBrædtFrontLength){
             amount = 1;
-        } else if(carportWidth>vandBrædtFrontLength ){
+        } else if(carportWidth>vandBrædtFrontLength || carportWidth < (vandBrædtFrontLength*2) || carportWidth == (vandBrædtFrontLength*2) ){
             amount = 2;
         } else if(carportWidth>(vandBrædtFrontLength*2)){
             amount = 3;
