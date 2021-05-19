@@ -25,4 +25,7 @@ public class DeliveryInfoFacade {
     public List<DeliveryInfo> getAllCustomers() throws UserException {
         return deliveryInfoMapper.getAllCustomers();
     }
+    public String getCustomerEmail(int deliveryId ) throws UserException{
+            return deliveryInfoMapper.getCustomerEmail(deliveryId);
+    }
 }

@@ -3,6 +3,7 @@ package web.commands;
 import business.entities.Order;
 import business.exceptions.UserException;
 import business.persistence.OrderMapper;
+import business.services.DeliveryInfoFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,9 +13,12 @@ import java.util.List;
 
 public class GetOrdersCommand extends CommandProtectedPage {
     private OrderMapper orderMapper;
+    private DeliveryInfoFacade deliveryInfoFacade;
     public GetOrdersCommand(String pageToShow, String role) {
         super(pageToShow, role);
         orderMapper = new OrderMapper(database);
+        deliveryInfoFacade = new DeliveryInfoFacade(database);
+
     }
 
     @Override
@@ -22,6 +26,13 @@ public class GetOrdersCommand extends CommandProtectedPage {
         HttpSession session = request.getSession();
         List<Order> orderList = orderMapper.getAllOrders();
         List<Order> sortedList = new ArrayList<>();
+        String email = null;
+        List<String>emailList = new ArrayList<>();
+        for (Order thisOrder:orderList) {
+            email = deliveryInfoFacade.getCustomerEmail(thisOrder.getDeliveryInfoId());
+            emailList.add(email);
+        }
+        request.setAttribute("emailList",emailList);
         int maxLength = orderList.size();
         request.setAttribute("sortedList", orderList);
         String sortBy = request.getParameter("sortBy");

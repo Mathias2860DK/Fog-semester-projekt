@@ -96,6 +96,39 @@ public class DeliveryInfoMapper {
             throw new UserException(ex.getMessage());
         }
     }
+    public List<DeliveryInfo> getAllDeliveryInfo() throws UserException {
+        List<DeliveryInfo> customerList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+
+            String sql = "SELECT * FROM delivery_info;";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int deliveryInfoId = rs.getInt("delivery_info_id");
+                    int userId = rs.getInt("user_id");
+                    String navn = rs.getString("name");
+                    String adresse = rs.getString("adress");
+                    String zip = rs.getString("zipcode_city");
+                    int telefon = rs.getInt("phone");
+                    String email = rs.getString("email");
+                    String remark = rs.getString("remarks");
+
+
+                    DeliveryInfo deliveryInfos = new DeliveryInfo(deliveryInfoId,userId, navn, adresse, zip, telefon, email, remark);
+
+                    customerList.add(deliveryInfos);
+                }
+                return customerList;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+
+        } catch (SQLException | UserException ex) {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
 
     public List<DeliveryInfo> getAllCustomers() throws UserException {
         List<DeliveryInfo> customerList = new ArrayList<>();
@@ -137,5 +170,14 @@ public class DeliveryInfoMapper {
         } catch (SQLException | UserException ex) {
             throw new UserException(ex.getMessage());
         }
+    }
+    public String getCustomerEmail(int deliveryId) throws UserException {
+        String email = null;
+        for (DeliveryInfo deliveryInfo : getAllDeliveryInfo()) {
+            if (deliveryId == deliveryInfo.getDeliveryInfoId()) {
+                email = deliveryInfo.getEmail();
+            }
+        }
+        return email;
     }
 }
