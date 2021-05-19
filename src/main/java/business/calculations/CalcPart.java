@@ -129,47 +129,55 @@ public class CalcPart {
             amount = 2;
         } else if (roofAmount > 8 && roofAmount < 12 || roofAmount == 12) {
             amount = 3;
-        } else if (roofAmount > 12 && roofAmount < 16 || roofAmount == 16){
+        } else if (roofAmount > 12 && roofAmount < 16 || roofAmount == 16) {
             amount = 4;
-        } else if (roofAmount > 16 && roofAmount < 20 || roofAmount == 20){
-        amount = 5;
-    }
+        } else if (roofAmount > 16 && roofAmount < 20 || roofAmount == 20) {
+            amount = 5;
+        }
         return amount;
     }
 
-    public static int calcPerforatedTape(){
+    public static int calcPerforatedTape() {
         return 2;
     }
-    public static int calcUniversalFittingsRight(int amountOfRafters){
+
+    public static int calcUniversalFittingsRight(int amountOfRafters) {
         return amountOfRafters;
     }
-    public static int calcUniversalFittingsLeft(int amountOfRafters){
+
+    public static int calcUniversalFittingsLeft(int amountOfRafters) {
         return amountOfRafters;
     }
-    public static int calcScrews60mm(){
+
+    public static int calcScrews60mm() {
         return 1;
     }
-    public static int calcFittingScrews(int universalFittingsRight, int universalFittingsLeft){
+
+    public static int calcFittingScrews(int universalFittingsRight, int universalFittingsLeft) {
         int amount = 0;
-        amount =((((universalFittingsRight + universalFittingsLeft) * 3 * 3) / 250)+1)+1;
+        amount = ((((universalFittingsRight + universalFittingsLeft) * 3 * 3) / 250) + 1) + 1;
 
         return amount;
     }
-    public static int calcCarriageBolt(int posts){
+
+    public static int calcCarriageBolt(int posts) {
         int amount = 0;
-        amount = posts*2;
+        amount = posts * 2;
 
         return amount;
     }
-    public static int calcSquareWasher(int posts){
+
+    public static int calcSquareWasher(int posts) {
         int amount = 0;
-        amount = posts+1;
+        amount = posts + 1;
         return amount;
     }
-    public static int calcScrews70mm(){
+
+    public static int calcScrews70mm() {
         return 2;
     }
-    public static int calcScrews50mm(){
+
+    public static int calcScrews50mm() {
         return 2;
     }
 
