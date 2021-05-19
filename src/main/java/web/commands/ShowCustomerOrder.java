@@ -33,6 +33,9 @@ public class ShowCustomerOrder extends CommandProtectedPage {
             for (int i = 0; i < orderList.size(); i++) {
                 if (orderList.get(i).getOrderId() == orderIdInt) {
                     order = orderList.get(i);
+                   if (order.getStatus().equals("offer sent")){
+                       request.setAttribute("offer-sent","offer sent");
+                   }
                     session.setAttribute("order", order);
                     return pageToShow;
                 } else {
