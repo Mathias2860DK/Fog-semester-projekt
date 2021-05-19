@@ -10,8 +10,6 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a Customer of our wonderful site.
         <c:if test="${sessionScope.order != null }">
         <div class="table-responsive">
             <table class="table table-bordered">
@@ -59,6 +57,7 @@
             <div class="col-md-12 text-center">
         <form action="${pageContext.request.contextPath}/fc/showcustomerorder"  method="POST">
             <button name="delete-del-info-id" class="btn btn-danger" type="submit" value="${sessionScope.order.deliveryInfoId}">Slet ordre</button>
+            <button name="accept-del-info-id" class="btn btn-success" type="submit" value="${sessionScope.order.deliveryInfoId}">Accepter tilbud</button>
         </form>
             </div>
         </c:if>
