@@ -9,6 +9,15 @@ public class Order {
     private Timestamp date;
     private String status;
     private double totalprice;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public int getOrderId() {
         return orderId;

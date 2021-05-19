@@ -38,9 +38,7 @@
         </thead>
             <c:if test="${requestScope.sortedList != null}">
 
-                <c:set var="count" value="-1" scope="page" />
         <c:forEach var="ordre" items="${requestScope.sortedList}">
-            <c:set var="count" value="${count + 1}" scope="page"/>
             <tbody>
             <tr>
                 <td class="text-center">
@@ -50,7 +48,7 @@
                     </form>
                 </td>
                 <td class="text-center">${ordre.date}</td>
-                <td class="text-center">${requestScope.emailList.get(count)}</td>
+                <td class="text-center">${ordre.email}</td>
                 <td class="text-center">${ordre.totalprice}</td>
                 <td class="text-center">${ordre.status}</td>
             </tr>

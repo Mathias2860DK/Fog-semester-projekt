@@ -27,12 +27,10 @@ public class GetOrdersCommand extends CommandProtectedPage {
         List<Order> orderList = orderMapper.getAllOrders();
         List<Order> sortedList = new ArrayList<>();
         String email = null;
-        List<String>emailList = new ArrayList<>();
         for (Order thisOrder:orderList) {
             email = deliveryInfoFacade.getCustomerEmail(thisOrder.getDeliveryInfoId());
-            emailList.add(email);
+            thisOrder.setEmail(email);
         }
-        request.setAttribute("emailList",emailList);
         int maxLength = orderList.size();
         request.setAttribute("sortedList", orderList);
         String sortBy = request.getParameter("sortBy");
