@@ -110,7 +110,7 @@ public class CalcCarport {
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 25) {
-                thisMaterial.setAmount(CalcPart.calcPostAmount(carportLength));
+                thisMaterial.setAmount(CalcPart.calcCarriageBolt(CalcPart.calcPostAmount(carportLength)));
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 26) {
@@ -245,7 +245,7 @@ public class CalcCarport {
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 25) {
-                thisMaterial.setAmount(CalcPart.calcPostAmount(carportLength));
+                thisMaterial.setAmount(CalcPart.calcCarriageBolt(CalcPart.calcPostAmount(carportLength)));
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 26) {

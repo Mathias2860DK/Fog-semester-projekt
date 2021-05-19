@@ -121,17 +121,19 @@ public class CalcPart {
         return amount;
     }
 
-    public static int calcPlastmoScrew(int roof) {
+    public static int calcPlastmoScrew(int roofAmount) {
         int amount = 0;
-        if (roof < 3 || roof == 3) {
+        if (roofAmount < 3 || roofAmount == 3) {
             amount = 1;
-        } else if (roof > 3 && roof < 6 || roof == 6) {
+        } else if (roofAmount > 4 && roofAmount < 8 || roofAmount == 8) {
             amount = 2;
-        } else if (roof > 6 && roof < 9 || roof == 9) {
+        } else if (roofAmount > 8 && roofAmount < 12 || roofAmount == 12) {
             amount = 3;
-        } else if (roof > 9 && roof < 12 || roof == 12){
+        } else if (roofAmount > 12 && roofAmount < 16 || roofAmount == 16){
             amount = 4;
-        }
+        } else if (roofAmount > 16 && roofAmount < 20 || roofAmount == 20){
+        amount = 5;
+    }
         return amount;
     }
 
