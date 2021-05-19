@@ -57,7 +57,9 @@
             <div class="col-md-12 text-center">
         <form action="${pageContext.request.contextPath}/fc/showcustomerorder"  method="POST">
             <button name="delete-del-info-id" class="btn btn-danger" type="submit" value="${sessionScope.order.deliveryInfoId}">Slet ordre</button>
+            <c:if test="${requestScope.offer-sent == 'offer sent'}">
             <button name="accept-del-info-id" class="btn btn-success" type="submit" value="${sessionScope.order.deliveryInfoId}">Accepter tilbud</button>
+            </c:if>
         </form>
             </div>
         </c:if>
