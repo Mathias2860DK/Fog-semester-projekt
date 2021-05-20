@@ -19,6 +19,7 @@ public class CalcCarport {
         int roofWidth = 0;
         int amountOfUniversalFittingsRight = 0;
         int amountOfUniversalFittingsLeft = 0;
+        int amountOfNogginPiece = 0;
         boolean hasShed = false;
         if(carport.getShed() == null){ hasShed = false; }
         else { hasShed = true; }
@@ -47,11 +48,13 @@ public class CalcCarport {
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 9) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcNoggingPieceGable(hasShed, carport.getShed(),thisMaterial.getLength()));
+                amountOfNogginPiece = amountOfNogginPiece + thisMaterial.getAmount();
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 10) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcNoggingPieceSides(hasShed));
+                amountOfNogginPiece = amountOfNogginPiece + thisMaterial.getAmount();
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 11) {
@@ -71,7 +74,8 @@ public class CalcCarport {
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 15) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcSheating(hasShed, carport.getShed()));
+                totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 16) {
                 thisMaterial.setAmount(CalcPart.calcVandBrædtSider(carportLength, thisMaterial.getLength()));
@@ -140,7 +144,8 @@ public class CalcCarport {
 
 
             } else if (thisMaterial.getMaterialId() == 31) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcAngleFitting(hasShed,amountOfNogginPiece));
+                totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             }
 
@@ -158,6 +163,7 @@ public class CalcCarport {
         int amountOfUniversalFittingsRight = 0;
         int amountOfUniversalFittingsLeft = 0;
         boolean hasShed = false;
+        int amountOfNogginPiece = 0;
         if(carport.getShed() == null){ hasShed = false; }
         else { hasShed = true; }
 
@@ -186,11 +192,13 @@ public class CalcCarport {
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 9) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcNoggingPieceGable(hasShed, carport.getShed(),thisMaterial.getLength()));
+                amountOfNogginPiece = amountOfNogginPiece + thisMaterial.getAmount();
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 10) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcNoggingPieceSides(hasShed));
+                amountOfNogginPiece = amountOfNogginPiece + thisMaterial.getAmount();
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 11) {
@@ -210,7 +218,7 @@ public class CalcCarport {
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 15) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcSheating(hasShed,carport.getShed()));
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 16) {
@@ -278,7 +286,7 @@ public class CalcCarport {
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 31) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcAngleFitting(hasShed,amountOfNogginPiece));
                 materialList.add(thisMaterial);
 
             }

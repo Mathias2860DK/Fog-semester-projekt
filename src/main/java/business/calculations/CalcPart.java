@@ -201,5 +201,41 @@ public class CalcPart {
         else if (hasShed == false){ amount = 0; }
         return amount;
     }
+    public static int calcSheating(boolean hasShed, Shed shed){
+        int amount = 0;
+        double circumference = 0;
+        double shedLength = shed.getShedLength()/100;
+        double shedWidth = shed.getShedWidth()/100;
+        if (hasShed == true){
+            circumference = (shedWidth+shedLength)*2;
+            amount = (int) ((circumference * (138.4/100))+1)*10;
+
+        } else if (hasShed == false){ amount = 0; }
+
+        return amount;
+    }
+    public static int calcNoggingPieceGable(boolean hasShed, Shed shed, int materialLength){
+        int amount = 0;
+        if (hasShed == true){
+
+        amount = (((shed.getShedLength()*2)/materialLength)+1)*3;
+
+        } else if (hasShed == false){ amount = 0; }
+        return amount;
+    }
+
+    public static int calcNoggingPieceSides(boolean hasShed){
+        int amount = 0;
+        if (hasShed == true){ amount = 4; }
+        else if (hasShed == false){ amount = 0; }
+        return amount;
+    }
+
+    public static int calcAngleFitting(boolean hasShed,int amountNoggingPiece){
+        int amount = 0;
+        if (hasShed == true){ amount = amountNoggingPiece*2; }
+        else if (hasShed == false){ amount = 0; }
+        return amount;
+    }
 
 }
