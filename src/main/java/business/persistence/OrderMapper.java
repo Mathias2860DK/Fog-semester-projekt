@@ -39,8 +39,13 @@ public class OrderMapper {
                 ps.setInt(2, order.getCarport().getCarportWidth());
                 ps.setInt(3, order.getCarport().getCarportLength());
                 ps.setString(4, order.getCarport().getRoof());
-                ps.setInt(5, 0);//carport.getShedWidth());
-                ps.setInt(6, 0);//getShedLength);
+                if(order.getCarport().getShed()== null) {
+                    ps.setInt(5, 0);//carport.getShedWidth());
+                    ps.setInt(6, 0);//getShedLength);
+                } else {
+                    ps.setInt(5, order.getCarport().getShed().getShedWidth());
+                    ps.setInt(6, order.getCarport().getShed().getShedLength());
+                }
                 ps.setTimestamp(7, order.getDate());
                 ps.setString(8, order.getStatus());
                 ps.setDouble(9, order.getTotalprice());

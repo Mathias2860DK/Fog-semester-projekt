@@ -1,9 +1,6 @@
 package business.calculations;
 
-import business.entities.Bom;
-import business.entities.Carport;
-import business.entities.Material;
-import business.entities.Order;
+import business.entities.*;
 import business.exceptions.UserException;
 import business.services.MaterialsFacade;
 
@@ -21,8 +18,12 @@ public class CalcCarport {
         int amountOfUniversalFittingsLeft = 0;
         int amountOfNogginPiece = 0;
         boolean hasShed = false;
-        if(carport.getShed() == null){ hasShed = false; }
-        else { hasShed = true; }
+        Shed shed = order.getCarport().getShed();
+        if(shed.getShedWidth() == 0) {
+            hasShed = false;
+        } else {
+            hasShed = true;
+        }
 
 
         for (Material thisMaterial : materialsFacade.getAllMaterials()) {
@@ -48,7 +49,7 @@ public class CalcCarport {
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 9) {
-                thisMaterial.setAmount(CalcPart.calcNoggingPieceGable(hasShed, carport.getShed(),thisMaterial.getLength()));
+                thisMaterial.setAmount(CalcPart.calcNoggingPieceGable(hasShed, shed,thisMaterial.getLength()));
                 amountOfNogginPiece = amountOfNogginPiece + thisMaterial.getAmount();
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
@@ -74,7 +75,7 @@ public class CalcCarport {
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 15) {
-                thisMaterial.setAmount(CalcPart.calcSheating(hasShed, carport.getShed()));
+                thisMaterial.setAmount(CalcPart.calcSheating(hasShed, shed));
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 16) {
@@ -164,7 +165,7 @@ public class CalcCarport {
         int amountOfUniversalFittingsLeft = 0;
         boolean hasShed = false;
         int amountOfNogginPiece = 0;
-        if(carport.getShed() == null){ hasShed = false; }
+        if(carport.getShed().getShedWidth() == 0){ hasShed = false; }
         else { hasShed = true; }
 
 

@@ -124,7 +124,7 @@ public class CalcPart {
 
     public static int calcPlastmoScrew(int roofAmount) {
         int amount = 0;
-        if (roofAmount < 3 || roofAmount == 3) {
+        if (roofAmount < 4 || roofAmount == 4) {
             amount = 1;
         } else if (roofAmount > 4 && roofAmount < 8 || roofAmount == 8) {
             amount = 2;
@@ -211,11 +211,10 @@ public class CalcPart {
         int amount = 0;
         double circumference = 0;
         if (hasShed == true){
-            double shedLength = shed.getShedLength()/100;
-            double shedWidth = shed.getShedWidth()/100;
+            float shedLength = shed.getShedLength()/100;
+            float shedWidth = shed.getShedWidth()/100;
             circumference = (shedWidth+shedLength)*2;
             amount = (int) ((circumference * (138.4/100))+1)*10;
-
 
         } else if (hasShed == false){ amount = 0; }
 
@@ -225,7 +224,7 @@ public class CalcPart {
         int amount = 0;
         if (hasShed == true){
 
-        amount = (((shed.getShedLength()*2)/materialLength)+1)*3;
+        amount = (((shed.getShedLength()*2)/materialLength)*3)+1;
 
         } else if (hasShed == false){ amount = 0; }
         return amount;

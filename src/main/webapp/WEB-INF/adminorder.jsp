@@ -143,17 +143,17 @@
             </div>
 
             <c:if test="${sessionScope.order.status != 'paid'}">
-            <form action="${pageContext.request.contextPath}/fc/updatecarportprice" method="post"
-                  class="ng-pristine ng-valid">
-                <div class="form-group">
-                    <label>Salgspris kr.</label>
-                    <input name="salesprice" type="text" class="form-control" value="${sessionScope.salesprice}">
-                </div>
+                <form action="${pageContext.request.contextPath}/fc/updatecarportprice" method="post"
+                      class="ng-pristine ng-valid">
+                    <div class="form-group">
+                        <label>Salgspris kr.</label>
+                        <input name="salesprice" type="text" class="form-control" value="${sessionScope.salesprice}">
+                    </div>
 
-                <button style="margin-top: 25px" type="submit" class="btn btn-danger" name="salesprice">Opdater
-                    salgspris
-                </button>
-            </form>
+                    <button style="margin-top: 25px" type="submit" class="btn btn-danger" name="salesprice">Opdater
+                        salgspris
+                    </button>
+                </form>
             </c:if>
         </div>
 
@@ -161,15 +161,16 @@
             <form action="${pageContext.request.contextPath}/fc/sendOfferToCustomer" method="post"
                   class="ng-pristine ng-valid">
                 <c:if test="${sessionScope.order.status == 'offer sent' || sessionScope.order.status == 'request'}">
-                <button style="margin-right: 40px" type="submit" class="btn btn-success" name="sendOfferToId"
-                        value="${sessionScope.order.orderId}">Send tilbud til kunden
-                </button>
+                    <button style="margin-right: 40px" type="submit" class="btn btn-success" name="sendOfferToId"
+                            value="${sessionScope.order.orderId}">Send tilbud til kunden
+                    </button>
                 </c:if>
 
                 <c:if test="${sessionScope.order.status == 'offer sent' || sessionScope.order.status == 'accepted'}">
-                <button type="submit" class="btn btn-success" name="statusPaid" value="${sessionScope.order.orderId}">
-                    Markér ordren som betalt
-                </button>
+                    <button type="submit" class="btn btn-success" name="statusPaid"
+                            value="${sessionScope.order.orderId}">
+                        Markér ordren som betalt
+                    </button>
                 </c:if>
             </form>
 
@@ -195,15 +196,22 @@
                         </tr>
                         </thead>
                         <c:forEach var="material" items="${sessionScope.carport.materialList}">
-                            <tbody>
-                            <tr>
-                                <td class="text-center">${material.height}x${material.width} ${material.materialType}</td>
-                                <td class="text-center">${material.length}</td>
-                                <td class="text-center">${material.amount}</td>
-                                <td class="text-center">${material.unit}</td>
-                                <td class="text-center">${material.description}</td>
-                            </tr>
-                            </tbody>
+                            <c:if test="${material.amount != 0 }">
+                                <tbody>
+                                <tr>
+                                    <td class="text-center">${material.height}x${material.width} ${material.materialType}</td>
+                                    <c:if test="${material.length != 0 }">
+                                        <td class="text-center">${material.length}</td>
+                                    </c:if>
+                                    <c:if test="${material.length == 0 }">
+                                        <td class="text-center"></td>
+                                    </c:if>
+                                    <td class="text-center">${material.amount}</td>
+                                    <td class="text-center">${material.unit}</td>
+                                    <td class="text-center">${material.description}</td>
+                                </tr>
+                                </tbody>
+                            </c:if>
 
                         </c:forEach>
                     </table>
