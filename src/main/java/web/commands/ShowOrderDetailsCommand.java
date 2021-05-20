@@ -55,8 +55,6 @@ public class ShowOrderDetailsCommand extends CommandProtectedPage {
         order.setEmail(email);
         session.setAttribute("carport", carport);
         session.setAttribute("order", order);
-
-
         return pageToShow;
     }
 }
