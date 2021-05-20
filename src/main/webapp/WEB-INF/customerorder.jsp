@@ -59,7 +59,7 @@
                     <button name="delete-del-info-id" class="btn btn-danger" type="submit"
                             value="${sessionScope.order.deliveryInfoId}">Slet ordre
                     </button>
-                    <c:if test="${requestScope.offer-sent == 'offer sent'}">
+                    <c:if test="${requestScope.offerSent == 1}">
                         <button name="accept-del-info-id" class="btn btn-success" type="submit"
                                 value="${sessionScope.order.deliveryInfoId}">Accepter tilbud
                         </button>
