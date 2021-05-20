@@ -142,27 +142,35 @@
                 </table>
             </div>
 
-
+            <c:if test="${sessionScope.order.status != 'paid'}">
             <form action="${pageContext.request.contextPath}/fc/updatecarportprice" method="post"
                   class="ng-pristine ng-valid">
                 <div class="form-group">
                     <label>Salgspris kr.</label>
                     <input name="salesprice" type="text" class="form-control" value="${sessionScope.salesprice}">
                 </div>
+
                 <button style="margin-top: 25px" type="submit" class="btn btn-danger" name="salesprice">Opdater
                     salgspris
                 </button>
             </form>
+            </c:if>
         </div>
+
         <div class="col-md-12 text-center">
             <form action="${pageContext.request.contextPath}/fc/sendOfferToCustomer" method="post"
                   class="ng-pristine ng-valid">
+                <c:if test="${sessionScope.order.status == 'offer sent' || sessionScope.order.status == 'request'}">
                 <button style="margin-right: 40px" type="submit" class="btn btn-success" name="sendOfferToId"
                         value="${sessionScope.order.orderId}">Send tilbud til kunden
                 </button>
+                </c:if>
+
+                <c:if test="${sessionScope.order.status == 'offer sent' || sessionScope.order.status == 'accepted'}">
                 <button type="submit" class="btn btn-success" name="statusPaid" value="${sessionScope.order.orderId}">
                     Markér ordren som betalt
                 </button>
+                </c:if>
             </form>
 
 

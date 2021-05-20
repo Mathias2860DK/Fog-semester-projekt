@@ -32,6 +32,7 @@ public class SendOfferToCustomer extends CommandProtectedPage {
             order.setTotalprice(Double.parseDouble(salesprice));
             String status = "offer sent";
             int rowsAffected = orderFacade.updateStatusAndPrice(sendOfferToIdInt, status, order.getTotalprice());
+            order.setStatus("offer sent");
             session.setAttribute("order", order);
             if (rowsAffected == 1) {
                 request.setAttribute("succes", "Kundens status er nu ændret");
