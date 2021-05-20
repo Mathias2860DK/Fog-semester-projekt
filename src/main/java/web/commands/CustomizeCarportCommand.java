@@ -81,11 +81,12 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
             session.setAttribute("carport", carport);
             return "deliveryinfomation";
         } else if (submitRequest != null && carportShedSize != null) {
-            shedLength = carportLengthInt / 4;
+            shedWidth = 195;
             if (carportShedSize.equals("halfSize")) {
-                shedWidth = carportWidthInt / 2;
+                shedLength = carportWidthInt / 2;
+
             } else {
-                shedWidth = carportWidthInt;
+                shedLength = carportWidthInt;
             }
             carport = new Carport(carportWidthInt, carportLengthInt, roof, new Shed(shedLength, shedWidth));
             session.setAttribute("carport", carport);
