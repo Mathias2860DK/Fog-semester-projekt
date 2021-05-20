@@ -134,7 +134,7 @@
                     <tbody>
                     <tr>
                         <td> ${sessionScope.carport.costPrice} kr.</td>
-                        <td class="text-center">${sessionScope.carport.costPrice*1.39} kr.</td>
+                        <td class="text-center">${sessionScope.carport.recommendedPrice} kr.</td>
                         <td class="text-center">${sessionScope.order.totalprice} kr.</td>
                         <td class="text-center">${sessionScope.contributionRatio} %</td>
                     </tr>
