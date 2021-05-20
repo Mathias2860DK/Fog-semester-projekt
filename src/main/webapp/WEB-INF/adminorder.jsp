@@ -4,12 +4,15 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Employee Roles
+
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
 
+        <div class="col-xs-1 text-center" style="margin-bottom: 45px">
+            <h1 class="display-4">Ordre #${sessionScope.order.orderId}</h1>
+        </div>
         <c:if test="${requestScope.sucess != null }">
             <div class="col-md-12 text-center">
                 <h2 style="color:green">
@@ -27,9 +30,6 @@
 
         <div class="col-lg-12">
             <!-- col-lg-12 start here -->
-
-
-            <h2>Her er den valgte kundes ordre:</h2>
             <div>
                 <div>
                     <ul class="list-unstyled">
@@ -134,7 +134,7 @@
                     <tbody>
                     <tr>
                         <td> ${sessionScope.carport.costPrice} kr.</td>
-                        <td class="text-center">${sessionScope.carport.costPrice*1.39} kr.</td>
+                        <td class="text-center">${sessionScope.carport.recommendedPrice} kr.</td>
                         <td class="text-center">${sessionScope.order.totalprice} kr.</td>
                         <td class="text-center">${sessionScope.contributionRatio} %</td>
                     </tr>

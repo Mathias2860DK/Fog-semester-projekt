@@ -35,7 +35,7 @@ public class CustommerComands extends CommandProtectedPage {
             //Client should not be able to access this site without being logged in
             request.setAttribute("error", "Kontakt IT. Der er sket en fejl");
         }
-//TODO: Lav en fleksibel procedure der kan læse et udifineret antal af delivery_info_id og vise alle odre med disse delivery_info_id
+//TODO: Lav en fleksibel procedure der kan læse et udifineret antal af delivery_info_id og vise alle ordre med disse delivery_info_id
         //SELECT * FROM fog.orders where delivery_info_id = (Udetfineret tal, da det kommer an på hvor mange delivery_info_id der er;
         List<Order> orderList = new ArrayList<>();
 

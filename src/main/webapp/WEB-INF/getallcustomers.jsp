@@ -12,10 +12,9 @@
         <c:set var="addHomeLink" value="${false}" scope="request"/>
     </jsp:attribute>
     <jsp:body>
-        <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
-
-        <p>Her er alle kunder:</p>
+        <div class="col-xs-1 text-center" style="margin-bottom: 45px">
+            <h1 class="display-4">Kundeliste</h1>
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>

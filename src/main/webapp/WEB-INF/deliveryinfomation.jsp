@@ -5,7 +5,6 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -86,19 +85,8 @@
             <div class="form-group">
                 <div class="col-md-6 col-xs-12">
                     <input type="submit" name="submit_request" title="Send request" value="Send forespørgsel" class="">
-
-
-                    <c:if test="${sessionScope.role == 'employee' }">
-                    <p style="font-size: larger">This is what you can do,
-                        since your are logged in as an employee</p>
-                    <p><a href="fc/employeepage">Employee Page</a>
-                        </c:if>
-
-                        <c:if test="${sessionScope.role == 'customer' }">
-                    <p style="font-size: larger">This is what you can do, since your
-                        are logged in as a customer</p>
-                    <p><a href="fc/customerpage">Customer Page</a>
-                        </c:if>
+                </div>
+            </div>
         </form>
         </div>
 

@@ -1,5 +1,7 @@
 package business.entities;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +14,15 @@ public class Carport {
     private Shed shed;
     private double costPrice;
     private List<Material> materialList = new ArrayList<>(); //bomList
+    private double recommendedPrice;
+
+    public double getRecommendedPrice() {
+        recommendedPrice = this.costPrice*1.39;
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        String recommendPriceString = formatter.format(recommendedPrice).replace(",",".");
+       recommendedPrice = Double.parseDouble(recommendPriceString);
+        return recommendedPrice;
+    }
 
     public void setShed(Shed shed) {
         this.shed = shed;

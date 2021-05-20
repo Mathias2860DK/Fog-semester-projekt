@@ -12,12 +12,14 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h3>Du har givet os følgende leverings oplsyninger</h3>
+        <div class="col-xs-1 text-center" style="margin-bottom: 45px">
+            <h1 class="display-4">Dine oplysninger</h1>
+        </div>
 
         <p>Navn: ${sessionScope.deliveryInfo.name} </p>
         <p>Email: ${sessionScope.deliveryInfo.email} </p>
         <p>Adresse: ${sessionScope.deliveryInfo.address} </p>
-        <p>Phone: ${sessionScope.deliveryInfo.phone} </p>
+        <p>Telefon: ${sessionScope.deliveryInfo.phone} </p>
         <p>Postnummer og by: ${sessionScope.deliveryInfo.zipCodeCity} </p>
 
 
