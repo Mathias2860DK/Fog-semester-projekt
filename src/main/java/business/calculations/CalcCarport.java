@@ -126,11 +126,11 @@ public class CalcCarport {
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 27) {
-                thisMaterial.setAmount(CalcPart.calcScrews70mm());
+                thisMaterial.setAmount(CalcPart.calcScrews70mm(hasShed));
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 28) {
-                thisMaterial.setAmount(CalcPart.calcScrews50mm());
+                thisMaterial.setAmount(CalcPart.calcScrews50mm(hasShed));
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 29) {
@@ -270,11 +270,11 @@ public class CalcCarport {
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 27) {
-                thisMaterial.setAmount(CalcPart.calcScrews70mm());
+                thisMaterial.setAmount(CalcPart.calcScrews70mm(hasShed));
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 28) {
-                thisMaterial.setAmount(CalcPart.calcScrews50mm());
+                thisMaterial.setAmount(CalcPart.calcScrews50mm(hasShed));
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 29) {

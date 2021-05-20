@@ -174,12 +174,18 @@ public class CalcPart {
         return amount;
     }
 
-    public static int calcScrews70mm() {
-        return 2;
+    public static int calcScrews70mm(boolean hasShed) {
+        int amount = 0;
+        if (hasShed == true){ amount = 2; }
+        else if (hasShed == false){ amount = 0; }
+        return amount;
     }
 
-    public static int calcScrews50mm() {
-        return 2;
+    public static int calcScrews50mm(boolean hasShed) {
+        int amount = 0;
+        if (hasShed == true){ amount = 2; }
+        else if (hasShed == false){ amount = 0; }
+        return amount;
     }
 
     public static int calcZDoor(boolean hasShed){
@@ -204,11 +210,12 @@ public class CalcPart {
     public static int calcSheating(boolean hasShed, Shed shed){
         int amount = 0;
         double circumference = 0;
-        double shedLength = shed.getShedLength()/100;
-        double shedWidth = shed.getShedWidth()/100;
         if (hasShed == true){
+            double shedLength = shed.getShedLength()/100;
+            double shedWidth = shed.getShedWidth()/100;
             circumference = (shedWidth+shedLength)*2;
             amount = (int) ((circumference * (138.4/100))+1)*10;
+
 
         } else if (hasShed == false){ amount = 0; }
 
