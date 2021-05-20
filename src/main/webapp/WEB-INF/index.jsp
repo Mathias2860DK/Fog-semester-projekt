@@ -20,28 +20,28 @@
                     <div class="row" id="invoice">
                         <article role="article" class="col mt-5">
 
-
-                            <h2> Velkommen til fog trælast</h2>
+                            <h2> VELKOMMEN I FOG</h2>
                             <p>
-                                giat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
-                                Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
-                                Nam eget dui. Etiam rhoncus. Maecenas tempus, tellu
+                                Her får du kvalificeret rådgivning til den bedste løsning. Fog hjælper dig med at få overblik og komme i mål med dit byggeprojekt.
+                                Lige fra hvad der er godt at vide til vejledning i valg af materialer.
+                                Johannes Fog består af et Bolig & Designhus og ni Trælast & Byggecenter-butikker fordelt i hele Nordsjælland – i Hørsholm, Fredensborg, Kvistgård, Helsinge, Lyngby, Ølstykke, Herlev og Farum.
+                                Vi har også en butik mere sydpå i Vordingborg, der også har stor ekspertise i salg af jern, stål og andre metaller.
 
                                 <br/>
-                            <h5> tempus, tellu </h5>
-                            Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
-                            ultricies nisi. Nam eget dui.
-                            Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
-                            sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit v
+                            <h5>DESIGN DIN EGEN CARPORT</h5>
+                            I trælasten har vi træ og byggematerialer til alle slags opgaver.
+                            Vi har et stort udvalg, hvor du kan vælge mellem mange muligheder, både hvad angår størrelser og kvaliteter.
                             <br/>
                             <br/>
-
-                            <h5>Maecenas tempus, tellus eget </h5>
-                            Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper
-                            ultricies nisi. Nam eget dui.
-                            Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus,
-                            sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit v
+                            <p>
+                            Byggecentrene har alt til hjemmet inden for bl.a. værktøj, maling, bad, beslag, el, lamper og pejseartikler.
+                            Fog kan hjælpe dig med valget af f.eks. en ny græsslåmaskine.
+                            Der er power til forskel, men det handler om at vælge værktøjet til lige præcis dit behov.
+                            Ordentlige haveredskaber og -møbler kan holde i rigtig mange år. Hos Fog får du kvalitet.
+                            Her er der forskellige slags havemøbler at vælge i mellem, parasoller der bare holder, terrassevarmere og meget andet, der bidrager til det hyggelige udeliv.
+                            Få kvalificeret rådgivning i Fog, så du nemt kan vælge.
                             </p>
+                            <br>
                         </article>
                         <section class="col mt-5">
                             <div
