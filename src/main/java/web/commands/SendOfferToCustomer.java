@@ -42,7 +42,7 @@ public class SendOfferToCustomer extends CommandProtectedPage {
             order.setStatus("offer sent");
             session.setAttribute("order", order);
             if (rowsAffected == 1) {
-                request.setAttribute("succes", "Kundens status er nu ændret");
+                request.setAttribute("sucess", "Tilbuddet er sendt");
             } else {
                 request.setAttribute("error", "Der er sket en fejl. Kontakt IT");
             }
@@ -56,7 +56,7 @@ public class SendOfferToCustomer extends CommandProtectedPage {
             order.setEmail(email);
             session.setAttribute("order", order);
             if (rowsAffected == 1) {
-                request.setAttribute("sucess", "Kundens status er nu ændret");
+                request.setAttribute("sucess", "Ordren er nu markeret som betalt");
             } else {
                 request.setAttribute("error", "Der er sket en fejl. Kontakt IT");
             }

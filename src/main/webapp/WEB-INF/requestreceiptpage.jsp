@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Customer Roles
+
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -23,8 +23,8 @@
                                     <!-- col-lg-6 start here -->
                                     <div class="fog-logo">
                                         <img
-                                                width="100"
-                                                src="olskercupcakesBillede.png"
+                                                width="100" height="100"
+                                                src="${pageContext.request.contextPath}/css/images/fogLogoOne.png"
                                                 alt="fog-logo"
                                         />
                                     </div>

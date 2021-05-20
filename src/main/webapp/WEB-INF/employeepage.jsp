@@ -9,7 +9,7 @@
     </jsp:attribute>
     <jsp:body>
         <div class="col-xs-1 text-center" style="margin-bottom: 45px">
-            <h1 class="display-4">Odre oversigt</h1>
+            <h1 class="display-4">Ordre oversigt</h1>
         </div>
 
         <div class="table-responsive">

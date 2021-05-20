@@ -16,7 +16,7 @@
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/styles.css">
     <meta name="theme-color" content="#7952b3">
-    <link rel="icon"  type="image/png" sizes="16×16" href="css/images/fogLogo.png">
+    <link rel="icon"  type="image/png" sizes="16×16" href="${pageContext.request.contextPath}/css/images/fogLogo.png">
 </head>
 <body>
 
@@ -41,26 +41,22 @@
 
 
         <c:if test="${addHomeLink == null }">
-            <a class="text-white" href="<%=request.getContextPath()%>">Hjem</a>
+            <a style="margin-right: 20px" class="text-white" href="<%=request.getContextPath()%>">Hjem</a>
         </c:if>
 
 
 
         <c:if test="${sessionScope.role == 'employee' }">
-            <a type="button" class="text-white"
+            <a style="margin-right: 20px" type="button" class="text-white"
                href="${pageContext.request.contextPath}/fc/employeeorders">Ordre</a>
-            <a type="button" class="text-white"
+            <a style="margin-right: 20px" type="button" class="text-white"
                href="${pageContext.request.contextPath}/fc/materialspage">Matrialer</a>
             <a type="button" class="text-white"
                href="${pageContext.request.contextPath}/fc/showallcustomers">Kunder</a>
         </c:if>
         <c:if test="${sessionScope.role == 'customer' }">
-            <a type="button" class="text-white"
+            <a style="margin-right: 20px" type="button" class="text-white"
                href="${pageContext.request.contextPath}/fc/custommerorders">Mine ordre</a>
-            <a type="button" class="text-white"
-               href="${pageContext.request.contextPath}/fc/customerpage">Om fog</a>
-            <a type="button" class="text-white"
-               href="${pageContext.request.contextPath}/fc/customerpage">??</a>
         </c:if>
     </nav>
 

@@ -150,10 +150,7 @@
                                            value="Send forespørgsel" class="">
                                     <input type="submit" name="show_drawing" title="show drawing" value="Vis tegning"
                                            class="">
-                                    <div style="margin-top: 3em;margin-bottom: 3em;">
-                                        Klik her for at se din SVG tegning af din <a
-                                            href="${pageContext.request.contextPath}/fc/showsvg"> carport </a>
-                                    </div>
+
                                     <c:if test="${requestScope.svgdrawing != null}">
                                         ${requestScope.svgdrawing}
                                     </c:if>
@@ -170,17 +167,6 @@
             </div>
         </div>
 
-        <c:if test="${sessionScope.role == 'employee' }">
-            <p style="font-size: larger">This is what you can do,
-                since your are logged in as an employee</p>
-            <p><a href="fc/employeepage">Employee Page</a>
-        </c:if>
-
-        <c:if test="${sessionScope.role == 'customer' }">
-            <p style="font-size: larger">This is what you can do, since your
-                are logged in as a customer</p>
-            <a href="fc/customerpage">Customer Page</a>
-        </c:if>
 
         </div>
 
