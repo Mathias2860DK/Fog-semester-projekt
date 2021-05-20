@@ -4,7 +4,8 @@ import business.calculations.CalcPart;
 import business.entities.Carport;
 import business.entities.Shed;
 import business.exceptions.UserException;
-import business.services.SVG;
+import business.services.svg.SVG;
+import business.services.svg.SvgTop;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,16 +54,9 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         int remme = CalcPart.calcRem(carportLengthInt, remLength);
         if (showSVG != null) {
             //TODO: Her skal tilføjes de begregninger til for mange af de forskellige matrialer der skal bruges
-            SVG svg = new SVG(0, 0, "0 0 800 600", 100, 50);
-
-            //rafters
-            for (int x = 0; x < rafters; x++) {
-                svg.addRect(100 + 50 * x, 0, carportLengthInt, 4.5);//4,5 rafter width
-            }
-            //remme
-            svg.addRect(210, 70, 9.7, 9.7);
-
-            request.setAttribute("svgdrawing", svg.toString().replace(",", "."));//Makes sure that it puts dot instead of comma.
+            SVG svg = new SVG(0, 0, "0 0 800 600", 100, 50, new Carport(600,780,""));
+            String svgCode = svg.generateSvgTop();
+            request.setAttribute("svgdrawing", svgCode.replace(",", "."));//Makes sure that it puts dot instead of comma.
             return pageToShow;
         }
 

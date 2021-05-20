@@ -1,7 +1,9 @@
 package web.commands;
 
+import business.entities.Carport;
 import business.exceptions.UserException;
-import business.services.SVG;
+import business.services.svg.SVG;
+import business.services.svg.SvgTop;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,12 +15,11 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        SVG svg = new SVG(0, 0, "0 0 800 600", 100, 50);
-
-        for (int x = 0; x < 14; x++) {
-            svg.addRect(100 + 50 * x, 0, 600.0, 4.5);
-        }
-        request.setAttribute("svgdrawing", svg.toString().replace(",", "."));//Makes sure that it puts dot instead of comma.
-        return pageToShow;
+       /*  SVG svg = new SVG(0, 0, "0 0 800 600", 100, 50);
+        SvgTop svgTop = new SvgTop(new Carport(600,780,""),svg);
+        String svgTopCode = svgTop.createSvgTop();
+        request.setAttribute("svgdrawing", svgTopCode.replace(",", "."));//Makes sure that it puts dot instead of comma.
+        return pageToShow;*/
+        return "";
     }
 }

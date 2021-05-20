@@ -156,7 +156,7 @@ public class CalcCarport {
         return totalPrice;
     }
 
-    public Carport getCarportWithMaterials(Carport carport, MaterialsFacade materialsFacade) throws UserException {
+    public Carport getCarportMaterials(Carport carport, MaterialsFacade materialsFacade) throws UserException {
         int carportLength = carport.getCarportLength();
         int carportWidth = carport.getCarportWidth();
         int roofLength = 0;
