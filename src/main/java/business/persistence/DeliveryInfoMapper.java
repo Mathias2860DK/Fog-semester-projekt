@@ -134,6 +134,7 @@ public class DeliveryInfoMapper {
     public List<DeliveryInfo> getAllCustomers() throws UserException {
         List<DeliveryInfo> customerList = new ArrayList<>();
         List<DeliveryInfo> customerModi = new ArrayList<>();
+        List<Integer> listOfID = new ArrayList<>();
         try (Connection connection = database.connect()) {
 
             String sql = "SELECT * FROM delivery_info;";
@@ -153,8 +154,11 @@ public class DeliveryInfoMapper {
                     DeliveryInfo deliveryInfos = new DeliveryInfo(userId, navn, adresse, zip, telefon, email, remark);
                     if (deliveryInfos.getUserId() != 1) {
                         customerModi.add(deliveryInfos);
-                        if (!customerModi.contains(deliveryInfos.getUserId())) {
-                            customerList.add(deliveryInfos);
+                        for (DeliveryInfo thisDelInfo:customerModi) {
+                            if(!listOfID.contains(thisDelInfo.getUserId())){
+                                listOfID.add(deliveryInfos.getUserId());
+                                customerList.add(thisDelInfo);
+                            }
                         }
                     }
                    /* for (DeliveryInfo deliveryInfo: customerModi) {

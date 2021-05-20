@@ -19,6 +19,10 @@ public class CalcCarport {
         int roofWidth = 0;
         int amountOfUniversalFittingsRight = 0;
         int amountOfUniversalFittingsLeft = 0;
+        boolean hasShed = false;
+        if(carport.getShed() == null){ hasShed = false; }
+        else { hasShed = true; }
+
 
         for (Material thisMaterial : materialsFacade.getAllMaterials()) {
 
@@ -39,7 +43,7 @@ public class CalcCarport {
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 8) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcZDoor(hasShed));
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 9) {
@@ -126,11 +130,13 @@ public class CalcCarport {
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 29) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcLockDoor(hasShed));
+                totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
 
             } else if (thisMaterial.getMaterialId() == 30) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcHinge(hasShed));
+                totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
 
             } else if (thisMaterial.getMaterialId() == 31) {
@@ -151,6 +157,9 @@ public class CalcCarport {
         int roofWidth = 0;
         int amountOfUniversalFittingsRight = 0;
         int amountOfUniversalFittingsLeft = 0;
+        boolean hasShed = false;
+        if(carport.getShed() == null){ hasShed = false; }
+        else { hasShed = true; }
 
 
         List<Material> materialList = carport.getMaterialList();
@@ -173,7 +182,7 @@ public class CalcCarport {
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 8) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcZDoor(hasShed));
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 9) {
@@ -261,11 +270,11 @@ public class CalcCarport {
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 29) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcLockDoor(hasShed));
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 30) {
-                thisMaterial.setAmount(0);//ikke oprettet
+                thisMaterial.setAmount(CalcPart.calcHinge(hasShed));
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 31) {

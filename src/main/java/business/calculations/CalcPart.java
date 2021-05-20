@@ -1,5 +1,6 @@
 package business.calculations;
 
+import business.entities.Shed;
 import com.mysql.cj.xdevapi.UpdateStatementImpl;
 
 public class CalcPart {
@@ -181,5 +182,24 @@ public class CalcPart {
         return 2;
     }
 
+    public static int calcZDoor(boolean hasShed){
+        int amount = 0;
+        if (hasShed == true){ amount = 1; }
+        else if (hasShed == false){ amount = 0; }
+        return amount;
+    }
+
+    public static int calcLockDoor(boolean hasShed){
+        int amount = 0;
+        if (hasShed == true){ amount = 1; }
+        else if (hasShed == false){ amount = 0; }
+        return amount;
+    }
+    public static int calcHinge(boolean hasShed){
+        int amount = 0;
+        if (hasShed == true){ amount = 2; }
+        else if (hasShed == false){ amount = 0; }
+        return amount;
+    }
 
 }
