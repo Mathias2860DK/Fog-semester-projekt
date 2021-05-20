@@ -199,13 +199,26 @@
                             <c:if test="${material.amount != 0 }">
                                 <tbody>
                                 <tr>
-                                    <td class="text-center">${material.height}x${material.width} ${material.materialType}</td>
+                                    <c:if test="${material.height != 0 && material.width != 0 }">
+                                        <td class="text-center">${material.height}x${material.width} ${material.materialType}</td>
+                                    </c:if>
+                                    <c:if test="${material.height != 0 && material.width == 0 }">
+                                        <td class="text-center">${material.height} ${material.materialType}</td>
+                                    </c:if>
+                                    <c:if test="${material.height == 0 && material.width != 0 }">
+                                        <td class="text-center">${material.width} ${material.materialType}</td>
+                                    </c:if>
+                                    <c:if test="${material.height == 0 && material.width == 0 }">
+                                        <td class="text-center">${material.materialType}</td>
+                                    </c:if>
+
                                     <c:if test="${material.length != 0 }">
                                         <td class="text-center">${material.length}</td>
                                     </c:if>
                                     <c:if test="${material.length == 0 }">
                                         <td class="text-center"></td>
                                     </c:if>
+
                                     <td class="text-center">${material.amount}</td>
                                     <td class="text-center">${material.unit}</td>
                                     <td class="text-center">${material.description}</td>
