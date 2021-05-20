@@ -1,4 +1,7 @@
-package business.services;
+package business.services.svg;
+
+import business.calculations.CalcPart;
+import business.entities.Carport;
 
 public class SVG {
     StringBuilder svg = new StringBuilder();
@@ -7,6 +10,14 @@ public class SVG {
     private String viewBox;
     private int width;
     private int height;
+
+    private int carportWidth;
+    private int carportLength;
+
+    private boolean hasShed;
+    private int shedLength;
+    private int shedWidth;
+
     private final String headerTemplate = "<svg " +
             "height=\"%d%%\" " +
             "width=\"%d%%\" " +
@@ -16,13 +27,39 @@ public class SVG {
             " preserveAspectRatio=\"xMinYMin\">";
     private final String rectTemplate = "<rect x=\"%d\" y=\"%d\" height=\"%f\" width=\"%f\" style=\"stroke:#000000; fill: #ffffff\" />";
 
-    public SVG(int x, int y, String viewBox, int width, int height) {
+    public SVG(int x, int y, String viewBox, int width, int height, Carport carport) {
         this.x = x;
         this.y = y;
         this.viewBox = viewBox;
         this.width = width;
         this.height = height;
         svg.append(String.format(headerTemplate, height, width, viewBox, x, y));
+
+
+        this.carportLength = carport.getCarportLength();
+        this.carportWidth = carport.getCarportWidth();
+        if (carport.getShed() != null){
+            this.shedLength = carport.getShed().getShedLength();
+            this.shedWidth = carport.getShed().getShedWidth();
+        }
+    }
+
+    public String generateSvgTop(){
+        rafters();
+        posters();
+
+        return svg.toString();
+    }
+
+    public void rafters(){
+        int raftersAmount = CalcPart.calcRafters(carportLength,55);//Fog standards
+        for (int i = 0; i < raftersAmount; i++) {
+            addRect(100 + 55 * i, 0, 600.0, 4.5);
+        }
+    }
+
+    public void posters(){
+        int postersAmount = CalcPart.calcPostAmount(carportLength);
     }
 
     public void addRect(int x, int y, double height, double width) {

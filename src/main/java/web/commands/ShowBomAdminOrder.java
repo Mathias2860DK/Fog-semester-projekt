@@ -32,7 +32,7 @@ public class ShowBomAdminOrder extends CommandProtectedPage {
         order = orderFacade.getOrderById(orderIdInt);
         carport = order.getCarport();
         CalcCarport calcCarport = new CalcCarport();
-        carport = calcCarport.getCarportWithMaterials(carport, materialsFacade);
+        carport = calcCarport.getCarportMaterials(carport, materialsFacade);
         calcCarport.totalPrice(carport, order, materialsFacade);
         session.setAttribute("carport", carport);
 
