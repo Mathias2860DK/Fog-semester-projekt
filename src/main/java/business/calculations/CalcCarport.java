@@ -17,6 +17,7 @@ public class CalcCarport {
         int amountOfUniversalFittingsRight = 0;
         int amountOfUniversalFittingsLeft = 0;
         int amountOfNogginPiece = 0;
+        int postAmount = 0;
         boolean hasShed = false;
         Shed shed = order.getCarport().getShed();
         if(shed.getShedWidth() == 0) {
@@ -71,7 +72,8 @@ public class CalcCarport {
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 14) {
-                thisMaterial.setAmount(CalcPart.calcPostAmount(carportLength));
+                postAmount = CalcPart.calcPostAmount(carportLength, hasShed);
+                thisMaterial.setAmount(postAmount);
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 15) {
@@ -119,11 +121,11 @@ public class CalcCarport {
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 25) {
-                thisMaterial.setAmount(CalcPart.calcCarriageBolt(CalcPart.calcPostAmount(carportLength)));
+                thisMaterial.setAmount(CalcPart.calcCarriageBolt(postAmount));
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 26) {
-                thisMaterial.setAmount(CalcPart.calcSquareWasher(CalcPart.calcPostAmount(carportLength)));
+                thisMaterial.setAmount(CalcPart.calcSquareWasher(postAmount));
                 totalPrice = totalPrice + (thisMaterial.getPrice() * thisMaterial.getAmount());
 
             } else if (thisMaterial.getMaterialId() == 27) {
@@ -165,6 +167,7 @@ public class CalcCarport {
         int amountOfUniversalFittingsLeft = 0;
         boolean hasShed = false;
         int amountOfNogginPiece = 0;
+        int postAmount = 0;
         if(carport.getShed().getShedWidth() == 0){ hasShed = false; }
         else { hasShed = true; }
 
@@ -215,7 +218,8 @@ public class CalcCarport {
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 14) {
-                thisMaterial.setAmount(CalcPart.calcPostAmount(carportLength));
+                postAmount = CalcPart.calcPostAmount(carportLength,hasShed);
+                thisMaterial.setAmount(postAmount);
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 15) {
@@ -263,11 +267,11 @@ public class CalcCarport {
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 25) {
-                thisMaterial.setAmount(CalcPart.calcCarriageBolt(CalcPart.calcPostAmount(carportLength)));
+                thisMaterial.setAmount(CalcPart.calcCarriageBolt(postAmount));
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 26) {
-                thisMaterial.setAmount(CalcPart.calcSquareWasher(CalcPart.calcPostAmount(carportLength)));
+                thisMaterial.setAmount(CalcPart.calcSquareWasher(postAmount));
                 materialList.add(thisMaterial);
 
             } else if (thisMaterial.getMaterialId() == 27) {

@@ -6,15 +6,31 @@ import com.mysql.cj.xdevapi.UpdateStatementImpl;
 public class CalcPart {
     final static int MAX_LENGTH_BETWEEN_POSTS = 310;
 
-    public static int calcPostAmount(int carportLength) {//evt boolean med shed eller ej
-        //100cm from front to first post
-        //30 cm from the back of carport is where the post is located.
-        int distance = carportLength - 100 - 30; //distance between front and rear posts.
-        int amountOfPosts = distance / MAX_LENGTH_BETWEEN_POSTS;//int converts it downwards.
-        amountOfPosts = amountOfPosts * 2; //calculating the posts needed for both sides
-        amountOfPosts = amountOfPosts + 4; //always 2 posts at the front and back of the carport.
-        //TODO: what if there is a shed?
-        //if (isShedWanted == true) ....
+    public static int calcPostAmount(int carportLength, boolean hasShed) {//evt boolean med shed eller ej
+        int amountOfPosts = 0;
+        int remainingLength = carportLength-100-30; //distance between front and rear posts.
+        if (hasShed){
+            remainingLength = remainingLength-190;
+            if (remainingLength<MAX_LENGTH_BETWEEN_POSTS || remainingLength==MAX_LENGTH_BETWEEN_POSTS ){
+                amountOfPosts = 0;
+            } else if (remainingLength<(MAX_LENGTH_BETWEEN_POSTS*2) && remainingLength>MAX_LENGTH_BETWEEN_POSTS || remainingLength==(MAX_LENGTH_BETWEEN_POSTS*2)){
+                amountOfPosts = 1;
+            }
+            amountOfPosts = ((amountOfPosts + 3)*2)+3;
+        } else {
+            //100cm from front to first post
+            //30 cm from the back of carport is where the post is located.
+            if (remainingLength<MAX_LENGTH_BETWEEN_POSTS || remainingLength==MAX_LENGTH_BETWEEN_POSTS){
+                amountOfPosts = 0;
+            } else if (remainingLength<(MAX_LENGTH_BETWEEN_POSTS*2) && remainingLength>MAX_LENGTH_BETWEEN_POSTS || remainingLength==(MAX_LENGTH_BETWEEN_POSTS*2)){
+                amountOfPosts = 1;
+            } else if (remainingLength<(MAX_LENGTH_BETWEEN_POSTS*3) && remainingLength>(MAX_LENGTH_BETWEEN_POSTS*2) || remainingLength==(MAX_LENGTH_BETWEEN_POSTS*3)){
+                amountOfPosts = 2;
+            }
+            amountOfPosts = (amountOfPosts+2) * 2; //calculating the posts needed for both sides and always 2 posts at the front and back of the carport.
+        }
+
+
         return amountOfPosts;
     }
 

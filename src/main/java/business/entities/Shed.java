@@ -11,7 +11,7 @@ public class Shed {
     public Shed(int carportWidth) {
 this.carportWidth = carportWidth;
         this.shedLength = shedLength;
-        this.shedWidth = 195;//Only shed width
+        this.shedWidth = 190;//Only shed width
         this.fullSize = true;
     }
 

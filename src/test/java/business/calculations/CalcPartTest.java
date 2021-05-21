@@ -9,7 +9,7 @@ class CalcPartTest {
 
     @Test
     void calcPostAmount() {
-        assertEquals(6,CalcPart.calcPostAmount(480));
+        assertEquals(6,CalcPart.calcPostAmount(480,true));
 
     }
 

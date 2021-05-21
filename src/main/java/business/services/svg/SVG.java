@@ -158,10 +158,10 @@ svg.append("<defs>\n" +
     }
 
     public void perforatedTape(){//hulbånd
-        svg.append("<line stroke-dasharray=\"6\" x1=\" " + (carportLength-195-30+100)
+        svg.append("<line stroke-dasharray=\"6\" x1=\" " + (carportLength-190-30+100)
                 + "\" x2=\"155\" y1=\"135\" y2=\"" + (carportWidth-35+100)
                 + "\" stroke-width=\"1\" stroke=\"black\"></line>\n" +
-                "    <line stroke-dasharray=\"6\" x1=\"155\" x2=\"" +(carportLength-195-30+100)
+                "    <line stroke-dasharray=\"6\" x1=\"155\" x2=\"" +(carportLength-190-30+100)
                 + "\" y1=\"135\" y2=\"" + (carportWidth-35+100)
                 + "\" stroke-width=\"1\" stroke=\"black\"></line>");
 
