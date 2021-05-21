@@ -161,20 +161,6 @@ svg.append("<defs>\n" +
     }
     public void posts(){
         int postsAmount = CalcPart.calcPostAmount(carportLength);
-        int spaceBetweenPosts = (carportLength-100-30)/((postsAmount/2)-1);
-        for (int i = 0; i < postsAmount/2; i++) {
-            if (i == 0){
-                addRect(100, 35, 9.7, 9.7);
-                addRect(100, carportWidth-39, 9.7, 9.7);
-            } else if (i == (postsAmount/2)-1){
-                addRect(carportLength-30, 35, 9.7, 9.7);
-                addRect(carportLength-30, carportWidth-39, 9.7, 9.7);
-            }else {
-                addRect((spaceBetweenPosts*i)+100, 35, 9.7, 9.7);
-                addRect((spaceBetweenPosts*i)+100, carportWidth-39, 9.7, 9.7);
-            }
-
-        }
 
     }
 
