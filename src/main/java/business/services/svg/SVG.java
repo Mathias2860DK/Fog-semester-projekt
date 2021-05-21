@@ -41,6 +41,7 @@ public class SVG {
         }
 
 
+
         this.carportLength = carport.getCarportLength();
         this.carportWidth = carport.getCarportWidth();
         if (carport.getShed() != null){

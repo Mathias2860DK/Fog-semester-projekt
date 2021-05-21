@@ -46,12 +46,12 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
             return pageToShow;
         }
 
-        if (carportShedSize != null){
+        if (!carportShedSize.equals("no-shed")){
             hasShed = true;
         }
 
         if (showSvg != null && roof != null) {
-            if (hasShed) {
+            if (hasShed && carportLengthInt > 510) {
                 Shed shed = new Shed(carportWidthInt);
 
                 if (carportShedSize.equals("halfSize")) {
@@ -60,6 +60,10 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
                     shed.setFullSize(true);
                 }
                 carport = new Carport(carportWidthInt, carportLengthInt, roof, shed);
+            } else if (hasShed && carportLengthInt <510){
+                carport = new Carport(carportWidthInt, carportLengthInt, roof);
+                request.setAttribute("error","Du kan ikke tilvælge redskabsskur med en carport længde på under 510 cm");
+                return pageToShow;
             } else {
                 carport = new Carport(carportWidthInt, carportLengthInt, roof);
             }
