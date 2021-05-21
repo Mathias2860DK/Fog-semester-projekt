@@ -77,10 +77,10 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         } else if (submitRequest != null && carportShedSize != null) {
             shedWidth = 195;
             if (carportShedSize.equals("halfSize")) {
-                shedLength = carportWidthInt / 2;
+                shedLength = (carportWidthInt / 2)-35;
 
             } else {
-                shedLength = carportWidthInt;
+                shedLength = carportWidthInt - 70;
             }
             carport = new Carport(carportWidthInt, carportLengthInt, roof, new Shed(shedLength, shedWidth));
             session.setAttribute("carport", carport);

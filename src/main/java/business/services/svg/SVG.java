@@ -45,21 +45,41 @@ public class SVG {
     }
 
     public String generateSvgTop(){
+        remme();
         rafters();
-        posters();
+        posts();
+        perforatedTape();
 
         return svg.toString();
     }
 
-    public void rafters(){
-        int raftersAmount = CalcPart.calcRafters(carportLength,55);//Fog standards
+    public void rafters() {//spær
+        int raftersAmount = CalcPart.calcRafters(carportLength, 55);//Fog standards
         for (int i = 0; i < raftersAmount; i++) {
-            addRect(100 + 55 * i, 0, 600.0, 4.5);
+
+            addRect(55 * i, 0, carportWidth, 4.5);
         }
     }
 
-    public void posters(){
-        int postersAmount = CalcPart.calcPostAmount(carportLength);
+    public void remme(){//remme
+        int remmeAmount = 2;
+        addRect(0,35,5,carportLength-5);
+        addRect(0,carportWidth-35,5,carportLength-5);
+    }
+
+    public void perforatedTape(){//hulbånd
+        svg.append("<line stroke-dasharray=\"6\" x1=\" " + (carportLength-195-30)
+                + "\" x2=\"55\" y1=\"35\" y2=\"" + (carportWidth-35)
+                + "\" stroke-width=\"1\" stroke=\"black\"></line>\n" +
+                "    <line stroke-dasharray=\"6\" x1=\"55\" x2=\"" +(carportLength-195-30)
+                + "\" y1=\"35\" y2=\"" + (carportWidth-35)
+                + "\" stroke-width=\"1\" stroke=\"black\"></line>");
+
+
+    }
+    public void posts(){
+        int postsAmount = CalcPart.calcPostAmount(carportLength);
+
     }
 
     public void addRect(int x, int y, double height, double width) {
