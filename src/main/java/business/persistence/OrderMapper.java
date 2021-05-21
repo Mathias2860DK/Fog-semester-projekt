@@ -86,7 +86,7 @@ public class OrderMapper {
                     String status = rs.getString("status");
                     double totalPrice = rs.getDouble("totalprice");
 
-                    Shed shed = new Shed(shedLength, shedWidth);
+                    Shed shed = new Shed(shedLength);
                     Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
                     order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
 
@@ -125,7 +125,7 @@ public class OrderMapper {
                     String status = rs.getString("status");
                     double totalPrice = rs.getDouble("totalprice");
 
-                    Shed shed = new Shed(shedLength, shedWidth);
+                    Shed shed = new Shed(shedLength);
                     Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
                     Order order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
                     orderListByStatus.add(order);
@@ -166,7 +166,7 @@ public class OrderMapper {
                     String status = rs.getString("status");
                     double totalPrice = rs.getDouble("totalprice");
 
-                    Shed shed = new Shed(shedLength, shedWidth);
+                    Shed shed = new Shed(shedLength);
                     Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
                     Order order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
                     orderList.add(order);
@@ -220,14 +220,14 @@ public class OrderMapper {
                     int cpWidth = rs.getInt("cp_width");
                     int cpLength = rs.getInt("cp_length");
                     String cpRoofType = rs.getString("cp_roof_type");
-                    int shedWidth = rs.getInt("shed_width");
                     int shedLength = rs.getInt("shed_length");
                     Timestamp date = rs.getTimestamp("date");
                     String status = rs.getString("status");
                     double totalPrice = rs.getDouble("totalprice");
 
 
-                    Shed shed = new Shed(shedLength, shedWidth);
+                    Shed shed = new Shed(cpWidth);
+                    shed.setShedLength(shedLength);
                     Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
                     order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
 

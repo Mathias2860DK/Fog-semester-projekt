@@ -17,8 +17,7 @@
         <div class="formbuilder-block">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="${pageContext.request.contextPath}/fc/customizecarport" method="post"
-                          class="ng-pristine ng-valid">
+                    <form method="post" class="ng-pristine ng-valid">
                         <div id="table" class="form-horizontal col-md-12 col-xs-12">
                             <div class="form-group">
                                 <div class="col-md-12 col-xs-12">
@@ -146,24 +145,22 @@
                                     <c:if test="${requestScope.error != null}">
                                         <p style="color: red">${requestScope.error}</p>
                                     </c:if>
-                                    <input type="submit" name="submit_request" title="Send request"
-                                           value="Send forespørgsel" class="">
-                                    <input type="submit" name="show_drawing" title="show drawing" value="Vis tegning"
-                                           class="">
+
+                    <button name="showSvg" formaction="${pageContext.request.contextPath}/fc/showsvgcommand">Vis tegning</button>
+                    <button name="submitRequest" formaction="${pageContext.request.contextPath}/fc/customizecarport">Send forespørgsel</button>
+                    </form>
 
                                     <c:if test="${requestScope.svgdrawing != null}">
                                         ${requestScope.svgdrawing}
                                     </c:if>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-
-                        </div>
 
 
-                    </form>
-                </div>
+
+
+
+
+
             </div>
         </div>
 
