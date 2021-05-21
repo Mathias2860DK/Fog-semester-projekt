@@ -68,26 +68,34 @@ public class SVG {
 
             addRect(100+(55 * i), 100, carportWidth, 4.5);
         }
-
+int x2 = 0; //for line field
+        int x = 0;//for text field
         for (int i = 0; i < raftersAmount; i++) {
-
+x2 = (100+(55 * (i+1)));
+x = (110+(55*i));
+if (i == raftersAmount-1){//Makes sure that the line stops at carport width
+    x2 = (100+(55 * (i)));
+    x = (110+(55*(i-1)));
+    //
+}
 svg.append("<defs>\n" +
         "    <marker id=\"startarrow\" markerWidth=\"10\" markerHeight=\"7\" \n" +
         "    refX=\"10\" refY=\"3.5\" orient=\"auto\">\n" +
-        "      <polygon points=\"10 0, 10 7, 0 3.5\" fill=\"red\" />\n" +
+        "      <polygon points=\"10 0, 10 7, 0 3.5\" fill=\"black\" />\n" +
         "    </marker>\n" +
         "    <marker id=\"endarrow\" markerWidth=\"10\" markerHeight=\"7\" \n" +
         "    refX=\"0\" refY=\"3.5\" orient=\"auto\" markerUnits=\"strokeWidth\">\n" +
-        "        <polygon points=\"0 0, 10 3.5, 0 7\" fill=\"red\" />\n" +
+        "        <polygon points=\"0 0, 10 3.5, 0 7\" fill=\"black\" />\n" +
         "    </marker>\n" +
         "  </defs>\n" +
-        "  <line x1=\"" + (100+(55 * i)) + "\" y1=\"50\" x2=\"" + (100+(55 * i)+1) + "\" y2=\"50\" stroke=\"#000\" stroke-width=\"1\" \n" +
-        "  marker-end=\"url(#endarrow)\" marker-start=\"url(#startarrow)\" />");
+        "  <line x1=\"" + (100+(55 * i)) + "\" y1=\"70\" x2=\"" + x2 + "\" y2=\"70\" stroke=\"#000\" stroke-width=\"1.5\" \n" +
+        "marker-end=\"url(#endarrow)\" marker-start=\"url(#startarrow)\" />" +
+       "  <text x=\""+ x + "\" y=\"" +50 +"\" fill=\"black\">" + 55/*spacebetween rafters*/ +" cm</text>\n");
         }
     }
 
     public void omkreds(){
-        addRect(100,100,600,775);
+        addRect(100,100,carportWidth,carportLength-5);
     }
     public void arrowOmkreds(){
         String arrows = "<defs>\n" +
@@ -134,12 +142,12 @@ svg.append("<defs>\n" +
                 "            <path d=\"M0,0 L12,6 L0,12 L0,0 \" style=\"fill: #000000;\" />\n" +
                 "        </marker>\n" +
                 "    </defs>\n" +
-                "    <line x1=\"100\"  y1=\"750\" x2=\"880\"   y2=\"750\"\n" +
+                "    <line x1=\"100\"  y1=\""+(100+30+carportWidth)+"\" x2=\""+(carportLength+100)+"\"   y2=\""+(100+30+carportWidth)+"\"\n" +
                 "          style=\"stroke: #000000;\n" +
                 "\tmarker-start: url(#beginArrow);\n" +
                 "\tmarker-end: url(#endArrow);\"/>\n" +
                 "    <text x=\""+ 30 + "\" y=\"" +((carportWidth/2) +100) +"\" fill=\"black\">" + carportWidth +" cm</text>\n" +
-                "    <text x=\"" + ((carportLength/2) + 85) + "\" y=\"750\" fill=\"black\" >" + carportLength + " cm</text>";
+                "    <text x=\"" + (100 + (carportLength/2)) + "\" y=\""+(100+carportWidth+25)+"\" fill=\"black\" >" + carportLength + " cm</text>";
         svg.append(arrows);
 
     }

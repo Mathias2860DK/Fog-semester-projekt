@@ -88,14 +88,14 @@
                             <td>Tag type:</td>
                             <td class="text-center">${sessionScope.order.carport.roof}</td>
                         </tr>
-                        <c:if test="${sessionScope.carport.shed != null}">
+                        <c:if test="${sessionScope.order.carport.shed != null}">
                             <tr>
                                 <td>Redskabsskur længde:</td>
-                                <td class="text-center">${sessionScope.carport.shed.shedLength} cm</td>
+                                <td class="text-center">${sessionScope.order.carport.shed.shedLength} cm</td>
                             </tr>
                             <tr>
                                 <td>Redskabsskur bredde:</td>
-                                <td class="text-center"><p>${sessionScope.carport.shed.shedWidth} cm</p></td>
+                                <td class="text-center"><p>${sessionScope.order.carport.shed.shedWidth} cm</p></td>
                             </tr>
                         </c:if>
 

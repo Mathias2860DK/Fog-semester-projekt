@@ -32,7 +32,7 @@ public abstract class Command {
         commands.put("requestbill", new GenerateRequestBillCommand("requestbill"));
         commands.put("requestreceiptpage", new SendRequestCommand("requestreceiptpage"));
         commands.put("materialspage", new ShowMaterialsPage("materialspage", "employee"));
-        commands.put("showsvg", new ShowSVGCommand("svgpage"));
+        commands.put("showsvgcommand", new ShowSVGCommand("designcarport"));
         commands.put("employeeorders", new GetOrdersCommand("employeepage", "employee"));
         commands.put("custommerorders", new CustommerComands("customerpage", "customer"));
         commands.put("showcustomerorder", new ShowCustomerOrder("customerorder", "customer"));

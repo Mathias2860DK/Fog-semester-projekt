@@ -20,6 +20,10 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
         String svgTopCode = svgTop.createSvgTop();
         request.setAttribute("svgdrawing", svgTopCode.replace(",", "."));//Makes sure that it puts dot instead of comma.
         return pageToShow;*/
-        return "";
+        String carportWidth = request.getParameter("carport_width");
+        String carportLength = request.getParameter("carport_length");
+        System.out.println(carportLength);
+        System.out.println(carportWidth);
+        return pageToShow;
     }
 }
