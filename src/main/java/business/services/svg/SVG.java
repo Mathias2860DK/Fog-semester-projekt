@@ -36,6 +36,9 @@ public class SVG {
         this.width = width;
         this.height = height;
         svg.append(String.format(headerTemplate, height, width, viewBox, x, y));
+        if (carport.getShed() != null){
+            this.hasShed = true;
+        }
 
 
         this.carportLength = carport.getCarportLength();
@@ -70,6 +73,8 @@ public class SVG {
         }
 int x2 = 0; //for line field
         int x = 0;//for text field
+
+
         for (int i = 0; i < raftersAmount; i++) {
 x2 = (100+(55 * (i+1)));
 x = (110+(55*i));
@@ -168,7 +173,7 @@ svg.append("<defs>\n" +
 
     }
     public void posts(){
-        int postsAmount = CalcPart.calcPostAmount(carportLength);
+        int postsAmount = CalcPart.calcPostAmount(carportLength,hasShed);
 
     }
 
