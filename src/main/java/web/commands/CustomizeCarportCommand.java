@@ -54,7 +54,7 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
         int remme = CalcPart.calcRem(carportLengthInt, remLength);
         if (showSVG != null) {
             //TODO: Her skal tilføjes de begregninger til for mange af de forskellige matrialer der skal bruges
-            SVG svg = new SVG(0, 0, "0 0 900 800", 100, 50, new Carport(600,780,""));
+            SVG svg = new SVG(0, 0, "0 0 900 800", 100, 50, new Carport(420,600,""));
             String svgCode = svg.generateSvgTop();
             request.setAttribute("svgdrawing", svgCode);//Makes sure that it puts dot instead of comma.
             return pageToShow;
