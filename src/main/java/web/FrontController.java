@@ -8,6 +8,7 @@ import web.commands.*;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -52,6 +53,7 @@ public class FrontController extends HttpServlet {
         try {
             request.setCharacterEncoding("UTF-8");
             response.setCharacterEncoding("UTF-8");
+            Locale.setDefault(new Locale("US"));
             Command action = Command.fromPath(request, database);
 
             if (action instanceof CommandUnknown) {
