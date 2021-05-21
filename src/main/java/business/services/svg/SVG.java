@@ -174,8 +174,38 @@ svg.append("<defs>\n" +
     }
     public void posts(){
         int postsAmount = CalcPart.calcPostAmount(carportLength,hasShed);
+        int remainingLength = carportLength-100-30;
 
-    }
+        if (hasShed){
+            remainingLength = remainingLength-190;
+            int remainingPosts = postsAmount-9;
+            int spaceBetweenPost = 0;
+            if (remainingPosts>0){
+                spaceBetweenPost = remainingLength/(remainingPosts);
+            } else {
+                spaceBetweenPost = remainingLength;
+            }
+
+            for (int i = 0; i < postsAmount; i++) {
+                if (i == 0){
+                    addRect(200,130,9.7,9.7);
+                    addRect(200,carportWidth+100-30,9.7,9.7);
+                    addRect(carportLength-30+100,130,9.7,9.7);
+                    addRect(carportLength-30+100,carportWidth+100-30,9.7,9.7);
+                    addRect(carportLength-30+100,(carportWidth/2)+100,9.7,9.7);
+                    addRect(carportLength-30-190+100,130,9.7,9.7);
+                    addRect(carportLength-30-190+100,carportWidth+100-30,9.7,9.7);
+                    addRect(carportLength-30-190+100,(carportWidth/2)+100,9.7,9.7);
+                } else if (i == 10){
+                    addRect(200+spaceBetweenPost,130,9.7,9.7);
+                    addRect(200+spaceBetweenPost,carportWidth+100-30,9.7,9.7);
+                }
+
+                }
+
+            }
+        }
+
 
     public void addRect(int x, int y, double height, double width) {
         svg.append(String.format(rectTemplate, x, y, height, width));

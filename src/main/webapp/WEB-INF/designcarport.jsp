@@ -118,6 +118,8 @@
             </b>
             <br>
             NB! Der kan vælges mellem fuld bredde eller halv bredde i forhold til carportens mål.
+                <br>
+                OBS! For at tilvælge et redskabsskur SKAL længden på carporten være minimum 540 cm!
             </span>
                                 </div>
                             </div>
