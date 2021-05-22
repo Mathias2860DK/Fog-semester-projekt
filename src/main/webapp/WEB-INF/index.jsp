@@ -53,7 +53,7 @@
                                     <div class="carousel-item active">
                                         <img
                                                 class="d-block w-100"
-                                                src="${pageContext.request.contextPath}/css/images/fogLogoOne.png"
+                                                src="${pageContext.request.contextPath}/css/images/carportPic2.png"
                                                 alt="First slide"
                                         />
                                     </div>
@@ -66,7 +66,7 @@
                                     <div class="carousel-item">
                                         <img
                                                 class="d-block w-100"
-                                                src="${pageContext.request.contextPath}/css/images/carportPic2.png"
+                                                src="${pageContext.request.contextPath}/css/images/fogLogoOne.png"
                                                 alt="Third slide"
                                         />
                                     </div>

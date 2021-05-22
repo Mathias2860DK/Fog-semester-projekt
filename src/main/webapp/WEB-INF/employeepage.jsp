@@ -12,6 +12,9 @@
             <h1 class="display-4">Ordre oversigt</h1>
         </div>
 
+        <p class="text-center">
+            Alle ordre med status 'request' er sat til 0 kr. Klik på ordren for at ændre prisen
+        </p>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -32,7 +35,7 @@
                                 <option value="declined">Declined</option>
                                 <option value="finished">Finished</option>
                             </select>
-                            <input type="submit" value="Submit">
+                            <input class="btn-success" type="submit" value="Submit">
                             <!-- <button name="customerorder" class="btn btn-primary" type="submit" value="${ordre.orderId}">${ordre.orderId}</button>-->
                         </form>
                     </th>

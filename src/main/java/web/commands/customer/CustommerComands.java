@@ -1,10 +1,11 @@
-package web.commands;
+package web.commands.customer;
 
 import business.entities.Order;
 import business.entities.User;
 import business.exceptions.UserException;
 import business.persistence.OrderMapper;
 import business.services.DeliveryInfoFacade;
+import web.commands.CommandProtectedPage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
