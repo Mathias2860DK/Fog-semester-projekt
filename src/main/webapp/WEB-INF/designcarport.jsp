@@ -155,6 +155,10 @@
                                     <c:if test="${requestScope.svgdrawing != null}">
                                         ${requestScope.svgdrawing}
                                     </c:if>
+                    <c:if test="${requestScope.svgdrawingside != null}">
+                        ${requestScope.svgdrawingside}
+                    </c:if>
+
                                 </div>
 
 
