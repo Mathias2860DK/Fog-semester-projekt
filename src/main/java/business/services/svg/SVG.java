@@ -31,6 +31,28 @@ public class SVG {
             " preserveAspectRatio=\"xMinYMin\">";
     private final String rectTemplate = "<rect x=\"%d\" y=\"%d\" height=\"%f\" width=\"%f\" style=\"stroke:#000000; fill: #ffffff\" />";
 
+    public void arrowsAndTextSideSvg(){
+        //right side
+        addArrowAndText(100+carportLength+50,10,100+carportLength+50,230,100+carportLength+50,230/2,220);
+        //left side
+        addArrowAndText(50,0,50,230,50,230/2,230);
+    }
+    public void addArrowAndText(int x1, int y1, int x2, int y2, int textX, int textY, int textToDisplay){
+        svg.append("<defs>\n" +
+        "    <marker id=\"startarrow\" markerWidth=\"10\" markerHeight=\"7\" \n" +
+                "    refX=\"10\" refY=\"3.5\" orient=\"auto\">\n" +
+                "      <polygon points=\"10 0, 10 7, 0 3.5\" fill=\"black\" />\n" +
+                "    </marker>\n" +
+                "    <marker id=\"endarrow\" markerWidth=\"10\" markerHeight=\"7\" \n" +
+                "    refX=\"0\" refY=\"3.5\" orient=\"auto\" markerUnits=\"strokeWidth\">\n" +
+                "        <polygon points=\"0 0, 10 3.5, 0 7\" fill=\"black\" />\n" +
+                "    </marker>\n" +
+                "  </defs>\n" +
+                "  <line x1=\"" + x1 + "\" y1=\"" + y1 + "\" x2=\"" + x2 + "\" y2=\""+y2+"\" stroke=\"#000\" stroke-width=\"1.5\" \n" +
+                "marker-end=\"url(#endarrow)\" marker-start=\"url(#startarrow)\" />" +
+                "  <text x=\""+ textX + "\" y=\"" +textY +"\" fill=\"black\">" + textToDisplay +" cm</text>\n ");
+
+    }
 
     public void addRoof() {//add roof and base
         //base line
@@ -95,6 +117,7 @@ public class SVG {
 
     public String generateSvgSide(){
 addRoof();
+        arrowsAndTextSideSvg();
         return svg.toString();
     }
 
