@@ -90,6 +90,23 @@
         </form>
         </div>
 
+        <c:if test="${sessionScope.oldDelivery != null}">
+            <p>${sessionScope.oldDelivery}</p>
+
+            <p>${sessionScope.deliveryInfo.name}</p>
+            <p>${sessionScope.deliveryInfo.email}</p>
+            <p>${sessionScope.deliveryInfo.zipCodeCity}</p>
+            <p>${sessionScope.deliveryInfo.phone}</p>
+            <p>${sessionScope.deliveryInfo.address}</p>
+
+            <form action="${pageContext.request.contextPath}/fc/requestbill">
+                <input type="submit" class="btn btn-primary" name="submitOldDelivery"
+                       value="Send gamle leveringsoplysninger">
+            </form>
+
+
+        </c:if>
+
 
     </jsp:body>
 </t:genericpage>

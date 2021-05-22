@@ -28,16 +28,19 @@ public class GenerateRequestBillCommand extends CommandUnprotectedPage {
         } else {
             userId = 1;
         }
+        if (request.getParameter("submitOldDelivery") == null) {
 
-        String name = request.getParameter("name");
-        String adress = request.getParameter("adress");
-        String zipCodeCity = request.getParameter("zip_code_city");
-        String phone = request.getParameter("phone");
-        String email = request.getParameter("email");
-        String remarks = request.getParameter("remarks");
-        deliveryInfo = new DeliveryInfo(userId, name, adress, zipCodeCity, Integer.parseInt(phone), email, remarks);
+            String name = request.getParameter("name");
+            String adress = request.getParameter("adress");
+            String zipCodeCity = request.getParameter("zip_code_city");
+            String phone = request.getParameter("phone");
+            String email = request.getParameter("email");
+            String remarks = request.getParameter("remarks");
+            deliveryInfo = new DeliveryInfo(userId, name, adress, zipCodeCity, Integer.parseInt(phone), email, remarks);
 
-        session.setAttribute("deliveryInfo", deliveryInfo);
+            session.setAttribute("deliveryInfo", deliveryInfo);
+        }
+
         return pageToShow;
     }
 }

@@ -150,6 +150,7 @@
 
                     <button name="showSvg" formaction="${pageContext.request.contextPath}/fc/showsvgcommand">Vis tegning</button>
                     <button name="submitRequest" formaction="${pageContext.request.contextPath}/fc/customizecarport">Send forespørgsel</button>
+
                     </form>
 
                                     <c:if test="${requestScope.svgdrawing != null}">

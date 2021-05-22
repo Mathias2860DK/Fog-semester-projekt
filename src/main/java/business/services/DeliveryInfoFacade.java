@@ -33,4 +33,8 @@ public class DeliveryInfoFacade {
     public String getCustomerEmail(int deliveryId) throws UserException {
         return deliveryInfoMapper.getCustomerEmail(deliveryId);
     }
+
+    public DeliveryInfo getLatestDeliveryInfoByUserId(int userId) throws UserException {
+        return deliveryInfoMapper.getLatestDeliveryInfoByUserId(userId);
+    }
 }
