@@ -42,14 +42,9 @@
             <c:if test="${sessionScope.deliveryInfo.remarks == null || sessionScope.deliveryInfo.remarks == '' }">Ingen</c:if>
         </p>
         <form action="${pageContext.request.contextPath}/fc/requestreceiptpage" method="POST">
-            <button class="btn btn-primary" type="submit" value="bekræft">Bekræft</button>
+            <button class="btn btn-success" type="submit" value="bekræft">Bekræft</button>
         </form>
-        <form action="${pageContext.request.contextPath}/fc/showsvg" method="POST">
-            <button class="btn btn-primary" type="submit" value="showsvg">Se tegning</button>
-        </form>
-        <%--<div style="margin-top: 3em;margin-bottom: 3em;">
-            Klik her for at se din SVG tegning af din <a href="${pageContext.request.contextPath}/fc/showsvg"> carport </a>
-        </div>--%>
+
 
     </jsp:body>
 </t:genericpage>

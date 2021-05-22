@@ -15,6 +15,7 @@
         <div class="col-xs-1 text-center" style="margin-bottom: 45px">
             <h1 class="display-4">Kundeliste</h1>
         </div>
+        <p class="text-center">Viser alle brugere, som har handlet hos os før.</p>
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>

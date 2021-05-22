@@ -12,7 +12,9 @@
     </jsp:attribute>
 
     <jsp:body>
-
+        <div class="col-xs-1 text-center" style="margin-bottom: 45px">
+            <h1 class="display-4">Indtast dine oplysninger</h1>
+        </div>
 
         </div>
         <form action="${pageContext.request.contextPath}/fc/requestbill" method="post" class="ng-pristine ng-valid">
@@ -84,23 +86,23 @@
             </div>
             <div class="form-group">
                 <div class="col-md-6 col-xs-12">
-                    <input type="submit" name="submit_request" title="Send request" value="Send forespørgsel" class="">
+                    <input style="margin-top: 15px" type="submit" name="submit_request" title="Send request" value="Send forespørgsel" class="btn-primary">
                 </div>
             </div>
         </form>
         </div>
 
         <c:if test="${sessionScope.oldDelivery != null}">
-            <p>${sessionScope.oldDelivery}</p>
+            <p style="margin-top: 40px">${sessionScope.oldDelivery}</p>
 
-            <p>${sessionScope.deliveryInfo.name}</p>
-            <p>${sessionScope.deliveryInfo.email}</p>
-            <p>${sessionScope.deliveryInfo.zipCodeCity}</p>
-            <p>${sessionScope.deliveryInfo.phone}</p>
-            <p>${sessionScope.deliveryInfo.address}</p>
+            <p>Navn: ${sessionScope.deliveryInfo.name}</p>
+            <p>Email: ${sessionScope.deliveryInfo.email}</p>
+            <p>Postnummer og by: ${sessionScope.deliveryInfo.zipCodeCity}</p>
+            <p>Telefon: ${sessionScope.deliveryInfo.phone}</p>
+            <p>Adresse: ${sessionScope.deliveryInfo.address}</p>
 
             <form action="${pageContext.request.contextPath}/fc/requestbill">
-                <input type="submit" class="btn btn-primary" name="submitOldDelivery"
+                <input style="margin-top: 15px" type="submit" class="btn btn-success" name="submitOldDelivery"
                        value="Send gamle leveringsoplysninger">
             </form>
 
