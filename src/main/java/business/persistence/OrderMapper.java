@@ -99,8 +99,8 @@ public class OrderMapper {
             }
 
         } catch (SQLException | UserException ex) {
-            ex.printStackTrace();
             throw new UserException(ex.getMessage());
+
         }
 
     }
