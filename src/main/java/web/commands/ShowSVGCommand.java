@@ -64,9 +64,16 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
                 carport = new Carport(carportWidthInt, carportLengthInt, roof);
             }
             session.setAttribute("carport", carport);
-            SVG svg = new SVG(0, 0, "0 0 900 800", 100, 50, carport);
+
+            //creates SVG from the top of the carport
+           /* SVG svg = new SVG(0, 0, "0 0 900 800", 100, 50, carport);
             String svgCode = svg.generateSvgTop();
-            request.setAttribute("svgdrawing", svgCode);
+            request.setAttribute("svgdrawing", svgCode);*/
+
+            //Create SVG from the side of the carport
+            SVG svgSide = new SVG(0, 0, "0 0 900 800", 100, 50, carport);
+            String svgCodeSide = svgSide.generateSvgSide();
+            request.setAttribute("svgdrawingside", svgCodeSide);
         }
         return pageToShow;
     }
