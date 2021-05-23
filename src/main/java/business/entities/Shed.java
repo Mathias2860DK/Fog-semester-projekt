@@ -28,6 +28,10 @@ this.carportWidth = carportWidth;
         this.fullSize = fullSize;
     }
 
+    public void setShedWidthIfNoShed(){
+        this.shedWidth = 0;
+    }
+
     public void setShedLength(int shedLength) {
         this.shedLength = shedLength;
     }

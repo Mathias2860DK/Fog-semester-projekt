@@ -226,10 +226,18 @@ public class OrderMapper {
                     double totalPrice = rs.getDouble("totalprice");
 
 
-                    Shed shed = new Shed(cpWidth);
-                    shed.setShedLength(shedLength);
-                    Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
-                    order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
+                    if (shedLength == 0){
+                        Shed shed = new Shed(cpWidth);
+                        shed.setShedWidthIfNoShed();
+                        Carport carport = new Carport(cpWidth, cpLength, cpRoofType,shed);
+                        order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
+                    } else {
+                        Shed shed = new Shed(cpWidth);
+                        shed.setShedLength(shedLength);
+                        Carport carport = new Carport(cpWidth, cpLength, cpRoofType, shed);
+                        order = new Order(orderID, deliveryInfoId, carport, date, status, totalPrice);
+                    }
+
 
 //TODO: Execute methods to add:
                 }
