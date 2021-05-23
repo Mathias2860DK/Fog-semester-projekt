@@ -19,6 +19,7 @@ public class SVG {
     private boolean hasShed;
     private int shedLength;
     private int shedWidth;
+    private boolean fullSize;
 
     //Alle mål er forskudt med 100px, da vi ikke laver SVG tegning inde i svg tegning.
 
@@ -54,6 +55,12 @@ public class SVG {
                 "  <text x=\"" + textX + "\" y=\"" + textY + "\" fill=\"black\">" + textToDisplay + " cm</text>\n ");
 
     }
+    public void addShedSide(){
+        for (int i = 0; i < 38; i++) {
+            addRect((carportLength - 30 - 190 + 100)+(i*5),10,carportStartHeight,5);
+
+        }
+    }
     public void addPostsSide(){
         int postsAmount = CalcPart.calcPostAmount(carportLength, hasShed);
         int remainingLength = carportLength - 100 - 30;
@@ -66,28 +73,45 @@ public class SVG {
             } else {
                 spaceBetweenPosts = remainingLength;
             }
-            addRect(200, 10, carportEndHeight, 9.7);
+            addShedSide();
+            addRect(200, 0, carportEndHeight, 9.7);
             addRect(carportLength - 30 + 100, 10, carportStartHeight, 9.7);
             addRect(carportLength - 30 - 190 + 100, 10, carportEndHeight-5, 9.7);
+            addArrowAndText(100,carportStartHeight+50,200,carportStartHeight+50,120,carportStartHeight+70, 100);
+            addArrowAndText(carportLength-190-30+100,carportStartHeight+50,carportLength-30+100,carportStartHeight+50,carportLength-30+100-95-30,carportStartHeight+70,190);
+            addArrowAndText(carportLength-30+100,carportStartHeight+50,carportLength+100,carportStartHeight+50,carportLength-20+100,carportStartHeight+70,30);
 
             if (postsAmount > 10) {
-                addRect(200 + spaceBetweenPosts, 10, carportEndHeight-5, 9.7);
+                addRect(200 + spaceBetweenPosts, 5, carportEndHeight-5, 9.7);
+                addArrowAndText(200,carportStartHeight+50,200+spaceBetweenPosts,carportStartHeight+50,200+(spaceBetweenPosts/2)-30,carportStartHeight+70,spaceBetweenPosts);
+                addArrowAndText(200+spaceBetweenPosts,carportStartHeight+50,carportLength-190-30+100,carportStartHeight+50,(carportLength-190-30+100)-(spaceBetweenPosts/2),carportStartHeight+70,spaceBetweenPosts);
+            } else {
+                addArrowAndText(200,carportStartHeight+50,carportLength-190-30+100,carportStartHeight+50,(carportLength-190-30+100)-(remainingLength/2),carportStartHeight+70,remainingLength);
             }
 
         } else {
-            int remainingPosts = (postsAmount - 4);
+            int remainingPosts = ((postsAmount - 4)/2)+1;//for at finde den mellemrum der skal være på den ene side dividere vi med 2, og plusser med en da vi skal finde afstand
             int spaceBetweenPosts = 0;
             if (remainingPosts > 0) {
                 spaceBetweenPosts = remainingLength / remainingPosts;
             } else {
                 spaceBetweenPosts = remainingLength;
             }
-            addRect(200, 10, carportEndHeight, 9.7);
-            addRect(carportLength - 30 + 100, 10, carportStartHeight, 9.7);
+            addRect(200, 0, carportEndHeight, 9.7);//første stolpe
+            addRect(carportLength - 30 + 100, 10, carportStartHeight, 9.7);//sidste stolpe
+            addArrowAndText(100,carportStartHeight+50,200,carportStartHeight+50,120,carportStartHeight+70, 100);
+            addArrowAndText(carportLength-30+100,carportStartHeight+50,carportLength+100,carportStartHeight+50,carportLength-20+100,carportStartHeight+70,30);
+
             if (postsAmount > 4) {
-                addRect(200 + spaceBetweenPosts, 10, carportEndHeight-5, 9.7);
-            }  if (postsAmount > 6) {
-                addRect(200 + spaceBetweenPosts*2, 10, carportEndHeight-5, 9.7);
+                addRect(200 + spaceBetweenPosts, 5, carportEndHeight-5, 9.7);//
+                addArrowAndText(200,carportStartHeight+50,200+spaceBetweenPosts,carportStartHeight+50,200+(spaceBetweenPosts/2),carportStartHeight+70,spaceBetweenPosts);
+                addArrowAndText(200+spaceBetweenPosts,carportStartHeight+50,carportLength-30+100,carportStartHeight+50,(carportLength-30+100)-(spaceBetweenPosts/2),carportStartHeight+70,spaceBetweenPosts);
+            } else {
+                addArrowAndText(200,carportStartHeight+50,carportLength-30+100,carportStartHeight+50,(carportLength-30+100)-(remainingLength/2),carportStartHeight+70,remainingLength);
+            } if (postsAmount > 6) {
+                addRect(200 + (spaceBetweenPosts*2), 10, carportEndHeight-5, 9.7);
+                addArrowAndText(200+spaceBetweenPosts,carportStartHeight+50,200+(spaceBetweenPosts*2),carportStartHeight+50,200+spaceBetweenPosts+(spaceBetweenPosts/2),carportStartHeight+70,spaceBetweenPosts);
+
             }
 
         }
@@ -133,6 +157,9 @@ public class SVG {
         svg.append(String.format(headerTemplate, height, width, viewBox, x, y));
         if (carport.getShed() != null) {
             this.hasShed = true;
+        }
+        if (carport.getShed().isFullSize()) {
+            this.fullSize = true;
         }
 
 
@@ -290,11 +317,26 @@ public class SVG {
 
     }
 
+    public void addShed(){
+        if (fullSize){
+            addRect(carportLength - 30 - 190 + 100, 130, 5, 190);
+            addRect(carportLength - 30 - 190 + 100, 130, carportWidth-60,5 );
+            addRect(carportLength-30+100,130,carportWidth-60,5);
+            addRect(carportLength - 30 - 190 + 100,carportWidth-30+100,5,190);
+        } else {
+            addRect(carportLength - 30 - 190 + 100, 130, 5, 190);
+            addRect(carportLength - 30 - 190 + 100, 130, (carportWidth-60)/2,5 );
+            addRect(carportLength-30+100,130,(carportWidth-60)/2,5);
+            addRect(carportLength - 30 - 190 + 100,((carportWidth)/2)+100,5,190);
+        }
+    }
+
     public void posts() {
         int postsAmount = CalcPart.calcPostAmount(carportLength, hasShed);
         int remainingLength = carportLength - 100 - 30;
 
         if (hasShed) {
+            addShed();
             remainingLength = remainingLength - 190;
             int remainingPosts = postsAmount - 9;
             int spaceBetweenPosts = 0;
@@ -317,7 +359,7 @@ public class SVG {
             }
 
         } else {
-            int remainingPosts = postsAmount - 4;
+            int remainingPosts = ((postsAmount - 4)/2) + 1;
             int spaceBetweenPosts = 0;
             if (remainingPosts > 0) {
                 spaceBetweenPosts = remainingLength / (remainingPosts);
