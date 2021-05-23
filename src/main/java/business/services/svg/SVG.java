@@ -54,6 +54,44 @@ public class SVG {
                 "  <text x=\"" + textX + "\" y=\"" + textY + "\" fill=\"black\">" + textToDisplay + " cm</text>\n ");
 
     }
+    public void addPostsSide(){
+        int postsAmount = CalcPart.calcPostAmount(carportLength, hasShed);
+        int remainingLength = carportLength - 100 - 30;
+        if (hasShed){
+            remainingLength = remainingLength - 190;
+            int remainingPosts = (postsAmount-3)/2;
+            int spaceBetweenPosts = 0;
+            if (remainingPosts > 0) {
+                spaceBetweenPosts = remainingLength / (remainingPosts)*2;
+            } else {
+                spaceBetweenPosts = remainingLength;
+            }
+            addRect(200, 10, carportEndHeight, 9.7);
+            addRect(carportLength - 30 + 100, 10, carportStartHeight, 9.7);
+            addRect(carportLength - 30 - 190 + 100, 10, carportEndHeight-5, 9.7);
+
+            if (postsAmount > 10) {
+                addRect(200 + spaceBetweenPosts, 10, carportEndHeight-5, 9.7);
+            }
+
+        } else {
+            int remainingPosts = (postsAmount - 4);
+            int spaceBetweenPosts = 0;
+            if (remainingPosts > 0) {
+                spaceBetweenPosts = remainingLength / remainingPosts;
+            } else {
+                spaceBetweenPosts = remainingLength;
+            }
+            addRect(200, 10, carportEndHeight, 9.7);
+            addRect(carportLength - 30 + 100, 10, carportStartHeight, 9.7);
+            if (postsAmount > 4) {
+                addRect(200 + spaceBetweenPosts, 10, carportEndHeight-5, 9.7);
+            }  if (postsAmount > 6) {
+                addRect(200 + spaceBetweenPosts*2, 10, carportEndHeight-5, 9.7);
+            }
+
+        }
+    }
 
     public void addRoof() {//add roof and base
         //base line
@@ -122,6 +160,7 @@ public class SVG {
     public String generateSvgSide() {
         addRoof();
         arrowsAndTextSideSvg();
+        addPostsSide();
         return svg.toString();
     }
 
@@ -285,6 +324,9 @@ public class SVG {
             } else {
                 spaceBetweenPosts = remainingLength;
             }
+            System.out.println(postsAmount);
+            System.out.println(spaceBetweenPosts);
+
             addRect(200, 130, 9.7, 9.7);
             addRect(200, carportWidth + 100 - 30, 9.7, 9.7);
             addRect(carportLength - 30 + 100, 130, 9.7, 9.7);
@@ -292,7 +334,7 @@ public class SVG {
             if (postsAmount > 4) {
                 addRect(200 + spaceBetweenPosts, 130, 9.7, 9.7);
                 addRect(200 + spaceBetweenPosts, carportWidth + 100 - 30, 9.7, 9.7);
-            } else if (postsAmount > 6) {
+            }  if (postsAmount > 6) {
                 addRect(200 + (spaceBetweenPosts * 2), 130, 9.7, 9.7);
                 addRect(200 + (spaceBetweenPosts * 2), carportWidth + 100 - 30, 9.7, 9.7);
             }

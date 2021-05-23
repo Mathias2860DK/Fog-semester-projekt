@@ -70,9 +70,9 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
             session.setAttribute("carport", carport);
 
             //creates SVG from the top of the carport
-            SVG svg = new SVG(0, 0, "0 0 1000 900", 100, 50, carport);
+            /*SVG svg = new SVG(0, 0, "0 0 1000 900", 100, 50, carport);
             String svgCode = svg.generateSvgTop();
-            request.setAttribute("svgdrawing", svgCode);
+            request.setAttribute("svgdrawing", svgCode);*/
 
             //Create SVG from the side of the carport
             SVG svgSide = new SVG(0, 0, "0 0 900 800", 200, 100, carport);
