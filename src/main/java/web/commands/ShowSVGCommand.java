@@ -17,11 +17,6 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-       /*  SVG svg = new SVG(0, 0, "0 0 800 600", 100, 50);
-        SvgTop svgTop = new SvgTop(new Carport(600,780,""),svg);
-        String svgTopCode = svgTop.createSvgTop();
-        request.setAttribute("svgdrawing", svgTopCode.replace(",", "."));//Makes sure that it puts dot instead of comma.
-        return pageToShow;*/
 
         HttpSession session = request.getSession();
 
@@ -63,9 +58,11 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
             } else if (hasShed && carportLengthInt <511){
                 carport = new Carport(carportWidthInt, carportLengthInt, roof);
                 request.setAttribute("error","Du kan ikke tilvælge redskabsskur med en carport længde på under 540 cm");
-                return pageToShow;
+
             } else {
-                carport = new Carport(carportWidthInt, carportLengthInt, roof);
+                Shed shed = new Shed(carportWidthInt);
+                shed.setShedWidthIfNoShed();
+                carport = new Carport(carportWidthInt, carportLengthInt, roof,shed);
             }
             session.setAttribute("carport", carport);
 

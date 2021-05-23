@@ -3,6 +3,7 @@ package web.commands.customer;
 import business.calculations.CalcCarport;
 import business.entities.Carport;
 import business.entities.Order;
+import business.entities.Shed;
 import business.exceptions.UserException;
 import business.services.DeliveryInfoFacade;
 import business.services.MaterialsFacade;
@@ -33,6 +34,8 @@ public class ShowCustomerOrder extends CommandProtectedPage {
         HttpSession session = request.getSession();
         Order order = null;
         String orderId = request.getParameter("customerorder");
+        boolean hasShed = false;
+
 
         if (orderId != null) {
             int orderIdInt = Integer.parseInt(orderId);
@@ -45,6 +48,25 @@ public class ShowCustomerOrder extends CommandProtectedPage {
                     if (order.getStatus().equals("paid")) {
                         //creates SVG from the top of the carport
                         Carport carport = order.getCarport();
+                        if (carport.getShed().getShedLength() != 0){
+                            hasShed = true;
+                        }
+                        if (hasShed) {
+                            Shed shed = new Shed(carport.getCarportWidth());
+
+                            if (!carport.getShed().isFullSize()) {
+                                shed.setFullSize(false);
+                            } else {
+                                shed.setFullSize(true);
+                            }
+                            carport = new Carport(carport.getCarportWidth(), carport.getCarportLength(), carport.getRoof(), shed);
+                        } else if (hasShed){
+                            carport = new Carport(carport.getCarportWidth(), carport.getCarportLength(), carport.getRoof());
+                            request.setAttribute("error","Du kan ikke tilvælge redskabsskur med en carport længde på under 540 cm");
+                        } else {
+                            carport = new Carport(carport.getCarportWidth(), carport.getCarportLength(), carport.getRoof());
+                        }
+                        session.setAttribute("carport", carport);
                         SVG svg = new SVG(0, 0, "0 0 1000 900", 150, 100, carport);
                         String svgCode = svg.generateSvgTop();
                         request.setAttribute("svgdrawing", svgCode);

@@ -28,9 +28,13 @@ public class RedirectCommand extends CommandUnprotectedPage {
         if (session.getAttribute("user") != null) {
             user = (User) session.getAttribute("user");
             userId = user.getId();
-            session.setAttribute("oldDelivery","Vi har gemt nogle gamle leveringsoplysninger. Vil du bruge de samme?");
+
 DeliveryInfo deliveryInfo = deliveryInfoFacade.getLatestDeliveryInfoByUserId(userId);
-session.setAttribute("deliveryInfo",deliveryInfo);
+if (deliveryInfo != null){
+    session.setAttribute("deliveryInfo",deliveryInfo);
+    session.setAttribute("oldDelivery","Vi har gemt nogle gamle leveringsoplysninger. Vil du bruge de samme?");
+}
+
 
         }
 

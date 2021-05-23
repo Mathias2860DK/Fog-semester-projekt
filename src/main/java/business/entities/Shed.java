@@ -29,6 +29,7 @@ this.carportWidth = carportWidth;
     }
 
     public void setShedWidthIfNoShed(){
+        this.postAmount = 0;
         this.shedWidth = 0;
     }
 
