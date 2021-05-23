@@ -155,7 +155,8 @@ public class SVG {
         this.width = width;
         this.height = height;
         svg.append(String.format(headerTemplate, height, width, viewBox, x, y));
-        if (carport.getShed() != null) {
+        this.hasShed = carport.getShed().isHasShed();
+        if (hasShed) {
             this.hasShed = true;
         }
         if (carport.getShed().isFullSize()) {
@@ -318,12 +319,12 @@ public class SVG {
     }
 
     public void addShed(){
-        if (fullSize){
+        if (fullSize && hasShed){
             addRect(carportLength - 30 - 190 + 100, 130, 5, 190);
             addRect(carportLength - 30 - 190 + 100, 130, carportWidth-60,5 );
             addRect(carportLength-30+100,130,carportWidth-60,5);
             addRect(carportLength - 30 - 190 + 100,carportWidth-30+100,5,190);
-        } else {
+        } else if (!fullSize && hasShed){
             addRect(carportLength - 30 - 190 + 100, 130, 5, 190);
             addRect(carportLength - 30 - 190 + 100, 130, (carportWidth-60)/2,5 );
             addRect(carportLength-30+100,130,(carportWidth-60)/2,5);

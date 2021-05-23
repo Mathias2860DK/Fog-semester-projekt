@@ -49,9 +49,9 @@ public class ShowCustomerOrder extends CommandProtectedPage {
                         //creates SVG from the top of the carport
                         Carport carport = order.getCarport();
                         if (carport.getShed().getShedLength() != 0){
-                            hasShed = true;
+                            carport.getShed().setHasShed(true);
                         }
-                        if (hasShed) {
+                        if (carport.getShed().isHasShed()) {
                             Shed shed = new Shed(carport.getCarportWidth());
 
                             if (!carport.getShed().isFullSize()) {

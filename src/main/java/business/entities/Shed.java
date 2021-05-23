@@ -6,7 +6,15 @@ public class Shed {
     private int postAmount = 4;
     private boolean fullSize;
     private int carportWidth;
+    private boolean hasShed;
 
+    public boolean isHasShed() {
+        return hasShed;
+    }
+
+    public void setHasShed(boolean hasShed) {
+        this.hasShed = hasShed;
+    }
 
     public Shed(int carportWidth) {
 this.carportWidth = carportWidth;
