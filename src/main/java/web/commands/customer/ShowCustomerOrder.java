@@ -41,50 +41,17 @@ public class ShowCustomerOrder extends CommandProtectedPage {
             int orderIdInt = Integer.parseInt(orderId);
             List<Order> orderList = (List<Order>) session.getAttribute("orderList");
 
-            //Shows SVG drawings for customers who has paid
+            //Shows bom for customers who have paid:
             for (int i = 0; i < orderList.size(); i++) {
                 if (orderList.get(i).getOrderId() == orderIdInt) {
                     order = orderList.get(i);
                     if (order.getStatus().equals("paid")) {
-                        //creates SVG from the top of the carport
                         Carport carport = order.getCarport();
-                        if (carport.getShed().getShedLength() != 0){
-                            carport.getShed().setHasShed(true);
-                        }
-                        if (carport.getShed().isHasShed()) {
-                            Shed shed = new Shed(carport.getCarportWidth());
-
-                            if (!carport.getShed().isFullSize()) {
-                                shed.setFullSize(false);
-                            } else {
-                                shed.setFullSize(true);
-                            }
-                            carport = new Carport(carport.getCarportWidth(), carport.getCarportLength(), carport.getRoof(), shed);
-                        } else if (hasShed){
-                            carport = new Carport(carport.getCarportWidth(), carport.getCarportLength(), carport.getRoof());
-                            request.setAttribute("error","Du kan ikke tilvælge redskabsskur med en carport længde på under 540 cm");
-                        } else {
-                            carport = new Carport(carport.getCarportWidth(), carport.getCarportLength(), carport.getRoof());
-                        }
-                        session.setAttribute("carport", carport);
-                        SVG svg = new SVG(0, 0, "0 0 1000 900", 150, 100, carport);
-                        String svgCode = svg.generateSvgTop();
-                        request.setAttribute("svgdrawing", svgCode);
-
-                        //Create SVG from the side of the carport
-                        SVG svgSide = new SVG(0, 0, "0 0 1000 900", 150, 100, carport);
-                        String svgCodeSide = svgSide.generateSvgSide();
-                        request.setAttribute("svgdrawingside", svgCodeSide);
-                        request.setAttribute("bomByOrderId", order.getOrderId());
+                        request.setAttribute("bomByOrderId", orderId);
                         CalcCarport calcCarport = new CalcCarport();
                         carport = calcCarport.getCarportMaterials(carport, materialsFacade);
-                        calcCarport.totalPrice(carport, order, materialsFacade);
                         session.setAttribute("carport", carport);
                     }
-                    session.setAttribute("order", order);
-                    return pageToShow;
-                } else {
-                    request.setAttribute("error", "Der er sket en fejl");
                 }
             }
 

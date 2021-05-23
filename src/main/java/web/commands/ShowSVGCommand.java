@@ -55,6 +55,7 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
                     shed.setFullSize(true);
                 }
                 carport = new Carport(carportWidthInt, carportLengthInt, roof, shed);
+                carport.getShed().setHasShed(true);
             } else if (hasShed && carportLengthInt <511){
                 carport = new Carport(carportWidthInt, carportLengthInt, roof);
                 request.setAttribute("error","Du kan ikke tilvælge redskabsskur med en carport længde på under 540 cm");

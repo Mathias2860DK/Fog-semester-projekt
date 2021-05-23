@@ -83,7 +83,10 @@
         </c:if>
 
         <c:if test="${requestScope.bomByOrderId != null }">
-            <div>
+            <div class="col-xs-1 text-center" style="margin-top: 45px">
+                <h1 class="display-4">Stykliste</h1>
+            </div>
+            <div style="margin-top: 30px">
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
@@ -131,6 +134,7 @@
                 </div>
             </div>
         </c:if>
+
 
     </jsp:body>
 
