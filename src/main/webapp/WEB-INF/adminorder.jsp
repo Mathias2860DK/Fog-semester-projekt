@@ -177,7 +177,7 @@
 
             <form action="${pageContext.request.contextPath}/fc/showBomAdminOrder" method="post"
                   class="ng-pristine ng-valid">
-                <button style="margin-top: 25px" type="submit" class="btn btn-info" name="bomByOrderId"
+                <button style="margin-top: 25px; margin-bottom: 40px" type="submit" class="btn btn-info" name="bomByOrderId"
                         value="${sessionScope.order.orderId}">Se stykliste
                 </button>
             </form>

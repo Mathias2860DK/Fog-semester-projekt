@@ -1,10 +1,11 @@
-package web.commands;
+package web.commands.customer;
 
 import business.entities.Order;
 import business.exceptions.UserException;
 import business.services.DeliveryInfoFacade;
 import business.services.OrderFacade;
 import com.sun.tools.corba.se.idl.constExpr.Or;
+import web.commands.CommandProtectedPage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

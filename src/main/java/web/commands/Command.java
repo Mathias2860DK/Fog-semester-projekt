@@ -2,6 +2,9 @@ package web.commands;
 
 import business.exceptions.UserException;
 import business.persistence.Database;
+import web.commands.admin.*;
+import web.commands.customer.CustommerComands;
+import web.commands.customer.ShowCustomerOrder;
 
 import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
@@ -18,32 +21,33 @@ public abstract class Command {
 
     private static void initCommands(Database database) {
         commands = new HashMap<>();
+        //All
         commands.put("index", new CommandUnprotectedPage("index"));
         commands.put("loginpage", new CommandUnprotectedPage("loginpage"));
         commands.put("logincommand", new LoginCommand(""));
         commands.put("logoutcommand", new LogoutCommand(""));
         commands.put("registerpage", new CommandUnprotectedPage("registerpage"));
         commands.put("registercommand", new RegisterCommand(""));
-        commands.put("customerpage", new CommandProtectedPage("customerpage", "customer"));
-        commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
-        //commands.put("showsvgdrawing",new ShowSvgCommand(""))
-        commands.put("redirect", new RedirectCommand("missing return page"));
+        commands.put("showsvgcommand", new ShowSVGCommand("designcarport"));
+        commands.put("redirect", new RedirectCommand("")); //change name
         commands.put("customizecarport", new CustomizeCarportCommand("designcarport"));
         commands.put("requestbill", new GenerateRequestBillCommand("requestbill"));
         commands.put("requestreceiptpage", new SendRequestCommand("requestreceiptpage"));
-        commands.put("materialspage", new ShowMaterialsPage("materialspage", "employee"));
-        commands.put("showsvgcommand", new ShowSVGCommand("designcarport"));
-        commands.put("employeeorders", new GetOrdersCommand("employeepage", "employee"));
+
+        //customer
         commands.put("custommerorders", new CustommerComands("customerpage", "customer"));
+        commands.put("customerpage", new CommandProtectedPage("customerpage", "customer"));
         commands.put("showcustomerorder", new ShowCustomerOrder("customerorder", "customer"));
+
+        //admin
+        commands.put("materialspage", new ShowMaterialsPage("materialspage", "employee"));
+        commands.put("employeeorders", new GetOrdersCommand("employeepage", "employee"));
+        commands.put("employeepage", new CommandProtectedPage("employeepage", "employee"));
         commands.put("showorderdetailsadmin", new ShowOrderDetailsCommand("adminorder", "employee"));
         commands.put("showallcustomers", new ShowAllCustomers("getallcustomers", "employee"));
         commands.put("editMaterials", new ManageMaterials("manageMaterials", "employee"));
-
         commands.put("updatecarportprice", new UpdatePriceCommand("adminorder", "employee"));
         commands.put("sendOfferToCustomer", new SendOfferToCustomer("adminorder", "employee"));
-
-        //vis stykliste på adminorder:
         commands.put("showBomAdminOrder", new ShowBomAdminOrder("adminorder", "employee"));
 
 

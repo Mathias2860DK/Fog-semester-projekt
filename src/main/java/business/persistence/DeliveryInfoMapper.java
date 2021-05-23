@@ -186,4 +186,33 @@ public class DeliveryInfoMapper {
         }
         return email;
     }
+
+    public DeliveryInfo getLatestDeliveryInfoByUserId(int userId) throws UserException {
+        DeliveryInfo deliveryInfo = null;
+        try (Connection connection = database.connect()) {
+
+            String sql = "SELECT * FROM delivery_info where user_id = " + userId + " order by delivery_info_id desc limit 1;";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int deliveryInfoId = rs.getInt("delivery_info_id");
+                    String navn = rs.getString("name");
+                    String adresse = rs.getString("adress");
+                    String zip = rs.getString("zipcode_city");
+                    int phone = rs.getInt("phone");
+                    String email = rs.getString("email");
+
+
+                    deliveryInfo = new DeliveryInfo(deliveryInfoId, userId, navn, adresse, zip, phone, email, "");//remarks should not be retrieved again.
+                }
+                return deliveryInfo;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+
+        } catch (SQLException | UserException ex) {
+            throw new UserException(ex.getMessage());
+        }
+    }
 }

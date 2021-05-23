@@ -42,12 +42,23 @@
                         <td class="text-center">${material.unit}</td>
                         <td class="text-center">${material.price}</td>
                         <td class="text-center">
-                            <form action="${pageContext.request.contextPath}/fc/editMaterials">
+         <!--                   <form action="${pageContext.request.contextPath}/fc/editMaterials">
                                 <button name="materialIdEdit" class="btn-warning" type="submit"
                                         value="${material.materialId}">Rediger
                                 </button>
                             </form>
                             <form action="${pageContext.request.contextPath}/fc/editMaterials">
+                                <button name="materialIdDelete" class="btn-danger" type="submit"
+                                        value="${material.materialId}">Slet
+                                </button>
+                            </form> -->
+                            <!--Our database materials is used throughout the program and we dont to delete materials we use-->
+                            <form>
+                                <button name="materialIdEdit" class="btn-warning" type="submit"
+                                        value="${material.materialId}">Rediger
+                                </button>
+                            </form>
+                            <form>
                                 <button name="materialIdDelete" class="btn-danger" type="submit"
                                         value="${material.materialId}">Slet
                                 </button>

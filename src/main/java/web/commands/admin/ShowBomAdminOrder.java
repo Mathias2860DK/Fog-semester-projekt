@@ -1,4 +1,4 @@
-package web.commands;
+package web.commands.admin;
 
 import business.calculations.CalcCarport;
 import business.entities.Carport;
@@ -6,6 +6,7 @@ import business.entities.Order;
 import business.exceptions.UserException;
 import business.services.MaterialsFacade;
 import business.services.OrderFacade;
+import web.commands.CommandProtectedPage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
