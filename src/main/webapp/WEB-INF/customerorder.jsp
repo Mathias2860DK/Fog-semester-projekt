@@ -74,6 +74,64 @@
             </div>
         </c:if>
 
+        <c:if test="${requestScope.svgdrawing != null}">
+            <div class="text-center"> ${requestScope.svgdrawing} </div>
+        </c:if>
+
+        <c:if test="${requestScope.svgdrawingside != null}">
+            <div class="text-center"> ${requestScope.svgdrawingside}</div>
+        </c:if>
+
+        <c:if test="${requestScope.bomByOrderId != null }">
+            <div>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Beskrivelse</th>
+                            <th>Længde</th>
+                            <th>Antal</th>
+                            <th>Enhed</th>
+                            <th>Beskrivelse af brug</th>
+                        </tr>
+                        </thead>
+                        <c:forEach var="material" items="${sessionScope.carport.materialList}">
+                            <c:if test="${material.amount != 0 }">
+                                <tbody>
+                                <tr>
+                                    <c:if test="${material.height != 0 && material.width != 0 }">
+                                        <td class="text-center">${material.height}x${material.width} ${material.materialType}</td>
+                                    </c:if>
+                                    <c:if test="${material.height != 0 && material.width == 0 }">
+                                        <td class="text-center">${material.height} ${material.materialType}</td>
+                                    </c:if>
+                                    <c:if test="${material.height == 0 && material.width != 0 }">
+                                        <td class="text-center">${material.width} ${material.materialType}</td>
+                                    </c:if>
+                                    <c:if test="${material.height == 0 && material.width == 0 }">
+                                        <td class="text-center">${material.materialType}</td>
+                                    </c:if>
+
+                                    <c:if test="${material.length != 0 }">
+                                        <td class="text-center">${material.length}</td>
+                                    </c:if>
+                                    <c:if test="${material.length == 0 }">
+                                        <td class="text-center"></td>
+                                    </c:if>
+
+                                    <td class="text-center">${material.amount}</td>
+                                    <td class="text-center">${material.unit}</td>
+                                    <td class="text-center">${material.description}</td>
+                                </tr>
+                                </tbody>
+                            </c:if>
+
+                        </c:forEach>
+                    </table>
+                </div>
+            </div>
+        </c:if>
+
     </jsp:body>
 
 </t:genericpage>
