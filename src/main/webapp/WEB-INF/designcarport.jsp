@@ -157,7 +157,7 @@
                                         tegninger
                                     </button>
                                     <button class="btn btn-primary" name="submitRequest"
-                                            formaction="${pageContext.request.contextPath}/fc/customizecarport">Send
+                                            formaction="${pageContext.request.contextPath}/fc/sendcarportmeasurements">Send
                                         forespørgsel
                                     </button>
 

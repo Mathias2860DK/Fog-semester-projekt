@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class CustomizeCarportCommand extends CommandUnprotectedPage {
+public class SendCarportMeasurements extends CommandUnprotectedPage {
 
-    public CustomizeCarportCommand(String pageToShow) {
+    public SendCarportMeasurements(String pageToShow) {
         super(pageToShow);
     }
 
@@ -63,7 +63,6 @@ public class CustomizeCarportCommand extends CommandUnprotectedPage {
                 }
                 carport = new Carport(carportWidthInt, carportLengthInt, roof, shed);
             } else if (hasShed && carportLengthInt <511){
-                carport = new Carport(carportWidthInt, carportLengthInt, roof);
                 request.setAttribute("error","Du kan ikke tilvælge redskabsskur med en carport længde på under 540 cm");
                 return pageToShow;
             } else {

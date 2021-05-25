@@ -30,7 +30,7 @@ public abstract class Command {
         commands.put("registercommand", new RegisterCommand(""));
         commands.put("showsvgcommand", new ShowSVGCommand("designcarport"));
         commands.put("redirect", new RedirectCommand("")); //change name
-        commands.put("customizecarport", new CustomizeCarportCommand("designcarport"));
+        commands.put("sendcarportmeasurements", new SendCarportMeasurements("designcarport"));
         commands.put("requestbill", new GenerateRequestBillCommand("requestbill"));
         commands.put("requestreceiptpage", new SendRequestCommand("requestreceiptpage"));
 
