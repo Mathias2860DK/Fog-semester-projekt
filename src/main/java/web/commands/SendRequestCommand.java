@@ -30,16 +30,16 @@ public class SendRequestCommand extends CommandUnprotectedPage { //TODO: EVT bur
 
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
-        // Her indsætter vi deliveryinfo til database og får attribut på sessionscope
+
         DeliveryInfo deliveryInfo = (DeliveryInfo) session.getAttribute("deliveryInfo");
         Carport carport = (Carport) session.getAttribute("carport");
-        int deliveryInfoId = deliveryInfoFacade.insertDeliveryInfo(deliveryInfo); // Her får vi carport fra sessionscop = get.
-        //Her sætter ordre med oplysninger fra nedestående
-        Order order = new Order(deliveryInfoId, carport, new Timestamp(System.currentTimeMillis()), "request", 0);
 
-        int orderId = orderFacade.insertOrder(order, deliveryInfoId); //indsætter ordre til DB
+        int deliveryInfoId = deliveryInfoFacade.insertDeliveryInfo(deliveryInfo);
+
+        Order order = new Order(deliveryInfoId, carport, new Timestamp(System.currentTimeMillis()), "request", 0);
+        int orderId = orderFacade.insertOrder(order, deliveryInfoId);
         order.setOrderId(orderId);
-        session.setAttribute("order", order); //her sætter vi ordre, så vi kan vise den på jsp siden med en get.
+        session.setAttribute("order", order);
 
 
         return pageToShow;

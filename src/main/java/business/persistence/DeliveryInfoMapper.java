@@ -17,17 +17,11 @@ public class DeliveryInfoMapper {
     }
 
     public int insertDeliveryInfo(DeliveryInfo deliveryInfo) throws UserException {
-
         try (Connection connection = database.connect()) {
 
-            String sql = "INSERT INTO `delivery_info`" +
-                    " (`user_id`," +
-                    " `name`, " +
-                    " `adress`, " +
+            String sql = "INSERT INTO `delivery_info`" + " (`user_id`," + " `name`, " + " `adress`, " +
                     " `zipcode_city`, " +
-                    " `phone`, " +
-                    " `email`, " +
-                    "`remarks`)" +
+                    " `phone`, " + " `email`, " + "`remarks`)" +
                     " VALUES (?,?,?,?,?,?,?);";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -39,13 +33,10 @@ public class DeliveryInfoMapper {
                 ps.setString(6, deliveryInfo.getEmail());
                 ps.setString(7, deliveryInfo.getRemarks());
 
-
                 ps.executeUpdate();
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
                 int deliveryInfoId = ids.getInt(1);
-                //ps.setInt("delivery_info_id",deliveryInfoId);
-
 
                 return deliveryInfoId;
             } catch (SQLException ex) {

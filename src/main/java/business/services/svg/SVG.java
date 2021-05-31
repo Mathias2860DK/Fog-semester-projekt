@@ -34,7 +34,8 @@ public class SVG {
 
     public void arrowsAndTextSideSvg() {
         //right side
-        addArrowAndText(100 + carportLength + 50, 10, 100 + carportLength + 50, 230, 100 + carportLength + 50, 230 / 2, 220);
+        addArrowAndText(100 + carportLength + 50, 10, 100 + carportLength +
+                50, 230, 100 + carportLength + 50, 230 / 2, 220);
         //left side
         addArrowAndText(50, 0, 50, 230, 50, 230 / 2, 230);
     }
@@ -50,7 +51,8 @@ public class SVG {
                 "        <polygon points=\"0 0, 10 3.5, 0 7\" fill=\"black\" />\n" +
                 "    </marker>\n" +
                 "  </defs>\n" +
-                "  <line x1=\"" + x1 + "\" y1=\"" + y1 + "\" x2=\"" + x2 + "\" y2=\"" + y2 + "\" stroke=\"#000\" stroke-width=\"1.5\" \n" +
+                "  <line x1=\"" + x1 + "\" y1=\"" + y1 + "\" x2=\"" + x2 + "\" y2=\"" + y2 + "\" stroke=\"#000\"" +
+                " stroke-width=\"1.5\" \n" +
                 "marker-end=\"url(#endarrow)\" marker-start=\"url(#startarrow)\" />" +
                 "  <text x=\"" + textX + "\" y=\"" + textY + "\" fill=\"black\">" + textToDisplay + " cm</text>\n ");
 

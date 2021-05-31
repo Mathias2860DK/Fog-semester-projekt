@@ -70,8 +70,7 @@ return pageToShow;
             }
             session.setAttribute("carport", carport);
 
-            //creates SVG from the top of the carport
-
+            //Create SVG from the top of the carport
             SVG svg = new SVG(0, 0, "0 0 1000 900", 150, 100, carport);
             String svgCode = svg.generateSvgTop();
             request.setAttribute("svgdrawing", svgCode);
