@@ -32,7 +32,7 @@ public class SVG {
                 "  <line x1=\"" + x1 + "\" y1=\"" + y1 + "\" x2=\"" + x2 + "\" y2=\"" + y2 + "\" stroke=\"#000\"" +
                 " stroke-width=\"1.5\" \n" +
                 "marker-end=\"url(#endarrow)\" marker-start=\"url(#startarrow)\" />" +
-                "  <text x=\"" + textX + "\" y=\"" + textY + "\" fill=\"black\">" + textToDisplay + " cm</text>\n ");
+                "  <text x=\"" + textX + "\" y=\"" + textY + "\" fill=\"black\">" + textToDisplay + "cm</text>\n ");
 
     }
 
