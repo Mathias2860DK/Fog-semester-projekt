@@ -4,6 +4,7 @@ import business.entities.Carport;
 import business.entities.Shed;
 import business.exceptions.UserException;
 import business.services.svg.SVG;
+import business.services.svg.SvgSide;
 import business.services.svg.SvgTop;
 
 import javax.servlet.http.HttpServletRequest;
@@ -71,13 +72,20 @@ return pageToShow;
             session.setAttribute("carport", carport);
 
             //Create SVG from the top of the carport
-            SVG svg = new SVG(0, 0, "0 0 1000 900", 150, 100, carport);
+        /*    SVG svg = new SVG(0, 0, "0 0 1000 900", 150, 100, carport);
             String svgCode = svg.generateSvgTop();
-            request.setAttribute("svgdrawing", svgCode);
+            request.setAttribute("svgdrawing", svgCode);*/
+            SvgTop svgTop = new SvgTop(0, 0, "0 0 1000 900", 150, 100, carport);
+            String svgCodeTop = svgTop.generateSvgTop();
+            request.setAttribute("svgdrawing", svgCodeTop);
 
             //Create SVG from the side of the carport
-            SVG svgSide = new SVG(0, 0, "0 0 1000 900", 150, 100, carport);
+          /*  SVG svgSide = new SVG(0, 0, "0 0 1000 900", 150, 100, carport);
             String svgCodeSide = svgSide.generateSvgSide();
+            request.setAttribute("svgdrawingside", svgCodeSide);*/
+
+            SvgSide side = new SvgSide(0, 0, "0 0 1000 900", 150, 100, carport);
+            String svgCodeSide = side.generateSvgSide();
             request.setAttribute("svgdrawingside", svgCodeSide);
         }
         return pageToShow;
