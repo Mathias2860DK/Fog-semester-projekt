@@ -38,8 +38,8 @@ public class SvgTop extends SVG {
         arrowOmkreds();
         remme();
         rafters();//spær
-        raftersArrowsText();
         posts();
+        raftersArrowsText();
         perforatedTape();//hulbånd
         if (hasShed) {
             addShed();
@@ -66,15 +66,15 @@ public class SvgTop extends SVG {
     public void remme() {
 
         //Øverste rem
-        addRect(100, 135, 5, carportLength - 5, svg);
+        addRect(100, 135, 5, carportLength, svg);
         //Nedereste rem
-        addRect(100, carportWidth - 35 + 100, 5, carportLength - 5, svg);
+        addRect(100, carportWidth - 35 + 100, 5, carportLength, svg);
     }
 
 
     //Laver omridset af carporten
     public void omkreds() {
-        addRect(100, 100, carportWidth, carportLength - 5, svg);
+        addRect(100, 100, carportWidth, carportLength, svg);
     }
 
     //pile og mål til side og bundlinje
@@ -85,18 +85,6 @@ public class SvgTop extends SVG {
         //pile og mål til bundlinje
         addArrowAndText(100, (100 + 30 + carportWidth), (carportLength + 100), (100 + 30 + carportWidth),
                 (100 + (carportLength / 2)), (100 + carportWidth + 25), carportLength, svg);
-    }
-
-    public void rafters() {//spær
-        int raftersAmount = CalcPart.calcRafters(carportLength, 55);//Fog standards
-        int spaceBetweenRafters = carportLength/raftersAmount;
-        for (int i = 0; i < raftersAmount+1; i++) {
-            if (i == raftersAmount){
-                addRect(100 + (spaceBetweenRafters * i)-5, 100, carportWidth, 5, svg);
-            } else {
-                addRect(100 + (spaceBetweenRafters * i), 100, carportWidth, 5, svg);
-            }
-        }
     }
 
     //adder omrids af skur
@@ -114,14 +102,28 @@ public class SvgTop extends SVG {
         }
     }
 
-    //TODO: Modulo --> fix spær text på bagereste spær hvis %55 != 0
+    public void rafters() {//spær
+        int raftersAmount = CalcPart.calcRafters(carportLength, 55);//Fog standards
+        int spaceBetweenRafters = carportLength/raftersAmount;
+        //adder spær
+        for (int i = 0; i < raftersAmount+1; i++) {
+            if (i == raftersAmount){
+                addRect(100 + carportLength-5, 100, carportWidth, 5, svg);
+            } else {
+                addRect(100 + (spaceBetweenRafters * i), 100, carportWidth, 5, svg);
+            }
+
+
+        }
+    }
+
     public void raftersArrowsText() {
         int raftersAmount = CalcPart.calcRafters(carportLength, 55);//Fog standards
         int x2 = 0; //for line field
         int x = 0;//for text field
 int spaceBetweenRafters = carportLength/raftersAmount;
         for (int i = 0; i < raftersAmount; i++) {
-            x = (110 + (spaceBetweenRafters * i));
+            x = (100 + (spaceBetweenRafters * i));
             x2 = (100 + spaceBetweenRafters * (i + 1));
 
             addArrowAndText((100 + (spaceBetweenRafters * i)), 70, x2, 70, x, 50, spaceBetweenRafters, svg);
@@ -162,10 +164,14 @@ int spaceBetweenRafters = carportLength/raftersAmount;
             } else {
                 spaceBetweenPosts = remainingLength;
             }
-            addRect(200, 130, 9.7, 9.7, svg);
-            addRect(200, carportWidth + 100 - 30, 9.7, 9.7, svg);
-            addRect(carportLength - 30 + 100, 130, 9.7, 9.7, svg);
-            addRect(carportLength - 30 + 100, carportWidth + 100 - 30, 9.7, 9.7, svg);
+            //øverste venstre
+            addRect(200, 130+5, 9.7, 9.7, svg);
+            //nedereste venstre
+            addRect(200, carportWidth + 100 - 30-10, 9.7, 9.7, svg);
+            //øverste højre
+            addRect(carportLength - 30 + 100, 130+5, 9.7, 9.7, svg);
+            //nedereste højre
+            addRect(carportLength - 30 + 100, carportWidth + 100 - 30-10, 9.7, 9.7, svg);
             if (postsAmount > 4) {
                 addRect(200 + spaceBetweenPosts, 130, 9.7, 9.7, svg);
                 addRect(200 + spaceBetweenPosts, carportWidth + 100 - 30, 9.7, 9.7, svg);
