@@ -104,16 +104,10 @@ public class SvgTop extends SVG {
 
     public void rafters() {//spær
         int raftersAmount = CalcPart.calcRafters(carportLength, 55);//Fog standards
-        int spaceBetweenRafters = carportLength/raftersAmount;
+        int spaceBetweenRafters = carportLength/(raftersAmount-1);
         //adder spær
-        for (int i = 0; i < raftersAmount+1; i++) {
-            if (i == raftersAmount){
-                addRect(100 + carportLength-5, 100, carportWidth, 5, svg);
-            } else {
+        for (int i = 0; i < raftersAmount; i++) {
                 addRect(100 + (spaceBetweenRafters * i), 100, carportWidth, 5, svg);
-            }
-
-
         }
     }
 
@@ -121,10 +115,10 @@ public class SvgTop extends SVG {
         int raftersAmount = CalcPart.calcRafters(carportLength, 55);//Fog standards
         int x2 = 0; //for line field
         int x = 0;//for text field
-int spaceBetweenRafters = carportLength/raftersAmount;
-        for (int i = 0; i < raftersAmount; i++) {
-            x = (100 + (spaceBetweenRafters * i));
-            x2 = (100 + spaceBetweenRafters * (i + 1));
+int spaceBetweenRafters = carportLength/(raftersAmount-1);
+        for (int i = 0; i < raftersAmount-1; i++) {
+            x = (100 + (spaceBetweenRafters) * i);
+            x2 = (100 + (spaceBetweenRafters) * (i + 1));
 
             addArrowAndText((100 + (spaceBetweenRafters * i)), 70, x2, 70, x, 50, spaceBetweenRafters, svg);
         }

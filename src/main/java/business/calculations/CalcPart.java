@@ -37,7 +37,7 @@ public class CalcPart {
     public static int calcRafters(int carportLength, int spaceBetweenRafters) {//rafters = spær //spaceBetweenRafters is always 55(for now)
         //(Carport længde-10) / 55 +1 =  15
         int amount = 0;
-        amount = carportLength / spaceBetweenRafters+1;//+1 for rafter on both sides
+        amount = (carportLength / spaceBetweenRafters)+2;//+1 --> rounding up +1 --> on both sides
         return amount;
     }
 

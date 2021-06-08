@@ -5,17 +5,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalcPartTest {
-    CalcCarport carport = new CalcCarport();
 
     @Test
     void calcPostAmount() {
-        assertEquals(6,CalcPart.calcPostAmount(480,true));
+        assertEquals(9,CalcPart.calcPostAmount(480,true));
 
     }
 
     @Test
     void calcRafters() {
         assertEquals(9,CalcPart.calcRafters(480,55));
+        assertEquals(11,CalcPart.calcRafters(600,55));
     }
 
     @Test

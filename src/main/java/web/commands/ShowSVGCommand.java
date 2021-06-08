@@ -42,7 +42,7 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
             return pageToShow;
         }
 
-        if (!carportShedSize.equals("no-shed")){
+        if (!carportShedSize.equals("no-shed")) {
             hasShed = true;
         }
 
@@ -57,33 +57,22 @@ public class ShowSVGCommand extends CommandUnprotectedPage {
                 }
                 carport = new Carport(carportWidthInt, carportLengthInt, roof, shed);
                 carport.getShed().setHasShed(true);
-            } else if (hasShed && carportLengthInt <511){
-                Shed shed = new Shed(carportWidthInt);
-                carport = new Carport(carportWidthInt, carportLengthInt, roof, shed);
-                carport.getShed().setShedWidthIfNoShed();
-                carport.getShed().setHasShed(false);
-                request.setAttribute("error","Du kan ikke tilvælge redskabsskur med en carport længde på under 540 cm");
-return pageToShow;
+            } else if (hasShed && carportLengthInt < 511) {
+                request.setAttribute("error", "Du kan ikke tilvælge redskabsskur med en carport længde på under 540 cm");
+                return pageToShow;
             } else {
                 Shed shed = new Shed(carportWidthInt);
                 shed.setShedWidthIfNoShed();
-                carport = new Carport(carportWidthInt, carportLengthInt, roof,shed);
+                carport = new Carport(carportWidthInt, carportLengthInt, roof, shed);
             }
             session.setAttribute("carport", carport);
 
             //Create SVG from the top of the carport
-        /*    SVG svg = new SVG(0, 0, "0 0 1000 900", 150, 100, carport);
-            String svgCode = svg.generateSvgTop();
-            request.setAttribute("svgdrawing", svgCode);*/
             SvgTop svgTop = new SvgTop(0, 0, "0 0 1000 900", 150, 100, carport);
             String svgCodeTop = svgTop.generateSvgTop();
             request.setAttribute("svgdrawing", svgCodeTop);
 
             //Create SVG from the side of the carport
-          /*  SVG svgSide = new SVG(0, 0, "0 0 1000 900", 150, 100, carport);
-            String svgCodeSide = svgSide.generateSvgSide();
-            request.setAttribute("svgdrawingside", svgCodeSide);*/
-
             SvgSide side = new SvgSide(0, 0, "0 0 1000 900", 150, 100, carport);
             String svgCodeSide = side.generateSvgSide();
             request.setAttribute("svgdrawingside", svgCodeSide);
